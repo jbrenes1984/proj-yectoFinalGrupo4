@@ -434,7 +434,7 @@ QPushButton:hover {
            <widget class="QLabel" name="label_14">
             <property name="geometry">
              <rect>
-              <x>50</x>
+              <x>120</x>
               <y>60</y>
               <width>81</width>
               <height>21</height>
@@ -454,33 +454,10 @@ QPushButton:hover {
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
-           <widget class="QLabel" name="label_15">
-            <property name="geometry">
-             <rect>
-              <x>560</x>
-              <y>60</y>
-              <width>81</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    background-color: rgb(203, 203, 203);   
-	border-color:  rgb(203, 203, 203);
-}
-</string>
-            </property>
-            <property name="text">
-             <string>Total</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
            <widget class="QLabel" name="label_16">
             <property name="geometry">
              <rect>
-              <x>470</x>
+              <x>540</x>
               <y>60</y>
               <width>91</width>
               <height>21</height>
@@ -503,7 +480,7 @@ QPushButton:hover {
            <widget class="QLabel" name="label_18">
             <property name="geometry">
              <rect>
-              <x>390</x>
+              <x>460</x>
               <y>60</y>
               <width>81</width>
               <height>21</height>
@@ -526,7 +503,7 @@ QPushButton:hover {
            <widget class="QLabel" name="label_20">
             <property name="geometry">
              <rect>
-              <x>130</x>
+              <x>200</x>
               <y>60</y>
               <width>261</width>
               <height>21</height>
@@ -549,66 +526,57 @@ QPushButton:hover {
            <widget class="QLineEdit" name="cod_registro">
             <property name="geometry">
              <rect>
-              <x>50</x>
+              <x>120</x>
               <y>80</y>
               <width>81</width>
               <height>21</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="nombre_registro">
             <property name="geometry">
              <rect>
-              <x>130</x>
+              <x>200</x>
               <y>80</y>
               <width>261</width>
               <height>21</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="cantidad_registro">
             <property name="geometry">
              <rect>
-              <x>390</x>
+              <x>460</x>
               <y>80</y>
               <width>81</width>
               <height>21</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="precio_un_registro">
             <property name="geometry">
              <rect>
-              <x>470</x>
+              <x>540</x>
               <y>80</y>
               <width>91</width>
               <height>21</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="total_registro">
-            <property name="geometry">
-             <rect>
-              <x>560</x>
-              <y>80</y>
-              <width>81</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);</string>
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QListView" name="listaIngreso">
@@ -629,6 +597,10 @@ QPushButton:hover {
               <width>131</width>
               <height>31</height>
              </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 1px solid black;</string>
             </property>
            </widget>
           </widget>
@@ -676,7 +648,7 @@ QLabel {
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QPushButton" name="pushButton_crear_bodega_2">
+            <widget class="QPushButton" name="btnCrearBodega">
              <property name="geometry">
               <rect>
                <x>80</x>
