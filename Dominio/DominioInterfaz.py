@@ -8,46 +8,56 @@ now = datetime.datetime.now()
 fecha_actual = now.date()
 fecha_actual_str = fecha_actual.strftime('%d-%m-%Y')
 
+
 class FrmInterfaz(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
-        self.ui = Ui_MainWindow() # instancia de la interfaz gráfica        
-        self.ui.setupUi(self) # inicializa la interfaz gráfica
+        self.ui = Ui_MainWindow()  # instancia de la interfaz gráfica
+        self.ui.setupUi(self)  # inicializa la interfaz gráfica
         self.oingreso = None
         self.ui.pushButton_agregar_reg.clicked.connect(self.btn_agregar_datos_factura)
         self.ui.pushButton_guardar.clicked.connect(self.btn_guardar_lista)
-        self.modelolista = QtGui.QStandardItemModel()      
+        self.modelolista = QtGui.QStandardItemModel()
         self.ui.listaIngreso.setModel(self.modelolista)
+        self.ui.cod_registro.textChanged.connect(self.buscar_producto)
 
-       
+
+
+
+        with open(r'C:\Users\jbren\OneDrive\Escritorio\Proyecto Program 2\Dominio\IngresoArticulos\lista_productos.txt', 'r') as f:
+            self.lines = f.readlines()     
     
+       
+
         self.paginas = {
-            self.ui.pushButton_registro : self.ui.page_registro,
-            self.ui.pushButton_crear_bodega : self.ui.page_crear_bodega,
-            self.ui.pushButton_envio_bodega : self.ui.page_envio_bodega,
-            self.ui.pushButton_entrega_articulos : self.ui.page_entrega_articulos,
-            self.ui.pushButton_distribuidores : self.ui.page_distribuidores,
-            self.ui.pushButton_saldos_inventario : self.ui.page_saldos_inventario,
-            self.ui.pushButton_reporte_distrib : self.ui.page_reporte_distribuidor,
-            self.ui.pushButton_reporte : self.ui.page_reporte_txt,
+            self.ui.pushButton_registro: self.ui.page_registro,
+            self.ui.pushButton_crear_bodega: self.ui.page_crear_bodega,
+            self.ui.pushButton_envio_bodega: self.ui.page_envio_bodega,
+            self.ui.pushButton_entrega_articulos: self.ui.page_entrega_articulos,
+            self.ui.pushButton_distribuidores: self.ui.page_distribuidores,
+            self.ui.pushButton_saldos_inventario: self.ui.page_saldos_inventario,
+            self.ui.pushButton_reporte_distrib: self.ui.page_reporte_distribuidor,
+            self.ui.pushButton_reporte: self.ui.page_reporte_txt,
         }
 
         self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_entrega_articulos.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_entrega_articulos.clicked.connect(
+            self.mostrar_pagina)
         self.ui.pushButton_distribuidores.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_saldos_inventario.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_saldos_inventario.clicked.connect(
+            self.mostrar_pagina)
         self.ui.pushButton_reporte_distrib.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_reporte.clicked.connect(self.mostrar_pagina)
 
     def mostrar_pagina(self):
         # obtiene el botón que se presionó
         boton = self.sender()
-        
+
         # obtiene la página correspondiente del diccionario
         pagina = self.paginas.get(boton)
-        
+
         # muestra la página en el QStackedWidget
         if pagina:
             self.ui.stackedWidget.setCurrentWidget(pagina)
@@ -55,36 +65,33 @@ class FrmInterfaz(QMainWindow):
     def btn_agregar_datos_factura(self):
         self.oingreso = IngresoArticulos.IngresoArticulos()
         self.oingreso.codigoArticulo = self.ui.cod_registro.text()
-        self.oingreso.nombreArticulo = self.ui.nombre_registro.text() 
+        self.oingreso.nombreArticulo = self.ui.nombre_registro.text()
         self.oingreso.cantidad = float(self.ui.cantidad_registro.text())
         self.oingreso.preciounitario = float(self.ui.precio_un_registro.text())
-        self.oingreso.calcularMontoTotal() # llamada al método calcularMontoTotal()
-    
-        
+        self.oingreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
 
         itemView = (self.oingreso.codigoArticulo+"           "+self.oingreso.nombreArticulo+"                                     "
-    + "        "+ str(self.oingreso.cantidad) + "            "+str(self.oingreso.preciounitario)+"              "+str(self.oingreso.montoTotal) + 
-               "    " + self.ui.numeroFacturaIngreso.text() + "   " + fecha_actual_str)
-        
+                    + "        " + str(self.oingreso.cantidad) + "            "+str(self.oingreso.preciounitario)+"              "+str(self.oingreso.montoTotal) +
+                    "    " + self.ui.numeroFacturaIngreso.text() + "   " + fecha_actual_str)
+
         item = QtGui.QStandardItem(itemView)
         self.modelolista.appendRow(item)
-       
-        print(itemView)
 
         self.ui.cod_registro.clear()
         self.ui.nombre_registro.clear()
         self.ui.cantidad_registro.clear()
         self.ui.precio_un_registro.clear()
 
+    
 
     def btn_guardar_lista(self):
-    # Establece el nombre de archivo y la ubicación
+        # Establece el nombre de archivo y la ubicación
         filename = "lista_ingresos.txt"
         filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
-        
+
         # Abre el archivo para escribir
-        with open(filepath, "a") as f:   
-            
+        with open(filepath, "a") as f:
+
             # Escribe cada línea de la lista en el archivo
             for row in range(self.modelolista.rowCount()):
                 line = ""
@@ -94,7 +101,28 @@ class FrmInterfaz(QMainWindow):
                         line += item.text() + "\t"
                 line = line.rstrip("\t") + "\n"
                 f.write(line)
-        
+
         # Elimina todos los elementos de la lista
         self.modelolista.clear()
         self.ui.numeroFacturaIngreso.clear()
+
+    def buscar_producto(self):
+    # Obtiene el ID ingresado por el usuario
+        id_producto = self.ui.cod_registro.text()
+        
+    # Busca el producto correspondiente en la lista
+        producto = None
+        for line in self.lines:
+            datos_producto = line.strip().split(',')
+            if datos_producto[0] == id_producto:
+                producto = datos_producto
+                break
+            
+        # Si encontramos el producto, colocamos su nombre y precio en los QLineEdit correspondientes
+        if producto is not None:
+            self.ui.nombre_registro.setText(producto[1])
+            self.ui.precio_un_registro.setText(producto[2])
+        else:
+            # Si no encontramos el producto, limpiamos los QLineEdit correspondientes
+            self.ui.nombre_registro.clear()
+            self.ui.precio_un_registro.clear()
