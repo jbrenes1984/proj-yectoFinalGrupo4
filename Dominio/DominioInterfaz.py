@@ -23,6 +23,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.listaIngreso.setModel(self.modelolista)
         self.ui.cod_registro.textChanged.connect(self.buscar_producto)
         self.ui.btnCrearBodega.clicked.connect(self.agregar_bodega)
+        self.cargar_combobox()
        
 
 
@@ -144,4 +145,27 @@ class FrmInterfaz(QMainWindow):
         self.ui.lineEdit_10.clear()
         self.ui.lineEdit_6.clear()
         self.ui.lineEdit_8.clear()
+
+
+    def cargar_combobox(self):
+        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\EgresoEntreBodegas\\bodegas.txt"
+        with open(archivo, 'r') as f:
+            lines = f.readlines()
+
+        bodegas = set()  # usar un set para eliminar duplicados
+        for line in lines:
+            data = line.strip().split(',')
+            bodega_envia = data[1]
+            bodega_recibe = data[1]
+            bodegas.add(bodega_envia)
+            bodegas.add(bodega_recibe)
+
+        # Llenar los combobox con los nombres de las bodegas
+        self.ui.comboBox_bod_envia.clear()
+        self.ui.comboBox__bod_recibe.clear()
+
+        for bodega in bodegas:
+            self.ui.comboBox_bod_envia.addItem(bodega)
+            self.ui.comboBox__bod_recibe.addItem(bodega)
+
   
