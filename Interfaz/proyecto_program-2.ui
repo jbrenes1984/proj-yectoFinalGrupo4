@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>993</width>
-    <height>673</height>
+    <height>681</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,7 +59,7 @@
          <x>0</x>
          <y>110</y>
          <width>211</width>
-         <height>561</height>
+         <height>571</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -327,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">
@@ -826,22 +826,22 @@ background-color: rgb(206, 206, 206);</string>
             </item>
             <item>
              <property name="text">
-              <string>Bodega Principal</string>
+              <string>BODEGA PRINCIPAL</string>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Bodega 1</string>
+              <string/>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Bodega 2</string>
+              <string/>
              </property>
             </item>
             <item>
              <property name="text">
-              <string>Bodega 3</string>
+              <string/>
              </property>
             </item>
            </widget>
@@ -1082,7 +1082,7 @@ background-color: rgb(206, 206, 206);</string>
            <widget class="QPushButton" name="pushButton_enviar">
             <property name="geometry">
              <rect>
-              <x>680</x>
+              <x>690</x>
               <y>130</y>
               <width>81</width>
               <height>61</height>
@@ -1103,20 +1103,44 @@ QPushButton:hover {
 }</string>
             </property>
             <property name="text">
-             <string>Enviar</string>
+             <string>Agregar</string>
             </property>
            </widget>
-           <widget class="QTableView" name="tableView">
+           <widget class="QPushButton" name="btnEnviarBodegas">
             <property name="geometry">
              <rect>
-              <x>0</x>
-              <y>250</y>
-              <width>781</width>
-              <height>311</height>
+              <x>260</x>
+              <y>520</y>
+              <width>271</width>
+              <height>41</height>
              </rect>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: rgb(227, 227, 227);</string>
+             <string notr="true">QPushButton{
+	
+	border-radius:10px;
+	background-color: rgb(190, 190, 190);
+
+}
+
+QPushButton:hover {      
+	color: rgb(0, 170, 255);
+	background-color: rgb(0, 0, 0);
+    font: 75 10pt &quot;MS Shell Dlg 2&quot;;    
+}</string>
+            </property>
+            <property name="text">
+             <string>Enviar</string>
+            </property>
+           </widget>
+           <widget class="QListView" name="listaEnvio">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>220</y>
+              <width>721</width>
+              <height>291</height>
+             </rect>
             </property>
            </widget>
           </widget>

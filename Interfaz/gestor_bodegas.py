@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(993, 673)
+        MainWindow.resize(993, 681)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         self.frame_contenido.setObjectName("frame_contenido")
         self.frame_control_menu = QtWidgets.QFrame(parent=self.frame_contenido)
         self.frame_control_menu.setEnabled(True)
-        self.frame_control_menu.setGeometry(QtCore.QRect(0, 110, 211, 561))
+        self.frame_control_menu.setGeometry(QtCore.QRect(0, 110, 211, 571))
         self.frame_control_menu.setStyleSheet("background-color: rgb(0, 170, 255);\n"
 "\n"
 "")
@@ -356,8 +356,11 @@ class Ui_MainWindow(object):
         self.comboBox_bod_envia.setItemText(0, "")
         self.comboBox_bod_envia.addItem("")
         self.comboBox_bod_envia.addItem("")
+        self.comboBox_bod_envia.setItemText(2, "")
         self.comboBox_bod_envia.addItem("")
+        self.comboBox_bod_envia.setItemText(3, "")
         self.comboBox_bod_envia.addItem("")
+        self.comboBox_bod_envia.setItemText(4, "")
         self.label_7 = QtWidgets.QLabel(parent=self.page_envio_bodega)
         self.label_7.setGeometry(QtCore.QRect(420, 50, 131, 31))
         self.label_7.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -428,7 +431,7 @@ class Ui_MainWindow(object):
         self.monto_total_envio.setStyleSheet("border: 1px solid black;")
         self.monto_total_envio.setObjectName("monto_total_envio")
         self.pushButton_enviar = QtWidgets.QPushButton(parent=self.page_envio_bodega)
-        self.pushButton_enviar.setGeometry(QtCore.QRect(680, 130, 81, 61))
+        self.pushButton_enviar.setGeometry(QtCore.QRect(690, 130, 81, 61))
         self.pushButton_enviar.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -442,10 +445,24 @@ class Ui_MainWindow(object):
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
         self.pushButton_enviar.setObjectName("pushButton_enviar")
-        self.tableView = QtWidgets.QTableView(parent=self.page_envio_bodega)
-        self.tableView.setGeometry(QtCore.QRect(0, 250, 781, 311))
-        self.tableView.setStyleSheet("background-color: rgb(227, 227, 227);")
-        self.tableView.setObjectName("tableView")
+        self.btnEnviarBodegas = QtWidgets.QPushButton(parent=self.page_envio_bodega)
+        self.btnEnviarBodegas.setGeometry(QtCore.QRect(260, 520, 271, 41))
+        self.btnEnviarBodegas.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btnEnviarBodegas.setObjectName("btnEnviarBodegas")
+        self.listaEnvio = QtWidgets.QListView(parent=self.page_envio_bodega)
+        self.listaEnvio.setGeometry(QtCore.QRect(20, 220, 721, 291))
+        self.listaEnvio.setObjectName("listaEnvio")
         self.stackedWidget.addWidget(self.page_envio_bodega)
         self.page_entrega_articulos = QtWidgets.QWidget()
         self.page_entrega_articulos.setObjectName("page_entrega_articulos")
@@ -1354,7 +1371,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(2)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_3.setCurrentIndex(5)
         self.stackedWidget_4.setCurrentIndex(2)
@@ -1387,10 +1404,7 @@ class Ui_MainWindow(object):
         self.label_5.setText(_translate("MainWindow", "Teléfono"))
         self.label_6.setText(_translate("MainWindow", "Bodega Envía"))
         self.label_8.setText(_translate("MainWindow", "Id Producto"))
-        self.comboBox_bod_envia.setItemText(1, _translate("MainWindow", "Bodega Principal"))
-        self.comboBox_bod_envia.setItemText(2, _translate("MainWindow", "Bodega 1"))
-        self.comboBox_bod_envia.setItemText(3, _translate("MainWindow", "Bodega 2"))
-        self.comboBox_bod_envia.setItemText(4, _translate("MainWindow", "Bodega 3"))
+        self.comboBox_bod_envia.setItemText(1, _translate("MainWindow", "BODEGA PRINCIPAL"))
         self.label_7.setText(_translate("MainWindow", "Bodega Recibe"))
         self.comboBox__bod_recibe.setItemText(1, _translate("MainWindow", "Bodega Principal"))
         self.comboBox__bod_recibe.setItemText(2, _translate("MainWindow", "Bodega 1"))
@@ -1401,7 +1415,8 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "Cantidad"))
         self.label_13.setText(_translate("MainWindow", "<html><head/><body><p>Precio Unitario</p></body></html>"))
         self.label_17.setText(_translate("MainWindow", "<html><head/><body><p>Monto Total</p></body></html>"))
-        self.pushButton_enviar.setText(_translate("MainWindow", "Enviar"))
+        self.pushButton_enviar.setText(_translate("MainWindow", "Agregar"))
+        self.btnEnviarBodegas.setText(_translate("MainWindow", "Enviar"))
         self.lineEdit_4.setText(_translate("MainWindow", "Ingreso de Articulos a Bodega Principal"))
         self.lineEdit_15.setText(_translate("MainWindow", "Código Articulo"))
         self.lineEdit_16.setText(_translate("MainWindow", "Nombre"))
