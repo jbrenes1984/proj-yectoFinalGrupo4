@@ -1,10 +1,5 @@
 
 
-listadoFacturas = [] #list
-formatoConseFact = "FACT#{0}" 
-consecutivoFactura = 1
-        
-
 class IngresoArticulos : 
     def __init__(self) -> None:
         self.idfactura = None
@@ -18,4 +13,6 @@ class IngresoArticulos :
     def calcularMontoTotal(self):
         self.montoTotal = self.cantidad * self.preciounitario
         return self.montoTotal
+    
+
     
