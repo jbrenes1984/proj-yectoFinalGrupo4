@@ -50,22 +50,6 @@
       <property name="midLineWidth">
        <number>0</number>
       </property>
-      <widget class="QFrame" name="frame">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>0</y>
-         <width>120</width>
-         <height>80</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-      </widget>
       <widget class="QFrame" name="frame_control_menu">
        <property name="enabled">
         <bool>true</bool>
@@ -343,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">

@@ -27,11 +27,6 @@ class Ui_MainWindow(object):
         self.frame_contenido.setLineWidth(0)
         self.frame_contenido.setMidLineWidth(0)
         self.frame_contenido.setObjectName("frame_contenido")
-        self.frame = QtWidgets.QFrame(parent=self.frame_contenido)
-        self.frame.setGeometry(QtCore.QRect(260, 0, 120, 80))
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
         self.frame_control_menu = QtWidgets.QFrame(parent=self.frame_contenido)
         self.frame_control_menu.setEnabled(True)
         self.frame_control_menu.setGeometry(QtCore.QRect(0, 110, 211, 561))
@@ -213,7 +208,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_guardar.setObjectName("pushButton_guardar")
         self.label_14 = QtWidgets.QLabel(parent=self.page_registro)
-        self.label_14.setGeometry(QtCore.QRect(50, 60, 81, 21))
+        self.label_14.setGeometry(QtCore.QRect(120, 60, 81, 21))
         self.label_14.setStyleSheet("QLabel {\n"
 "    background-color: rgb(203, 203, 203);   \n"
 "    border-color:  rgb(203, 203, 203);\n"
@@ -221,17 +216,8 @@ class Ui_MainWindow(object):
 "")
         self.label_14.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_14.setObjectName("label_14")
-        self.label_15 = QtWidgets.QLabel(parent=self.page_registro)
-        self.label_15.setGeometry(QtCore.QRect(560, 60, 81, 21))
-        self.label_15.setStyleSheet("QLabel {\n"
-"    background-color: rgb(203, 203, 203);   \n"
-"    border-color:  rgb(203, 203, 203);\n"
-"}\n"
-"")
-        self.label_15.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_15.setObjectName("label_15")
         self.label_16 = QtWidgets.QLabel(parent=self.page_registro)
-        self.label_16.setGeometry(QtCore.QRect(470, 60, 91, 21))
+        self.label_16.setGeometry(QtCore.QRect(540, 60, 91, 21))
         self.label_16.setStyleSheet("QLabel {\n"
 "    background-color: rgb(203, 203, 203);   \n"
 "    border-color:  rgb(203, 203, 203);\n"
@@ -240,7 +226,7 @@ class Ui_MainWindow(object):
         self.label_16.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_16.setObjectName("label_16")
         self.label_18 = QtWidgets.QLabel(parent=self.page_registro)
-        self.label_18.setGeometry(QtCore.QRect(390, 60, 81, 21))
+        self.label_18.setGeometry(QtCore.QRect(460, 60, 81, 21))
         self.label_18.setStyleSheet("QLabel {\n"
 "    background-color: rgb(203, 203, 203);   \n"
 "    border-color:  rgb(203, 203, 203);\n"
@@ -249,7 +235,7 @@ class Ui_MainWindow(object):
         self.label_18.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_18.setObjectName("label_18")
         self.label_20 = QtWidgets.QLabel(parent=self.page_registro)
-        self.label_20.setGeometry(QtCore.QRect(130, 60, 261, 21))
+        self.label_20.setGeometry(QtCore.QRect(200, 60, 261, 21))
         self.label_20.setStyleSheet("QLabel {\n"
 "    background-color: rgb(203, 203, 203);   \n"
 "    border-color:  rgb(203, 203, 203);\n"
@@ -258,30 +244,32 @@ class Ui_MainWindow(object):
         self.label_20.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_20.setObjectName("label_20")
         self.cod_registro = QtWidgets.QLineEdit(parent=self.page_registro)
-        self.cod_registro.setGeometry(QtCore.QRect(50, 80, 81, 21))
-        self.cod_registro.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.cod_registro.setGeometry(QtCore.QRect(120, 80, 81, 21))
+        self.cod_registro.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 1px solid black;")
         self.cod_registro.setObjectName("cod_registro")
         self.nombre_registro = QtWidgets.QLineEdit(parent=self.page_registro)
-        self.nombre_registro.setGeometry(QtCore.QRect(130, 80, 261, 21))
-        self.nombre_registro.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.nombre_registro.setGeometry(QtCore.QRect(200, 80, 261, 21))
+        self.nombre_registro.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 1px solid black;")
         self.nombre_registro.setObjectName("nombre_registro")
         self.cantidad_registro = QtWidgets.QLineEdit(parent=self.page_registro)
-        self.cantidad_registro.setGeometry(QtCore.QRect(390, 80, 81, 21))
-        self.cantidad_registro.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.cantidad_registro.setGeometry(QtCore.QRect(460, 80, 81, 21))
+        self.cantidad_registro.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 1px solid black;")
         self.cantidad_registro.setObjectName("cantidad_registro")
         self.precio_un_registro = QtWidgets.QLineEdit(parent=self.page_registro)
-        self.precio_un_registro.setGeometry(QtCore.QRect(470, 80, 91, 21))
-        self.precio_un_registro.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.precio_un_registro.setGeometry(QtCore.QRect(540, 80, 91, 21))
+        self.precio_un_registro.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 1px solid black;")
         self.precio_un_registro.setObjectName("precio_un_registro")
-        self.total_registro = QtWidgets.QLineEdit(parent=self.page_registro)
-        self.total_registro.setGeometry(QtCore.QRect(560, 80, 81, 21))
-        self.total_registro.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.total_registro.setObjectName("total_registro")
         self.listaIngreso = QtWidgets.QListView(parent=self.page_registro)
         self.listaIngreso.setGeometry(QtCore.QRect(20, 170, 661, 341))
         self.listaIngreso.setObjectName("listaIngreso")
         self.numeroFacturaIngreso = QtWidgets.QLineEdit(parent=self.page_registro)
         self.numeroFacturaIngreso.setGeometry(QtCore.QRect(80, 110, 131, 31))
+        self.numeroFacturaIngreso.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border: 1px solid black;")
         self.numeroFacturaIngreso.setObjectName("numeroFacturaIngreso")
         self.stackedWidget.addWidget(self.page_registro)
         self.page_crear_bodega = QtWidgets.QWidget()
@@ -303,9 +291,9 @@ class Ui_MainWindow(object):
         self.frame_form_bodega.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_form_bodega.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_form_bodega.setObjectName("frame_form_bodega")
-        self.pushButton_crear_bodega_2 = QtWidgets.QPushButton(parent=self.frame_form_bodega)
-        self.pushButton_crear_bodega_2.setGeometry(QtCore.QRect(80, 390, 141, 41))
-        self.pushButton_crear_bodega_2.setStyleSheet("QPushButton {\n"
+        self.btnCrearBodega = QtWidgets.QPushButton(parent=self.frame_form_bodega)
+        self.btnCrearBodega.setGeometry(QtCore.QRect(80, 390, 141, 41))
+        self.btnCrearBodega.setStyleSheet("QPushButton {\n"
 "    border-radius: 10px;   \n"
 "    background-color: rgb(165, 165, 165);\n"
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
@@ -316,7 +304,7 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 0, 0);\n"
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
-        self.pushButton_crear_bodega_2.setObjectName("pushButton_crear_bodega_2")
+        self.btnCrearBodega.setObjectName("btnCrearBodega")
         self.label_2 = QtWidgets.QLabel(parent=self.frame_form_bodega)
         self.label_2.setGeometry(QtCore.QRect(0, 20, 291, 21))
         self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -1366,7 +1354,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_3.setCurrentIndex(5)
         self.stackedWidget_4.setCurrentIndex(2)
@@ -1388,12 +1376,11 @@ class Ui_MainWindow(object):
         self.label_10.setText(_translate("MainWindow", "Factura N°"))
         self.pushButton_guardar.setText(_translate("MainWindow", "Guardar"))
         self.label_14.setText(_translate("MainWindow", "Codigo"))
-        self.label_15.setText(_translate("MainWindow", "Total"))
         self.label_16.setText(_translate("MainWindow", "Precio U.."))
         self.label_18.setText(_translate("MainWindow", "Cantidad"))
         self.label_20.setText(_translate("MainWindow", "Nombre"))
         self.label.setText(_translate("MainWindow", "Creación de Nueva Bodega"))
-        self.pushButton_crear_bodega_2.setText(_translate("MainWindow", "Crear Bodega"))
+        self.btnCrearBodega.setText(_translate("MainWindow", "Crear Bodega"))
         self.label_2.setText(_translate("MainWindow", "Id Bodega"))
         self.label_3.setText(_translate("MainWindow", "Nombre Bodega"))
         self.label_4.setText(_translate("MainWindow", "Ubicación"))

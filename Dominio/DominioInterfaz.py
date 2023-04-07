@@ -3,6 +3,8 @@ from PyQt6.QtWidgets import QMainWindow
 from Interfaz.gestor_bodegas import Ui_MainWindow
 from Dominio.IngresoArticulos import IngresoArticulos
 import datetime
+from Dominio.EgresoEntreBodegas.NuevaBodega import nuevaBodega
+
 
 now = datetime.datetime.now()
 fecha_actual = now.date()
@@ -20,7 +22,8 @@ class FrmInterfaz(QMainWindow):
         self.modelolista = QtGui.QStandardItemModel()
         self.ui.listaIngreso.setModel(self.modelolista)
         self.ui.cod_registro.textChanged.connect(self.buscar_producto)
-
+        self.ui.btnCrearBodega.clicked.connect(self.agregar_bodega)
+       
 
 
 
@@ -43,11 +46,9 @@ class FrmInterfaz(QMainWindow):
         self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_entrega_articulos.clicked.connect(
-            self.mostrar_pagina)
+        self.ui.pushButton_entrega_articulos.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_distribuidores.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_saldos_inventario.clicked.connect(
-            self.mostrar_pagina)
+        self.ui.pushButton_saldos_inventario.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_reporte_distrib.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_reporte.clicked.connect(self.mostrar_pagina)
 
@@ -126,3 +127,21 @@ class FrmInterfaz(QMainWindow):
             # Si no encontramos el producto, limpiamos los QLineEdit correspondientes
             self.ui.nombre_registro.clear()
             self.ui.precio_un_registro.clear()
+
+
+    
+    def agregar_bodega(self):
+        id = self.ui.lineEdit_3.text()
+        nombre = self.ui.lineEdit_10.text()
+        direccion = self.ui.lineEdit_8.text()
+        telefono = self.ui.lineEdit_6.text()
+
+        # Agregar los datos al archivo de texto
+        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\EgresoEntreBodegas\\bodegas.txt"  # dirección del archivo
+        nueva_bodega = nuevaBodega(archivo)
+        nueva_bodega.agregar_datos(id, nombre, direccion, telefono)
+        self.ui.lineEdit_3.clear()
+        self.ui.lineEdit_10.clear()
+        self.ui.lineEdit_6.clear()
+        self.ui.lineEdit_8.clear()
+  
