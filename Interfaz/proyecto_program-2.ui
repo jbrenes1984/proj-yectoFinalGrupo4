@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>993</width>
+    <width>996</width>
     <height>681</height>
    </rect>
   </property>
@@ -572,6 +572,9 @@ border: 1px solid black;</string>
               <height>341</height>
              </rect>
             </property>
+            <property name="modelColumn">
+             <number>0</number>
+            </property>
            </widget>
            <widget class="QLineEdit" name="numeroFacturaIngreso">
             <property name="geometry">
@@ -829,21 +832,6 @@ background-color: rgb(206, 206, 206);</string>
               <string>BODEGA PRINCIPAL</string>
              </property>
             </item>
-            <item>
-             <property name="text">
-              <string/>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string/>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string/>
-             </property>
-            </item>
            </widget>
            <widget class="QLabel" name="label_7">
             <property name="geometry">
@@ -950,7 +938,7 @@ gridline-color: rgb(0, 0, 0);</string>
 background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="text">
-             <string>Cantidad</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cantidad&lt;br&gt; Disponible&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -970,7 +958,7 @@ background-color: rgb(206, 206, 206);</string>
 background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Precio Unitario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cantidad&lt;br&gt; Solicitar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="textFormat">
              <enum>Qt::AutoText</enum>
@@ -999,7 +987,7 @@ background-color: rgb(206, 206, 206);</string>
 background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monto Total&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monto&lt;br&gt; Total&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="textFormat">
              <enum>Qt::AutoText</enum>
@@ -1141,6 +1129,35 @@ QPushButton:hover {
               <width>721</width>
               <height>291</height>
              </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_15">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>80</y>
+              <width>71</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Mov. N°</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_19">
+            <property name="geometry">
+             <rect>
+              <x>110</x>
+              <y>80</y>
+              <width>71</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="text">
+             <string/>
             </property>
            </widget>
           </widget>

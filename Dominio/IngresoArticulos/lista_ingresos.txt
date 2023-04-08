@@ -1,0 +1,2 @@
+1           arroz                                             5.0            300.0              1500.0    25221   08-04-2023   Bodega Principal
+2           frijoles                                             5.0            1500.0              7500.0    25221   08-04-2023   Bodega Principal
