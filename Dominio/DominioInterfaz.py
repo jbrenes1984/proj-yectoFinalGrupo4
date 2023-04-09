@@ -78,7 +78,7 @@ class FrmInterfaz(QMainWindow):
 
         itemView = (self.oingreso.codigoArticulo+","+self.oingreso.nombreArticulo+","
                      + str(self.oingreso.cantidad) + ","+str(self.oingreso.preciounitario)+","+str(self.oingreso.montoTotal) +
-                    "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega)
+                    "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega+ "," + "Ingreso Principal")
 
         item = QtGui.QStandardItem(itemView)
         self.modelolista.appendRow(item)
@@ -274,8 +274,9 @@ class FrmInterfaz(QMainWindow):
                 cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_recibida, 'nombre': nombre_articulo, 'precio': precio_unitario}
 
         archivo.close()
-
+        
         for clave, valores in cantidad_por_id_y_bodega.items():
+            print("->>> Ingreso <<<---")
             print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad recibida: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Ingreso: {clave[1]} ')
 
         archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/EgresoEntreBodegas/egresos_bodegas.txt', 'r')
@@ -297,6 +298,7 @@ class FrmInterfaz(QMainWindow):
         archivo.close()
 
         for clave, valores in cantidad_por_id_y_bodega.items():
+            print("->>> Egreso <<<---")
             print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad Egresada: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Egreso: {clave[1]} ')
         
 
