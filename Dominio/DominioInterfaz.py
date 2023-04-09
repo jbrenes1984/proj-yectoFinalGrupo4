@@ -32,6 +32,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btnCrearBodega.clicked.connect(lambda :  self.agregar_bodega() and self.cargar_combobox())
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
         self.ui.btn_agregar_tabla_distribuidores.clicked.connect(self.btn_agregar_egreso_distribuidor)
+        self.ui.btn_entrega_distribuidores.clicked.connect(self.btn_guardar_lista_egreso_distribuidor)
         self.cargar_combobox()
         self.cargar_combobox_bodega_entrega()
         self.cargar_combobox_distribuidores()
@@ -422,3 +423,26 @@ class FrmInterfaz(QMainWindow):
          self.ui.cantidad_solicitar_distrib.clear()
          self.ui.precio_unitario_envio_distrib.clear()
          self.ui.cantidad_producto_envio_distrib.clear()
+    
+
+    def btn_guardar_lista_egreso_distribuidor(self):
+    
+        filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        mensaje = "Datos guardados satisfactoriamente"    
+        # Abre el archivo para escribir
+        with open(filepath2, "a") as f:
+            # Escribe cada línea de la lista en el archivo de egresos
+            for row in range(self.modelolista.rowCount()):
+                line = ""
+                for col in range(self.modelolista.columnCount()):
+                    item = self.modelolista.item(row, col)
+                    if item is not None:
+                        line += item.text() + ","
+                line = line.rstrip(",") + "\n"
+                f.write(line)
+
+    # Elimina todos los elementos de la lista
+        self.modelolista.clear()      
+        self.ui.factura_distrib.clear()      
+        self.actualizar_saldos()
+        self.mensaje_confirmacion(mensaje)
