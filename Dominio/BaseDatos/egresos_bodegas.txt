@@ -1,2 +1,0 @@
-1, Arroz,100.0,300.0,30000.0,1,09-04-2023,Lagunilla,Bodega Principal
-1,  Arroz,100.0,300.0,30000.0,150,09-04-2023,Distribuidor 1,Lagunilla

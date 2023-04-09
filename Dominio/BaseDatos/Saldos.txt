@@ -1,2 +1,0 @@
-1, Arroz, 100, 300.0 , Bodega Principal
-1,  Arroz, 0, 300.0 , Lagunilla
