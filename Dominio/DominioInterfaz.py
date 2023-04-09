@@ -6,6 +6,7 @@ from Dominio.IngresoArticulos import IngresoArticulos
 from Dominio.EgresoEntreBodegas import Egresos 
 import datetime
 from Dominio.EgresoEntreBodegas.NuevaBodega import nuevaBodega
+from PyQt6.QtCore import Qt
 
 
 now = datetime.datetime.now()
@@ -33,6 +34,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
         self.ui.btn_agregar_tabla_distribuidores.clicked.connect(self.btn_agregar_egreso_distribuidor)
         self.ui.btn_entrega_distribuidores.clicked.connect(self.btn_guardar_lista_egreso_distribuidor)
+        self.ui.pushButton_mostrar.clicked.connect(self.mostrar_saldos)
         self.cargar_combobox() 
         self.cargar_combobox_distribuidores()
        
@@ -161,8 +163,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.lineEdit_10.clear()
         self.ui.lineEdit_6.clear()
         self.ui.lineEdit_8.clear()
-        self.cargar_combobox()
-        self.cargar_combobox_bodega_entrega()
+        self.cargar_combobox()   
         self.cargar_combobox_distribuidores()
         self.mensaje_confirmacion(mensaje)
 
@@ -431,7 +432,27 @@ class FrmInterfaz(QMainWindow):
         self.ui.factura_distrib.clear()      
         self.actualizar_saldos()
         self.mensaje_confirmacion(mensaje)
+    
+
+    def mostrar_saldos(self):
+        print("La función mostrar_saldos ha sido llamada.")
+
+        bodega = self.ui.comboBox_bod_saldos.currentText()
+        archivo = 'C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt'
+
+        with open(archivo , 'r') as f:
+            for line in f:
+                datos_bodega = line.strip().split(', ')
+                if datos_bodega[4] == bodega:
+                    id_producto = datos_bodega[0]
+                    producto = datos_bodega[1]
+                    cantidad = datos_bodega[2]
+                    precio_unitario = datos_bodega[3]
+                    saldo = float(cantidad) * float(precio_unitario)
+                    print(f"ID: {id_producto}, Producto: {producto}, Saldo: {saldo:.2f}, Precio unitario: {precio_unitario}, Cantidad disponible: {cantidad}")
+
+                
+                
+        
 
 
-
-  
