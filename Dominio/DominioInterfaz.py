@@ -25,11 +25,13 @@ class FrmInterfaz(QMainWindow):
         self.modelolista = QtGui.QStandardItemModel()
         self.ui.listaIngreso.setModel(self.modelolista)
         self.ui.listaEnvio.setModel(self.modelolista)
+        self.ui.tabla_entrega_distribuidores.setModel(self.modelolista)
         self.ui.cod_registro.textChanged.connect(self.buscar_producto)
         self.ui.id_prod_envio.textChanged.connect(self.buscar_producto_egreso)
         self.ui.id_prod_envio_r_distrib.textChanged.connect(self.buscar_saldos_distribuidores)
         self.ui.btnCrearBodega.clicked.connect(lambda :  self.agregar_bodega() and self.cargar_combobox())
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
+        self.ui.btn_agregar_tabla_distribuidores.clicked.connect(self.btn_agregar_egreso_distribuidor)
         self.cargar_combobox()
         self.cargar_combobox_bodega_entrega()
         self.cargar_combobox_distribuidores()
@@ -395,3 +397,28 @@ class FrmInterfaz(QMainWindow):
         self.ui.nombre_producto_distrib.clear()
         self.ui.precio_unitario_envio_distrib.clear()
         self.ui.cantidad_producto_envio_distrib.clear()
+
+    def btn_agregar_egreso_distribuidor(self):
+         self.oegreso = Egresos.EgresoArticulos()
+         self.oegreso.codigoArticulo = self.ui.id_prod_envio_r_distrib.text()
+         self.oegreso.nombreArticulo = self.ui.nombre_producto_distrib.text()
+         self.oegreso.cantidad = float(self.ui.cantidad_solicitar_distrib.text())
+         self.oegreso.preciounitario = float(self.ui.precio_unitario_envio_distrib.text())
+         self.oegreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
+         self.oegreso.bodegaEnvia = self.ui.comboBox_bod_envia_3.currentText()
+         self.oegreso.bodegaRecibe = self.ui.comboBox_distrib_recibe_3.currentText()
+         
+         
+
+         itemView = (self.oegreso.codigoArticulo+","+self.oegreso.nombreArticulo +","
+                    + str(self.oegreso.cantidad) + ","+str(self.oegreso.preciounitario)+","+str(self.oegreso.montoTotal) +
+                    "," + self.ui.factura_distrib.text() + "," + fecha_actual_str + "," + self.oegreso.bodegaRecibe +"," + self.oegreso.bodegaEnvia)
+
+         item = QtGui.QStandardItem(itemView)
+         self.modelolista.appendRow(item)
+
+         self.ui.id_prod_envio_r_distrib.clear()
+         self.ui.nombre_producto_distrib.clear()
+         self.ui.cantidad_solicitar_distrib.clear()
+         self.ui.precio_unitario_envio_distrib.clear()
+         self.ui.cantidad_producto_envio_distrib.clear()
