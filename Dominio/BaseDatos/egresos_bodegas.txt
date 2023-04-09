@@ -1,5 +1,5 @@
-1, Arroz,500.0,300.0,150000.0,1,09-04-2023,Cuba,Bodega Principal
-3, Atun,200.0,3500.0,700000.0,1,09-04-2023,Cuba,Bodega Principal
-1,  Arroz,500.0,300.0,150000.0,1,09-04-2023,Distribuidor 1,Cuba
-4, Leche,50.0,5000.0,250000.0,1,09-04-2023,Pavas,Bodega Principal
-4,  Leche,50.0,5000.0,250000.0,1,09-04-2023,Distribuidor 2,Pavas
+1,Arroz,500.0,300.0,150000.0,1,09-04-2023,Distribuidor 1,Cuba
+1,Arroz,500.0,300.0,150000.0,1,09-04-2023,Distribuidor 1,Cuba
+
+
+

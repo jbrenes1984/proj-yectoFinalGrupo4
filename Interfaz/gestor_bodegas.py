@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(996, 681)
+        MainWindow.resize(994, 685)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -655,6 +655,38 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_saldos_inventario)
         self.page_reporte_distribuidor = QtWidgets.QWidget()
         self.page_reporte_distribuidor.setObjectName("page_reporte_distribuidor")
+        self.label_26 = QtWidgets.QLabel(parent=self.page_reporte_distribuidor)
+        self.label_26.setGeometry(QtCore.QRect(0, 0, 741, 51))
+        self.label_26.setStyleSheet("font: 75 18pt \"MS Shell Dlg 2\";")
+        self.label_26.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_26.setObjectName("label_26")
+        self.label_31 = QtWidgets.QLabel(parent=self.page_reporte_distribuidor)
+        self.label_31.setGeometry(QtCore.QRect(290, 70, 131, 21))
+        self.label_31.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";")
+        self.label_31.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_31.setObjectName("label_31")
+        self.comboBox_egresos_distribuidor = QtWidgets.QComboBox(parent=self.page_reporte_distribuidor)
+        self.comboBox_egresos_distribuidor.setGeometry(QtCore.QRect(250, 100, 211, 31))
+        self.comboBox_egresos_distribuidor.setObjectName("comboBox_egresos_distribuidor")
+        self.lista_consulta_egresos_distrib = QtWidgets.QListView(parent=self.page_reporte_distribuidor)
+        self.lista_consulta_egresos_distrib.setGeometry(QtCore.QRect(0, 230, 781, 341))
+        self.lista_consulta_egresos_distrib.setObjectName("lista_consulta_egresos_distrib")
+        self.btn_mostrar_egresos_distrib = QtWidgets.QPushButton(parent=self.page_reporte_distribuidor)
+        self.btn_mostrar_egresos_distrib.setGeometry(QtCore.QRect(290, 150, 131, 41))
+        self.btn_mostrar_egresos_distrib.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_mostrar_egresos_distrib.setObjectName("btn_mostrar_egresos_distrib")
         self.stackedWidget.addWidget(self.page_reporte_distribuidor)
         self.page_reporte_txt = QtWidgets.QWidget()
         self.page_reporte_txt.setObjectName("page_reporte_txt")
@@ -664,7 +696,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -733,3 +765,6 @@ class Ui_MainWindow(object):
         self.comboBox_bod_saldos.setItemText(3, _translate("MainWindow", "Bodega 2"))
         self.comboBox_bod_saldos.setItemText(4, _translate("MainWindow", "Bodega 3"))
         self.pushButton_mostrar.setText(_translate("MainWindow", "Mostrar"))
+        self.label_26.setText(_translate("MainWindow", "Consulta Egresos Por Distribuidor"))
+        self.label_31.setText(_translate("MainWindow", "Distribuidor"))
+        self.btn_mostrar_egresos_distrib.setText(_translate("MainWindow", "Mostrar"))

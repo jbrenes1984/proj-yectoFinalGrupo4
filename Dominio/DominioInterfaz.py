@@ -42,6 +42,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btn_entrega_distribuidores.clicked.connect(
             self.btn_guardar_lista_egreso_distribuidor)
         self.ui.pushButton_mostrar.clicked.connect(self.mostrar_saldos)
+        self.ui.btn_mostrar_egresos_distrib.clicked.connect(self.mostrar_egresos_distribuidor)
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
 
@@ -180,11 +181,13 @@ class FrmInterfaz(QMainWindow):
         self.ui.comboBox__bod_recibe.clear()
         self.ui.comboBox_bod_saldos.clear()
         self.ui.comboBox_bod_envia_3.clear()
+       
 
         for bodega in bodegas:
             self.ui.comboBox__bod_recibe.addItem(bodega)
             self.ui.comboBox_bod_saldos.addItem(bodega)
             self.ui.comboBox_bod_envia_3.addItem(bodega)
+           
 
     def buscar_producto_egreso(self):
         # Obtiene el ID ingresado por el usuario
@@ -351,9 +354,11 @@ class FrmInterfaz(QMainWindow):
             distribuidores.add(distribuidor_recibe)
 
         self.ui.comboBox_distrib_recibe_3.clear()
+        self.ui.comboBox_egresos_distribuidor.clear()
 
         for distribuidor in distribuidores:
             self.ui.comboBox_distrib_recibe_3.addItem(distribuidor)
+            self.ui.comboBox_egresos_distribuidor.addItem(distribuidor)
 
     def buscar_saldos_distribuidores(self):
         id_producto = self.ui.id_prod_envio_r_distrib.text()
@@ -444,8 +449,41 @@ class FrmInterfaz(QMainWindow):
                     model.appendRow(item)
 
         if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
-            self.mensaje_confirmacion("Bodega no posee saldos")
+            self.mensaje_confirmacion("Bodega No Tiene Existencias de Articulos")
 
         self.ui.lista_saldo_inventario.setModel(model)
-      
+
+
+
+
+    def mostrar_egresos_distribuidor(self):
+        bodega = self.ui.comboBox_egresos_distribuidor.currentText().strip()
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        model = QStandardItemModel()
+
+        encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
+        with open(archivo, 'r') as f:
+            for line in f:
+                datos_bodega = line.strip().split(',')
+                if len(datos_bodega) >= 9 and datos_bodega[7] == bodega:
+                    encontrado = True 
+                    id_producto = datos_bodega[0]
+                    producto = datos_bodega[1]
+                    cantidad = datos_bodega[2]
+                    precio_unitario = datos_bodega[3]
+                    bodega = datos_bodega[8]
+                    fecha = datos_bodega[6]
+                    factura = datos_bodega[5]
+
+                    item = QStandardItem(
+                        f"ID: {id_producto} -->Producto: {producto} -->Cantidad Entregada: {cantidad} -->Precio Unitario: {precio_unitario} -->Bodega Entrega: {bodega} -->Factura: {factura} -->Fecha: {fecha}")
+                    model.appendRow(item)
+
+        if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
+            self.mensaje_confirmacion("Bodega Egresos de Articulos")
+
+        self.ui.lista_consulta_egresos_distrib.setModel(model)
+
+            
+        
 
