@@ -668,6 +668,8 @@ class Ui_MainWindow(object):
         self.comboBox_egresos_distribuidor = QtWidgets.QComboBox(parent=self.page_reporte_distribuidor)
         self.comboBox_egresos_distribuidor.setGeometry(QtCore.QRect(250, 100, 211, 31))
         self.comboBox_egresos_distribuidor.setObjectName("comboBox_egresos_distribuidor")
+        self.comboBox_egresos_distribuidor.addItem("")
+        self.comboBox_egresos_distribuidor.setItemText(0, "")
         self.lista_consulta_egresos_distrib = QtWidgets.QListView(parent=self.page_reporte_distribuidor)
         self.lista_consulta_egresos_distrib.setGeometry(QtCore.QRect(0, 230, 781, 341))
         self.lista_consulta_egresos_distrib.setObjectName("lista_consulta_egresos_distrib")
@@ -690,13 +692,130 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_reporte_distribuidor)
         self.page_reporte_txt = QtWidgets.QWidget()
         self.page_reporte_txt.setObjectName("page_reporte_txt")
+        self.label_32 = QtWidgets.QLabel(parent=self.page_reporte_txt)
+        self.label_32.setGeometry(QtCore.QRect(80, 0, 581, 31))
+        self.label_32.setStyleSheet("font: 75 18pt \"MS Shell Dlg 2\";")
+        self.label_32.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_32.setObjectName("label_32")
+        self.btn_reportes_egresos_distrib = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_reportes_egresos_distrib.setGeometry(QtCore.QRect(140, 270, 171, 61))
+        self.btn_reportes_egresos_distrib.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_reportes_egresos_distrib.setObjectName("btn_reportes_egresos_distrib")
+        self.btn_reportes_ingresos = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_reportes_ingresos.setGeometry(QtCore.QRect(140, 170, 171, 61))
+        self.btn_reportes_ingresos.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_reportes_ingresos.setObjectName("btn_reportes_ingresos")
+        self.btn_reportes_egresos_entre_bod = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_reportes_egresos_entre_bod.setGeometry(QtCore.QRect(140, 370, 161, 61))
+        self.btn_reportes_egresos_entre_bod.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_reportes_egresos_entre_bod.setObjectName("btn_reportes_egresos_entre_bod")
+        self.btn_resportes_saldos_inventario = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_resportes_saldos_inventario.setGeometry(QtCore.QRect(440, 170, 161, 61))
+        self.btn_resportes_saldos_inventario.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_resportes_saldos_inventario.setObjectName("btn_resportes_saldos_inventario")
+        self.btn_reportes_listado_productos = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_reportes_listado_productos.setGeometry(QtCore.QRect(440, 270, 161, 61))
+        self.btn_reportes_listado_productos.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_reportes_listado_productos.setObjectName("btn_reportes_listado_productos")
+        self.btn_reportes_listado_bodegas = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_reportes_listado_bodegas.setGeometry(QtCore.QRect(440, 370, 161, 61))
+        self.btn_reportes_listado_bodegas.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_reportes_listado_bodegas.setObjectName("btn_reportes_listado_bodegas")
+        self.btn_resportes_listado_distribuidores = QtWidgets.QPushButton(parent=self.page_reporte_txt)
+        self.btn_resportes_listado_distribuidores.setGeometry(QtCore.QRect(280, 470, 161, 61))
+        self.btn_resportes_listado_distribuidores.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_resportes_listado_distribuidores.setObjectName("btn_resportes_listado_distribuidores")
         self.stackedWidget.addWidget(self.page_reporte_txt)
         self.horizontalLayout.addWidget(self.stackedWidget)
         self.verticalLayout.addWidget(self.frame_contenido)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(7)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -768,3 +887,11 @@ class Ui_MainWindow(object):
         self.label_26.setText(_translate("MainWindow", "Consulta Egresos Por Distribuidor"))
         self.label_31.setText(_translate("MainWindow", "Distribuidor"))
         self.btn_mostrar_egresos_distrib.setText(_translate("MainWindow", "Mostrar"))
+        self.label_32.setText(_translate("MainWindow", "Modulo Reportes"))
+        self.btn_reportes_egresos_distrib.setText(_translate("MainWindow", "Egresos Distribuidor"))
+        self.btn_reportes_ingresos.setText(_translate("MainWindow", "Ingresos Bodega"))
+        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Egresos Entre Bodegas"))
+        self.btn_resportes_saldos_inventario.setText(_translate("MainWindow", "Saldos Inventario"))
+        self.btn_reportes_listado_productos.setText(_translate("MainWindow", "Listado Productos"))
+        self.btn_reportes_listado_bodegas.setText(_translate("MainWindow", "Listado de Bodegas"))
+        self.btn_resportes_listado_distribuidores.setText(_translate("MainWindow", "Listado de Distribuidores"))
