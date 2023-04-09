@@ -234,6 +234,7 @@ class FrmInterfaz(QMainWindow):
     # Establece el nombre de archivo y la ubicación
         filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
         filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        mensaje = "Datos guardados satisfactoriamente"
 
     # Abre el archivo para escribir
         with open(filepath, "a") as f:
@@ -263,6 +264,7 @@ class FrmInterfaz(QMainWindow):
         self.modelolista.clear()      
         self.ui.label_19.clear()      
         self.actualizar_saldos()
+        self.mensaje_confirmacion(mensaje)
 
 
 
