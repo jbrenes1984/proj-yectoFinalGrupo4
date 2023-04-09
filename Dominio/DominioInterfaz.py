@@ -91,26 +91,24 @@ class FrmInterfaz(QMainWindow):
     
 
     def btn_guardar_lista(self):
-    # Establece el nombre de archivo y la ubicación
+        # Establece el nombre de archivo y la ubicación
         filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
 
-    # Abre el archivo para escribir
+        # Abre el archivo para escribir
         with open(filepath, "a") as f:
-        # Escribe cada línea de la lista en el archivo
-         for row in range(self.modelolista.rowCount()):
-            line = ""
-            for col in range(self.modelolista.columnCount()):
-                item = self.modelolista.item(row, col)
-                if item is not None:
-                    line += item.text() + ","
-            line = line.rstrip(",") + "\n"
-            f.write(line)
+            # Escribe cada línea de la lista en el archivo
+            for row in range(self.modelolista.rowCount()):
+                line = ""
+                for col in range(self.modelolista.columnCount()):
+                    item = self.modelolista.item(row, col)
+                    if item is not None:
+                        line += item.text() + ","
+                line = line.rstrip(",") + "\n"
+                f.write(line)
 
-    # Elimina todos los elementos de la lista
+        # Elimina todos los elementos de la lista
         self.modelolista.clear()
         self.ui.numeroFacturaIngreso.clear()
-
-
  
     
 
@@ -186,7 +184,7 @@ class FrmInterfaz(QMainWindow):
                 if datos_producto[0] == id_producto:
                     # Si encontramos el producto, colocamos su nombre y precio en los QLineEdit correspondientes
                     self.ui.nombre_producto_envio.setText(datos_producto[1])
-                    self.ui.precio_unitario_envio.setText(datos_producto[2])
+                    self.ui.precio_unitario_envio.setText(datos_producto[3])
                     return
             
     # Si no encontramos el producto, limpiamos los QLineEdit correspondientes
@@ -259,6 +257,7 @@ class FrmInterfaz(QMainWindow):
     def actualizar_saldos(self):
         archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt', 'r')
         cantidad_por_id_y_bodega = {}
+        saldo_por_id_y_bodega = {}
 
         for linea in archivo:
             valores = linea.strip().split(',')
@@ -272,34 +271,39 @@ class FrmInterfaz(QMainWindow):
                 cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_recibida
             else:
                 cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_recibida, 'nombre': nombre_articulo, 'precio': precio_unitario}
+            saldo_por_id_y_bodega[clave] = cantidad_por_id_y_bodega[clave]
 
         archivo.close()
         
-        for clave, valores in cantidad_por_id_y_bodega.items():
-            print("->>> Ingreso <<<---")
-            print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad recibida: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Ingreso: {clave[1]} ')
+        #for clave, valores in cantidad_por_id_y_bodega.items():
+            #print("->>> Ingreso <<<---")
+            #print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad recibida: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Ingreso: {clave[1]} ')
 
         archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/EgresoEntreBodegas/egresos_bodegas.txt', 'r')
-        cantidad_por_id_y_bodega = {}
+        #cantidad_por_id_y_bodega = {}
 
         for linea in archivo:
             valores = linea.strip().split(',')
             id_articulo = valores[0]
             cantidad_egresada = int(round(float(valores[2])))
             bodega = valores[8]
-            nombre_articulo = valores[1]
-            precio_unitario = float(valores[3])
+            #nombre_articulo = valores[1]
+            #precio_unitario = float(valores[3])
             clave = (id_articulo, bodega)
-            if clave in cantidad_por_id_y_bodega:
-                cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_egresada
-            else:
-                cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_egresada, 'nombre': nombre_articulo, 'precio': precio_unitario}
+            saldo_por_id_y_bodega[clave]['cantidad'] -= cantidad_egresada
+
+            #if clave in cantidad_por_id_y_bodega:
+                #cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_egresada
+            #else:
+                #cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_egresada, 'nombre': nombre_articulo, 'precio': precio_unitario}
 
         archivo.close()
 
-        for clave, valores in cantidad_por_id_y_bodega.items():
-            print("->>> Egreso <<<---")
-            print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad Egresada: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Egreso: {clave[1]} ')
-        
+        for clave, saldo in saldo_por_id_y_bodega.items():
+            if saldo['cantidad'] >= 0:
+                print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Saldo: {saldo["cantidad"]},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
+            else:
+                print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Egreso: {abs(saldo["cantidad"])},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
+
 
     
