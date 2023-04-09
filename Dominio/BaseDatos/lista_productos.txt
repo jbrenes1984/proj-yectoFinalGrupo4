@@ -1,0 +1,4 @@
+1,Arroz,300	
+2,Frijoles,1500
+3,Atun,3500
+4,Leche,5000

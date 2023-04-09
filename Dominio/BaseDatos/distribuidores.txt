@@ -1,0 +1,2 @@
+Distribuidor 1,San Jose,83503560
+Distribuidor 2,Heredia,823215155

@@ -462,19 +462,6 @@ class Ui_MainWindow(object):
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
         self.btnEnviarBodegas.setObjectName("btnEnviarBodegas")
-        self.listaEnvio = QtWidgets.QListView(parent=self.page_envio_bodega)
-        self.listaEnvio.setEnabled(True)
-        self.listaEnvio.setGeometry(QtCore.QRect(20, 220, 721, 291))
-        self.listaEnvio.setAutoScrollMargin(16)
-        self.listaEnvio.setProperty("isWrapping", False)
-        self.listaEnvio.setResizeMode(QtWidgets.QListView.ResizeMode.Adjust)
-        self.listaEnvio.setGridSize(QtCore.QSize(20, 10))
-        self.listaEnvio.setViewMode(QtWidgets.QListView.ViewMode.ListMode)
-        self.listaEnvio.setModelColumn(0)
-        self.listaEnvio.setUniformItemSizes(False)
-        self.listaEnvio.setBatchSize(117)
-        self.listaEnvio.setWordWrap(False)
-        self.listaEnvio.setObjectName("listaEnvio")
         self.label_15 = QtWidgets.QLabel(parent=self.page_envio_bodega)
         self.label_15.setGeometry(QtCore.QRect(10, 80, 71, 21))
         self.label_15.setObjectName("label_15")
@@ -483,11 +470,14 @@ class Ui_MainWindow(object):
         self.label_19.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.label_19.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_19.setObjectName("label_19")
+        self.listaEnvio = QtWidgets.QListView(parent=self.page_envio_bodega)
+        self.listaEnvio.setGeometry(QtCore.QRect(30, 220, 661, 281))
+        self.listaEnvio.setObjectName("listaEnvio")
         self.stackedWidget.addWidget(self.page_envio_bodega)
         self.page_entrega_articulos = QtWidgets.QWidget()
         self.page_entrega_articulos.setObjectName("page_entrega_articulos")
         self.stackedWidget_2 = QtWidgets.QStackedWidget(parent=self.page_entrega_articulos)
-        self.stackedWidget_2.setGeometry(QtCore.QRect(0, 0, 779, 569))
+        self.stackedWidget_2.setGeometry(QtCore.QRect(10, 0, 779, 569))
         self.stackedWidget_2.setStyleSheet("background-color: rgb(235, 235, 235);")
         self.stackedWidget_2.setObjectName("stackedWidget_2")
         self.page_registro_3 = QtWidgets.QWidget()
@@ -718,17 +708,17 @@ class Ui_MainWindow(object):
         self.cantidad_producto_envio_distrib.setGeometry(QtCore.QRect(390, 160, 81, 31))
         self.cantidad_producto_envio_distrib.setStyleSheet("border: 1px solid black;")
         self.cantidad_producto_envio_distrib.setObjectName("cantidad_producto_envio_distrib")
+        self.cantidad_solicitar_distrib = QtWidgets.QLineEdit(parent=self.page_envio_bodega_3)
+        self.cantidad_solicitar_distrib.setGeometry(QtCore.QRect(470, 160, 101, 31))
+        self.cantidad_solicitar_distrib.setStyleSheet("border: 1px solid black;")
+        self.cantidad_solicitar_distrib.setObjectName("cantidad_solicitar_distrib")
         self.precio_unitario_envio_distrib = QtWidgets.QLineEdit(parent=self.page_envio_bodega_3)
-        self.precio_unitario_envio_distrib.setGeometry(QtCore.QRect(470, 160, 101, 31))
+        self.precio_unitario_envio_distrib.setGeometry(QtCore.QRect(570, 160, 101, 31))
         self.precio_unitario_envio_distrib.setStyleSheet("border: 1px solid black;")
         self.precio_unitario_envio_distrib.setObjectName("precio_unitario_envio_distrib")
-        self.monto_total_envio_distrib = QtWidgets.QLineEdit(parent=self.page_envio_bodega_3)
-        self.monto_total_envio_distrib.setGeometry(QtCore.QRect(570, 160, 101, 31))
-        self.monto_total_envio_distrib.setStyleSheet("border: 1px solid black;")
-        self.monto_total_envio_distrib.setObjectName("monto_total_envio_distrib")
-        self.pushButton_enviar_distrib = QtWidgets.QPushButton(parent=self.page_envio_bodega_3)
-        self.pushButton_enviar_distrib.setGeometry(QtCore.QRect(680, 130, 81, 61))
-        self.pushButton_enviar_distrib.setStyleSheet("QPushButton{\n"
+        self.btn_agregar_tabla_distribuidores = QtWidgets.QPushButton(parent=self.page_envio_bodega_3)
+        self.btn_agregar_tabla_distribuidores.setGeometry(QtCore.QRect(680, 130, 81, 61))
+        self.btn_agregar_tabla_distribuidores.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
 "    background-color: rgb(190, 190, 190);\n"
@@ -740,11 +730,34 @@ class Ui_MainWindow(object):
 "    background-color: rgb(0, 0, 0);\n"
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
-        self.pushButton_enviar_distrib.setObjectName("pushButton_enviar_distrib")
-        self.tableView_2 = QtWidgets.QTableView(parent=self.page_envio_bodega_3)
-        self.tableView_2.setGeometry(QtCore.QRect(0, 250, 781, 311))
-        self.tableView_2.setStyleSheet("background-color: rgb(227, 227, 227);")
-        self.tableView_2.setObjectName("tableView_2")
+        self.btn_agregar_tabla_distribuidores.setObjectName("btn_agregar_tabla_distribuidores")
+        self.tabla_entrega_distribuidores = QtWidgets.QTableView(parent=self.page_envio_bodega_3)
+        self.tabla_entrega_distribuidores.setGeometry(QtCore.QRect(10, 200, 751, 311))
+        self.tabla_entrega_distribuidores.setStyleSheet("background-color: rgb(227, 227, 227);")
+        self.tabla_entrega_distribuidores.setObjectName("tabla_entrega_distribuidores")
+        self.label_21 = QtWidgets.QLabel(parent=self.page_envio_bodega_3)
+        self.label_21.setGeometry(QtCore.QRect(30, 40, 61, 31))
+        self.label_21.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_21.setObjectName("label_21")
+        self.factura_distrib = QtWidgets.QLineEdit(parent=self.page_envio_bodega_3)
+        self.factura_distrib.setGeometry(QtCore.QRect(20, 70, 81, 31))
+        self.factura_distrib.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.factura_distrib.setObjectName("factura_distrib")
+        self.btn_entrega_distribuidores = QtWidgets.QPushButton(parent=self.page_envio_bodega_3)
+        self.btn_entrega_distribuidores.setGeometry(QtCore.QRect(280, 520, 181, 41))
+        self.btn_entrega_distribuidores.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_entrega_distribuidores.setObjectName("btn_entrega_distribuidores")
         self.stackedWidget_2.addWidget(self.page_envio_bodega_3)
         self.page_entrega_articulos_3 = QtWidgets.QWidget()
         self.page_entrega_articulos_3.setObjectName("page_entrega_articulos_3")
@@ -1391,7 +1404,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
         self.stackedWidget_2.setCurrentIndex(2)
         self.stackedWidget_3.setCurrentIndex(5)
         self.stackedWidget_4.setCurrentIndex(2)
@@ -1465,10 +1478,14 @@ class Ui_MainWindow(object):
         self.comboBox_distrib_recibe_3.setItemText(4, _translate("MainWindow", "Distribuidor4"))
         self.label_35.setText(_translate("MainWindow", "Entrega de Articulos a Distribuidores"))
         self.label_36.setText(_translate("MainWindow", "Nombre del Producto"))
-        self.label_37.setText(_translate("MainWindow", "Cantidad"))
-        self.label_38.setText(_translate("MainWindow", "<html><head/><body><p>Precio Unitario</p></body></html>"))
-        self.label_39.setText(_translate("MainWindow", "<html><head/><body><p>Monto Total</p></body></html>"))
-        self.pushButton_enviar_distrib.setText(_translate("MainWindow", "Enviar"))
+        self.label_37.setText(_translate("MainWindow", "Cantidad\n"
+"Disponible"))
+        self.label_38.setText(_translate("MainWindow", "<html><head/><body><p>Cantadad<br> Solicitar</p></body></html>"))
+        self.label_39.setText(_translate("MainWindow", "<html><head/><body><p>Precio <br>Unitario</p></body></html>"))
+        self.btn_agregar_tabla_distribuidores.setText(_translate("MainWindow", "Agregar"))
+        self.label_21.setText(_translate("MainWindow", "N° \n"
+"Documento"))
+        self.btn_entrega_distribuidores.setText(_translate("MainWindow", "Enviar"))
         self.label_40.setText(_translate("MainWindow", "Saldos de Inventario en Bodega"))
         self.label_41.setText(_translate("MainWindow", "Bodega"))
         self.comboBox_bod_saldos.setItemText(1, _translate("MainWindow", "Bodega Principal"))

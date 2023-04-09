@@ -1,5 +1,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMessageBox
 from Interfaz.gestor_bodegas import Ui_MainWindow
 from Dominio.IngresoArticulos import IngresoArticulos
 from Dominio.EgresoEntreBodegas import Egresos 
@@ -26,9 +27,12 @@ class FrmInterfaz(QMainWindow):
         self.ui.listaEnvio.setModel(self.modelolista)
         self.ui.cod_registro.textChanged.connect(self.buscar_producto)
         self.ui.id_prod_envio.textChanged.connect(self.buscar_producto_egreso)
+        self.ui.id_prod_envio_r_distrib.textChanged.connect(self.buscar_saldos_distribuidores)
         self.ui.btnCrearBodega.clicked.connect(lambda :  self.agregar_bodega() and self.cargar_combobox())
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
         self.cargar_combobox()
+        self.cargar_combobox_bodega_entrega()
+        self.cargar_combobox_distribuidores()
        
 
 
@@ -92,8 +96,8 @@ class FrmInterfaz(QMainWindow):
 
     def btn_guardar_lista(self):
         # Establece el nombre de archivo y la ubicación
-        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
-
+        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
+        mensaje = "Se guardo exitosamente"
         # Abre el archivo para escribir
         with open(filepath, "a") as f:
             # Escribe cada línea de la lista en el archivo
@@ -109,13 +113,16 @@ class FrmInterfaz(QMainWindow):
         # Elimina todos los elementos de la lista
         self.modelolista.clear()
         self.ui.numeroFacturaIngreso.clear()
+        self.actualizar_saldos()
+        self.mensaje_confirmacion(mensaje)
+       
  
     
 
     def buscar_producto(self):
     # Obtiene el ID ingresado por el usuario
-        id_producto = self.ui.cod_registro.text()
-        with open(r'C:\Users\jbren\OneDrive\Escritorio\Proyecto Program 2\Dominio\IngresoArticulos\lista_productos.txt', 'r') as f:
+        id_producto = self.ui.cod_registro.text()        
+        with open(r'C:\Users\jbren\OneDrive\Escritorio\Proyecto Program 2\Dominio\BaseDatos\lista_productos.txt', 'r') as f:
             self.lines = f.readlines()    
         
     # Busca el producto correspondiente en la lista
@@ -131,7 +138,7 @@ class FrmInterfaz(QMainWindow):
             self.ui.nombre_registro.setText(producto[1])
             self.ui.precio_un_registro.setText(producto[2])
         else:
-            # Si no encontramos el producto, limpiamos los QLineEdit correspondientes
+            # Si no encontramos el producto, limpiamos los QLineEdit correspondientes            
             self.ui.nombre_registro.clear()
             self.ui.precio_un_registro.clear()
 
@@ -142,9 +149,10 @@ class FrmInterfaz(QMainWindow):
         nombre = self.ui.lineEdit_10.text().capitalize()
         direccion = self.ui.lineEdit_8.text().capitalize()
         telefono = self.ui.lineEdit_6.text()
+        mensaje = "Bodega Agregada"
 
         # Agregar los datos al archivo de texto
-        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\EgresoEntreBodegas\\bodegas.txt"  # dirección del archivo
+        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"  # dirección del archivo
         nueva_bodega = nuevaBodega(archivo)
         nueva_bodega.agregar_datos(id, nombre, direccion, telefono)
         self.ui.lineEdit_3.clear()
@@ -152,10 +160,13 @@ class FrmInterfaz(QMainWindow):
         self.ui.lineEdit_6.clear()
         self.ui.lineEdit_8.clear()
         self.cargar_combobox()
+        self.cargar_combobox_bodega_entrega()
+        self.cargar_combobox_distribuidores()
+        self.mensaje_confirmacion(mensaje)
 
 
     def cargar_combobox(self):
-        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\EgresoEntreBodegas\\bodegas.txt"
+        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
         with open(archivo, 'r') as f:
             lines = f.readlines()
 
@@ -177,7 +188,7 @@ class FrmInterfaz(QMainWindow):
         id_producto = self.ui.id_prod_envio.text()
 
     # Abre el archivo de texto
-        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt', 'r') as archivo:
+        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'r') as archivo:
             # Itera sobre las líneas del archivo
             for line in archivo:
                 datos_producto = line.strip().split(',')
@@ -185,11 +196,13 @@ class FrmInterfaz(QMainWindow):
                     # Si encontramos el producto, colocamos su nombre y precio en los QLineEdit correspondientes
                     self.ui.nombre_producto_envio.setText(datos_producto[1])
                     self.ui.precio_unitario_envio.setText(datos_producto[3])
+                    self.ui.cantidad_disponible.setText(datos_producto[2])
                     return
             
     # Si no encontramos el producto, limpiamos los QLineEdit correspondientes
         self.ui.nombre_producto_envio.clear()
         self.ui.precio_unitario_envio.clear()
+        self.ui.cantidad_disponible.clear()
   
 
     def btn_agregar_egresos(self):
@@ -219,8 +232,8 @@ class FrmInterfaz(QMainWindow):
 
     def btn_guardar_lista_egreso(self):
     # Establece el nombre de archivo y la ubicación
-        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
-        filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/EgresoEntreBodegas/egresos_bodegas.txt"
+        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
+        filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
 
     # Abre el archivo para escribir
         with open(filepath, "a") as f:
@@ -255,7 +268,7 @@ class FrmInterfaz(QMainWindow):
 
         
     def actualizar_saldos(self):
-        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt', 'r')
+        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt', 'r')
         cantidad_por_id_y_bodega = {}
         saldo_por_id_y_bodega = {}
 
@@ -279,7 +292,7 @@ class FrmInterfaz(QMainWindow):
             #print("->>> Ingreso <<<---")
             #print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad recibida: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Ingreso: {clave[1]} ')
 
-        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/EgresoEntreBodegas/egresos_bodegas.txt', 'r')
+        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt', 'r')
         #cantidad_por_id_y_bodega = {}
 
         for linea in archivo:
@@ -299,11 +312,84 @@ class FrmInterfaz(QMainWindow):
 
         archivo.close()
 
-        for clave, saldo in saldo_por_id_y_bodega.items():
-            if saldo['cantidad'] >= 0:
-                print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Saldo: {saldo["cantidad"]},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
-            else:
-                print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Egreso: {abs(saldo["cantidad"])},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
+        #for clave, saldo in saldo_por_id_y_bodega.items():
+            #if saldo['cantidad'] >= 0:
+                #print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Saldo: {saldo["cantidad"]},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
+            #else:
+                #print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Egreso: {abs(saldo["cantidad"])},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
 
+        # abrir el archivo para escritura
+        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'w') as archivo_salida:
+            # recorrer las claves y saldos
+            for clave, saldo in saldo_por_id_y_bodega.items():
+                if saldo['cantidad'] >= 0:
+                    linea = f'{clave[0]}, {saldo["nombre"]}, {saldo["cantidad"]}, {saldo["precio"]} , {clave[1]}\n'
+                else:
+                    linea = f'{clave[0]}, {saldo["nombre"]}, {abs(saldo["cantidad"])}, {saldo["precio"]} , {clave[1]}\n'
+                archivo_salida.write(linea)
+        
+        
+
+    def mensaje_confirmacion(self,mensaje):
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
+        msg.setWindowTitle("Confirmación")
+        msg.setText(mensaje)
+        msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+        msg.exec()
+        return
+    
+    
+    def cargar_combobox_bodega_entrega(self):
+        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
+        with open(archivo, 'r') as f:
+            lines = f.readlines()
+
+        bodegas = set()  # usar un set para eliminar duplicados
+        for line in lines:
+            data = line.strip().split(',')           
+            bodega_recibe = data[1]        
+            bodegas.add(bodega_recibe)
 
     
+        self.ui.comboBox_bod_envia_3.clear()
+
+        for bodega in bodegas:           
+            self.ui.comboBox_bod_envia_3.addItem(bodega)
+
+
+
+    def cargar_combobox_distribuidores(self):
+        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\distribuidores.txt"
+        with open(archivo, 'r') as f:
+            lines = f.readlines()
+
+        distribuidores = set()  # usar un set para eliminar duplicados
+        for line in lines:
+            data = line.strip().split(',')           
+            distribuidor_recibe = data[0]        
+            distribuidores.add(distribuidor_recibe)
+
+    
+        self.ui.comboBox_distrib_recibe_3.clear()
+
+        for distribuidor in distribuidores:           
+            self.ui.comboBox_distrib_recibe_3.addItem(distribuidor)           
+    
+
+    def buscar_saldos_distribuidores(self):
+        id_producto = self.ui.id_prod_envio_r_distrib.text()
+        bodega = self.ui.comboBox_bod_envia_3.currentText()
+
+        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'r') as archivo:
+            for line in archivo:
+                datos_producto = line.strip().split(',')
+                if datos_producto[0] == id_producto and datos_producto[4].strip() == bodega:
+                    self.ui.nombre_producto_distrib.setText(datos_producto[1])
+                    self.ui.precio_unitario_envio_distrib.setText(datos_producto[3])
+                    self.ui.cantidad_producto_envio_distrib.setText(datos_producto[2])
+                    return
+
+        self.ui.nombre_producto_distrib.clear()
+        self.ui.precio_unitario_envio_distrib.clear()
+        self.ui.cantidad_producto_envio_distrib.clear()

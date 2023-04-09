@@ -1,0 +1,6 @@
+1,Pavas,San jose,2151215
+2,Lagunilla,Heredia,152121
+3,Puerto viejo,Limon,44545
+4,Aurora,Colorado,151551
+36,Cuba,Cuba,455454
+39,Bodega Principal,San Jose,151515

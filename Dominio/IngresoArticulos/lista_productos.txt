@@ -1,4 +1,0 @@
-1,arroz,300	
-2,frijoles,1500
-3,atun,3500
-4,lecha,5000

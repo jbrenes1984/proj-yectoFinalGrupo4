@@ -327,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">
@@ -1146,58 +1146,6 @@ QPushButton:hover {
              <string>Enviar</string>
             </property>
            </widget>
-           <widget class="QListView" name="listaEnvio">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>220</y>
-              <width>721</width>
-              <height>291</height>
-             </rect>
-            </property>
-            <property name="autoScroll">
-             <bool>false</bool>
-            </property>
-            <property name="autoScrollMargin">
-             <number>16</number>
-            </property>
-            <property name="showDropIndicator" stdset="0">
-             <bool>true</bool>
-            </property>
-            <property name="isWrapping" stdset="0">
-             <bool>false</bool>
-            </property>
-            <property name="resizeMode">
-             <enum>QListView::Adjust</enum>
-            </property>
-            <property name="spacing">
-             <number>12</number>
-            </property>
-            <property name="gridSize">
-             <size>
-              <width>50</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="viewMode">
-             <enum>QListView::ListMode</enum>
-            </property>
-            <property name="modelColumn">
-             <number>0</number>
-            </property>
-            <property name="uniformItemSizes">
-             <bool>false</bool>
-            </property>
-            <property name="batchSize">
-             <number>117</number>
-            </property>
-            <property name="wordWrap">
-             <bool>false</bool>
-            </property>
-           </widget>
            <widget class="QLabel" name="label_15">
             <property name="geometry">
              <rect>
@@ -1230,12 +1178,22 @@ QPushButton:hover {
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
+           <widget class="QListView" name="listaEnvio">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>220</y>
+              <width>661</width>
+              <height>281</height>
+             </rect>
+            </property>
+           </widget>
           </widget>
           <widget class="QWidget" name="page_entrega_articulos">
            <widget class="QStackedWidget" name="stackedWidget_2">
             <property name="geometry">
              <rect>
-              <x>0</x>
+              <x>10</x>
               <y>0</y>
               <width>779</width>
               <height>569</height>
@@ -1859,7 +1817,8 @@ gridline-color: rgb(0, 0, 0);</string>
 background-color: rgb(206, 206, 206);</string>
               </property>
               <property name="text">
-               <string>Cantidad</string>
+               <string>Cantidad
+Disponible</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -1879,7 +1838,7 @@ background-color: rgb(206, 206, 206);</string>
 background-color: rgb(206, 206, 206);</string>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Precio Unitario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cantadad&lt;br&gt; Solicitar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="textFormat">
                <enum>Qt::AutoText</enum>
@@ -1908,7 +1867,7 @@ background-color: rgb(206, 206, 206);</string>
 background-color: rgb(206, 206, 206);</string>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Monto Total&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Precio &lt;br&gt;Unitario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="textFormat">
                <enum>Qt::AutoText</enum>
@@ -1962,7 +1921,7 @@ background-color: rgb(206, 206, 206);</string>
                <string notr="true">border: 1px solid black;</string>
               </property>
              </widget>
-             <widget class="QLineEdit" name="precio_unitario_envio_distrib">
+             <widget class="QLineEdit" name="cantidad_solicitar_distrib">
               <property name="geometry">
                <rect>
                 <x>470</x>
@@ -1975,7 +1934,7 @@ background-color: rgb(206, 206, 206);</string>
                <string notr="true">border: 1px solid black;</string>
               </property>
              </widget>
-             <widget class="QLineEdit" name="monto_total_envio_distrib">
+             <widget class="QLineEdit" name="precio_unitario_envio_distrib">
               <property name="geometry">
                <rect>
                 <x>570</x>
@@ -1988,7 +1947,7 @@ background-color: rgb(206, 206, 206);</string>
                <string notr="true">border: 1px solid black;</string>
               </property>
              </widget>
-             <widget class="QPushButton" name="pushButton_enviar_distrib">
+             <widget class="QPushButton" name="btn_agregar_tabla_distribuidores">
               <property name="geometry">
                <rect>
                 <x>680</x>
@@ -2012,20 +1971,77 @@ QPushButton:hover {
 }</string>
               </property>
               <property name="text">
-               <string>Enviar</string>
+               <string>Agregar</string>
               </property>
              </widget>
-             <widget class="QTableView" name="tableView_2">
+             <widget class="QTableView" name="tabla_entrega_distribuidores">
               <property name="geometry">
                <rect>
-                <x>0</x>
-                <y>250</y>
-                <width>781</width>
+                <x>10</x>
+                <y>200</y>
+                <width>751</width>
                 <height>311</height>
                </rect>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgb(227, 227, 227);</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_21">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>40</y>
+                <width>61</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>N° 
+Documento</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="factura_distrib">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>70</y>
+                <width>81</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 255);</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="btn_entrega_distribuidores">
+              <property name="geometry">
+               <rect>
+                <x>280</x>
+                <y>520</y>
+                <width>181</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{
+	
+	border-radius:10px;
+	background-color: rgb(190, 190, 190);
+
+}
+
+QPushButton:hover {      
+	color: rgb(0, 170, 255);
+	background-color: rgb(0, 0, 0);
+    font: 75 10pt &quot;MS Shell Dlg 2&quot;;    
+}</string>
+              </property>
+              <property name="text">
+               <string>Enviar</string>
               </property>
              </widget>
             </widget>

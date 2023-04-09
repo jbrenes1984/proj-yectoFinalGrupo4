@@ -1,3 +1,0 @@
-1,arroz,150.0,300.0,45000.0,1,09-04-2023,Pavas,Bodega Principal
-1,arroz,100.0,300.0,30000.0,,09-04-2023,Pavas,Bodega Principal
-1,arroz,150.0,300.0,45000.0,1,09-04-2023,Pavas,Bodega Principal
