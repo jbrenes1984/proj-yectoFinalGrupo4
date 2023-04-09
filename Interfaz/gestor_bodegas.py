@@ -498,13 +498,15 @@ class Ui_MainWindow(object):
         self.label_23.setGeometry(QtCore.QRect(100, 140, 291, 31))
         self.label_23.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(206, 206, 206);\n"
-"gridline-color: rgb(0, 0, 0);")
+"gridline-color: rgb(0, 0, 0);\n"
+"border: 1px solid black;")
         self.label_23.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_23.setObjectName("label_23")
         self.label_24 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_24.setGeometry(QtCore.QRect(470, 140, 101, 31))
         self.label_24.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
-"background-color: rgb(206, 206, 206);")
+"background-color: rgb(206, 206, 206);\n"
+"border: 1px solid black;")
         self.label_24.setTextFormat(QtCore.Qt.TextFormat.AutoText)
         self.label_24.setScaledContents(False)
         self.label_24.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -513,7 +515,8 @@ class Ui_MainWindow(object):
         self.label_25 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_25.setGeometry(QtCore.QRect(390, 140, 81, 31))
         self.label_25.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
-"background-color: rgb(206, 206, 206);")
+"background-color: rgb(206, 206, 206);\n"
+"border: 1px solid black;")
         self.label_25.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_25.setObjectName("label_25")
         self.factura_distrib = QtWidgets.QLabel(parent=self.page_entrega_articulos)
@@ -546,7 +549,8 @@ class Ui_MainWindow(object):
         self.label_29 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_29.setGeometry(QtCore.QRect(20, 140, 81, 31))
         self.label_29.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
-"background-color: rgb(206, 206, 206);")
+"background-color: rgb(206, 206, 206);\n"
+"border: 1px solid black;")
         self.label_29.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_29.setObjectName("label_29")
         self.comboBox_bod_envia_3 = QtWidgets.QComboBox(parent=self.page_entrega_articulos)
@@ -559,12 +563,13 @@ class Ui_MainWindow(object):
         self.cantidad_solicitar_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.cantidad_solicitar_distrib.setObjectName("cantidad_solicitar_distrib")
         self.tabla_entrega_distribuidores = QtWidgets.QListView(parent=self.page_entrega_articulos)
-        self.tabla_entrega_distribuidores.setGeometry(QtCore.QRect(30, 230, 661, 281))
+        self.tabla_entrega_distribuidores.setGeometry(QtCore.QRect(20, 230, 741, 281))
         self.tabla_entrega_distribuidores.setObjectName("tabla_entrega_distribuidores")
         self.label_30 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_30.setGeometry(QtCore.QRect(570, 140, 101, 31))
         self.label_30.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
-"background-color: rgb(206, 206, 206);")
+"background-color: rgb(206, 206, 206);\n"
+"border: 1px solid black;")
         self.label_30.setTextFormat(QtCore.Qt.TextFormat.AutoText)
         self.label_30.setScaledContents(False)
         self.label_30.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -591,7 +596,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_agregar_tabla_distribuidores.setObjectName("btn_agregar_tabla_distribuidores")
         self.btn_entrega_distribuidores = QtWidgets.QPushButton(parent=self.page_entrega_articulos)
-        self.btn_entrega_distribuidores.setGeometry(QtCore.QRect(260, 530, 271, 41))
+        self.btn_entrega_distribuidores.setGeometry(QtCore.QRect(260, 520, 271, 41))
         self.btn_entrega_distribuidores.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -611,10 +616,6 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_distribuidores)
         self.page_saldos_inventario = QtWidgets.QWidget()
         self.page_saldos_inventario.setObjectName("page_saldos_inventario")
-        self.tableView_3 = QtWidgets.QTableView(parent=self.page_saldos_inventario)
-        self.tableView_3.setGeometry(QtCore.QRect(0, 180, 781, 381))
-        self.tableView_3.setStyleSheet("background-color: rgb(221, 221, 221);")
-        self.tableView_3.setObjectName("tableView_3")
         self.label_40 = QtWidgets.QLabel(parent=self.page_saldos_inventario)
         self.label_40.setGeometry(QtCore.QRect(0, 0, 781, 31))
         self.label_40.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
@@ -648,6 +649,9 @@ class Ui_MainWindow(object):
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
         self.pushButton_mostrar.setObjectName("pushButton_mostrar")
+        self.lista_saldo_inventario = QtWidgets.QListView(parent=self.page_saldos_inventario)
+        self.lista_saldo_inventario.setGeometry(QtCore.QRect(0, 180, 781, 391))
+        self.lista_saldo_inventario.setObjectName("lista_saldo_inventario")
         self.stackedWidget.addWidget(self.page_saldos_inventario)
         self.page_reporte_distribuidor = QtWidgets.QWidget()
         self.page_reporte_distribuidor.setObjectName("page_reporte_distribuidor")
@@ -660,7 +664,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -722,7 +726,7 @@ class Ui_MainWindow(object):
         self.label_30.setText(_translate("MainWindow", "<html><head/><body><p>Precio<br> Unitario</p></body></html>"))
         self.btn_agregar_tabla_distribuidores.setText(_translate("MainWindow", "Agregar"))
         self.btn_entrega_distribuidores.setText(_translate("MainWindow", "Enviar"))
-        self.label_40.setText(_translate("MainWindow", "Saldos de Inventario en Bodega"))
+        self.label_40.setText(_translate("MainWindow", "Saldos de Inventario Segun Bodega"))
         self.label_41.setText(_translate("MainWindow", "Bodega"))
         self.comboBox_bod_saldos.setItemText(1, _translate("MainWindow", "Bodega Principal"))
         self.comboBox_bod_saldos.setItemText(2, _translate("MainWindow", "Bodega 1"))

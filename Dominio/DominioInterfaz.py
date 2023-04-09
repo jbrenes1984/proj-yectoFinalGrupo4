@@ -33,8 +33,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
         self.ui.btn_agregar_tabla_distribuidores.clicked.connect(self.btn_agregar_egreso_distribuidor)
         self.ui.btn_entrega_distribuidores.clicked.connect(self.btn_guardar_lista_egreso_distribuidor)
-        self.cargar_combobox()
-        self.cargar_combobox_bodega_entrega()
+        self.cargar_combobox() 
         self.cargar_combobox_distribuidores()
        
 
@@ -181,9 +180,13 @@ class FrmInterfaz(QMainWindow):
 
     
         self.ui.comboBox__bod_recibe.clear()
+        self.ui.comboBox_bod_saldos.clear()
+        self.ui.comboBox_bod_envia_3.clear()
 
         for bodega in bodegas:           
             self.ui.comboBox__bod_recibe.addItem(bodega)
+            self.ui.comboBox_bod_saldos.addItem(bodega)
+            self.ui.comboBox_bod_envia_3.addItem(bodega)
 
     
     def buscar_producto_egreso(self):
@@ -345,25 +348,7 @@ class FrmInterfaz(QMainWindow):
         return
     
     
-    def cargar_combobox_bodega_entrega(self):
-        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
-        with open(archivo, 'r') as f:
-            lines = f.readlines()
-
-        bodegas = set()  # usar un set para eliminar duplicados
-        for line in lines:
-            data = line.strip().split(',')           
-            bodega_recibe = data[1]        
-            bodegas.add(bodega_recibe)
-
     
-        self.ui.comboBox_bod_envia_3.clear()
-
-        for bodega in bodegas:           
-            self.ui.comboBox_bod_envia_3.addItem(bodega)
-
-
-
     def cargar_combobox_distribuidores(self):
         archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\distribuidores.txt"
         with open(archivo, 'r') as f:
@@ -446,3 +431,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.factura_distrib.clear()      
         self.actualizar_saldos()
         self.mensaje_confirmacion(mensaje)
+
+
+
+  

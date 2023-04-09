@@ -327,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>5</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">
@@ -1272,7 +1272,8 @@ QPushButton:hover {
             <property name="styleSheet">
              <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
 background-color: rgb(206, 206, 206);
-gridline-color: rgb(0, 0, 0);</string>
+gridline-color: rgb(0, 0, 0);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>Nombre del Producto</string>
@@ -1292,7 +1293,8 @@ gridline-color: rgb(0, 0, 0);</string>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(206, 206, 206);</string>
+background-color: rgb(206, 206, 206);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cantidad&lt;br&gt; Solicitar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1309,6 +1311,9 @@ background-color: rgb(206, 206, 206);</string>
             <property name="wordWrap">
              <bool>true</bool>
             </property>
+            <property name="margin">
+             <number>-3</number>
+            </property>
            </widget>
            <widget class="QLabel" name="label_25">
             <property name="geometry">
@@ -1321,13 +1326,17 @@ background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(206, 206, 206);</string>
+background-color: rgb(206, 206, 206);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Cantidad&lt;br&gt; Disponible&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+            <property name="margin">
+             <number>-4</number>
             </property>
            </widget>
            <widget class="QLabel" name="factura_distrib">
@@ -1437,7 +1446,8 @@ background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(206, 206, 206);</string>
+background-color: rgb(206, 206, 206);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>Id Producto</string>
@@ -1480,9 +1490,9 @@ background-color: rgb(206, 206, 206);</string>
            <widget class="QListView" name="tabla_entrega_distribuidores">
             <property name="geometry">
              <rect>
-              <x>30</x>
+              <x>20</x>
               <y>230</y>
-              <width>661</width>
+              <width>741</width>
               <height>281</height>
              </rect>
             </property>
@@ -1498,7 +1508,8 @@ background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="styleSheet">
              <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(206, 206, 206);</string>
+background-color: rgb(206, 206, 206);
+border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Precio&lt;br&gt; Unitario&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1514,6 +1525,9 @@ background-color: rgb(206, 206, 206);</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
+            </property>
+            <property name="margin">
+             <number>-3</number>
             </property>
            </widget>
            <widget class="QLineEdit" name="nombre_producto_distrib">
@@ -1563,7 +1577,7 @@ QPushButton:hover {
             <property name="geometry">
              <rect>
               <x>260</x>
-              <y>530</y>
+              <y>520</y>
               <width>271</width>
               <height>41</height>
              </rect>
@@ -1589,19 +1603,6 @@ QPushButton:hover {
           </widget>
           <widget class="QWidget" name="page_distribuidores"/>
           <widget class="QWidget" name="page_saldos_inventario">
-           <widget class="QTableView" name="tableView_3">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>180</y>
-              <width>781</width>
-              <height>381</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(221, 221, 221);</string>
-            </property>
-           </widget>
            <widget class="QLabel" name="label_40">
             <property name="geometry">
              <rect>
@@ -1615,7 +1616,7 @@ QPushButton:hover {
              <string notr="true">font: 75 14pt &quot;MS Shell Dlg 2&quot;;</string>
             </property>
             <property name="text">
-             <string>Saldos de Inventario en Bodega</string>
+             <string>Saldos de Inventario Segun Bodega</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -1697,6 +1698,16 @@ QPushButton:hover {
             </property>
             <property name="text">
              <string>Mostrar</string>
+            </property>
+           </widget>
+           <widget class="QListView" name="lista_saldo_inventario">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>180</y>
+              <width>781</width>
+              <height>391</height>
+             </rect>
             </property>
            </widget>
           </widget>
