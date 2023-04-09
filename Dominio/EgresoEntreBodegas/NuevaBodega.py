@@ -5,3 +5,4 @@ class nuevaBodega:
     def agregar_datos(self, id, nombre, ubicacion, telefono):
         with open(self.archivo, 'a') as file:
             file.write(f'{id},{nombre},{ubicacion},{telefono}\n')
+

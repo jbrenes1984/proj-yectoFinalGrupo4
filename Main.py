@@ -8,5 +8,3 @@ if __name__ == "__main__":
     window = FrmInterfaz()
     window.show()
     sys.exit(app.exec())
-1
-1

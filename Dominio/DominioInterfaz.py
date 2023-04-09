@@ -25,15 +25,15 @@ class FrmInterfaz(QMainWindow):
         self.ui.listaIngreso.setModel(self.modelolista)
         self.ui.listaEnvio.setModel(self.modelolista)
         self.ui.cod_registro.textChanged.connect(self.buscar_producto)
-        self.ui.btnCrearBodega.clicked.connect(self.agregar_bodega)
+        self.ui.id_prod_envio.textChanged.connect(self.buscar_producto_egreso)
+        self.ui.btnCrearBodega.clicked.connect(lambda :  self.agregar_bodega() and self.cargar_combobox())
+        self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
         self.cargar_combobox()
        
 
 
 
-        with open(r'C:\Users\jbren\OneDrive\Escritorio\Proyecto Program 2\Dominio\IngresoArticulos\lista_productos.txt', 'r') as f:
-            self.lines = f.readlines()     
-    
+      
        
 
         self.paginas = {
@@ -48,7 +48,7 @@ class FrmInterfaz(QMainWindow):
         }
 
         self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_crear_bodega.clicked.connect(lambda:self.mostrar_pagina()  and self.cargar_combobox())
         self.ui.pushButton_envio_bodega.clicked.connect(lambda: self.mostrar_pagina() and self.cargar_combobox())
         self.ui.pushButton_entrega_articulos.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_distribuidores.clicked.connect(self.mostrar_pagina)
@@ -76,9 +76,9 @@ class FrmInterfaz(QMainWindow):
         self.oingreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
         self.bodega = "Bodega Principal"
 
-        itemView = (self.oingreso.codigoArticulo+"           "+self.oingreso.nombreArticulo+"                                     "
-                    + "        " + str(self.oingreso.cantidad) + "            "+str(self.oingreso.preciounitario)+"              "+str(self.oingreso.montoTotal) +
-                    "    " + self.ui.numeroFacturaIngreso.text() + "   " + fecha_actual_str + "   " + self.bodega)
+        itemView = (self.oingreso.codigoArticulo+","+self.oingreso.nombreArticulo+","
+                     + str(self.oingreso.cantidad) + ","+str(self.oingreso.preciounitario)+","+str(self.oingreso.montoTotal) +
+                    "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega)
 
         item = QtGui.QStandardItem(itemView)
         self.modelolista.appendRow(item)
@@ -92,13 +92,12 @@ class FrmInterfaz(QMainWindow):
 
     def btn_guardar_lista(self):
     # Establece el nombre de archivo y la ubicación
-    #       
-      filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
+        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
 
     # Abre el archivo para escribir
-      with open(filepath, "a") as f:
+        with open(filepath, "a") as f:
         # Escribe cada línea de la lista en el archivo
-        for row in range(self.modelolista.rowCount()):
+         for row in range(self.modelolista.rowCount()):
             line = ""
             for col in range(self.modelolista.columnCount()):
                 item = self.modelolista.item(row, col)
@@ -108,13 +107,18 @@ class FrmInterfaz(QMainWindow):
             f.write(line)
 
     # Elimina todos los elementos de la lista
-      self.modelolista.clear()
-      self.ui.numeroFacturaIngreso.clear()
+        self.modelolista.clear()
+        self.ui.numeroFacturaIngreso.clear()
 
+
+ 
+    
 
     def buscar_producto(self):
     # Obtiene el ID ingresado por el usuario
         id_producto = self.ui.cod_registro.text()
+        with open(r'C:\Users\jbren\OneDrive\Escritorio\Proyecto Program 2\Dominio\IngresoArticulos\lista_productos.txt', 'r') as f:
+            self.lines = f.readlines()    
         
     # Busca el producto correspondiente en la lista
         producto = None
@@ -137,8 +141,8 @@ class FrmInterfaz(QMainWindow):
     
     def agregar_bodega(self):
         id = self.ui.lineEdit_3.text()
-        nombre = self.ui.lineEdit_10.text()
-        direccion = self.ui.lineEdit_8.text()
+        nombre = self.ui.lineEdit_10.text().capitalize()
+        direccion = self.ui.lineEdit_8.text().capitalize()
         telefono = self.ui.lineEdit_6.text()
 
         # Agregar los datos al archivo de texto
@@ -149,6 +153,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.lineEdit_10.clear()
         self.ui.lineEdit_6.clear()
         self.ui.lineEdit_8.clear()
+        self.cargar_combobox()
 
 
     def cargar_combobox(self):
@@ -168,6 +173,27 @@ class FrmInterfaz(QMainWindow):
         for bodega in bodegas:           
             self.ui.comboBox__bod_recibe.addItem(bodega)
 
+    
+    def buscar_producto_egreso(self):
+    # Obtiene el ID ingresado por el usuario
+        id_producto = self.ui.id_prod_envio.text()
+
+    # Abre el archivo de texto
+        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt', 'r') as archivo:
+            # Itera sobre las líneas del archivo
+            for line in archivo:
+                datos_producto = line.strip().split(',')
+                if datos_producto[0] == id_producto:
+                    # Si encontramos el producto, colocamos su nombre y precio en los QLineEdit correspondientes
+                    self.ui.nombre_producto_envio.setText(datos_producto[1])
+                    self.ui.precio_unitario_envio.setText(datos_producto[2])
+                    return
+            
+    # Si no encontramos el producto, limpiamos los QLineEdit correspondientes
+        self.ui.nombre_producto_envio.clear()
+        self.ui.precio_unitario_envio.clear()
+  
+
     def btn_agregar_egresos(self):
          self.oegreso = Egresos.EgresoArticulos()
          self.oegreso.codigoArticulo = self.ui.id_prod_envio.text()
@@ -180,9 +206,9 @@ class FrmInterfaz(QMainWindow):
          
          
 
-         itemView = (self.oegreso.codigoArticulo+"           "+self.oegreso.nombreArticulo +"                                     "
-                    + "        " + str(self.oegreso.cantidad) + "            "+str(self.oegreso.preciounitario)+"              "+str(self.oegreso.montoTotal) +
-                    "    " + self.ui.label_19.text() + "   " + fecha_actual_str + "   " + self.oegreso.bodegaRecibe +"   " + self.oegreso.bodegaEnvia)
+         itemView = (self.oegreso.codigoArticulo+","+self.oegreso.nombreArticulo +","
+                    + str(self.oegreso.cantidad) + ","+str(self.oegreso.preciounitario)+","+str(self.oegreso.montoTotal) +
+                    "," + self.ui.label_19.text() + "," + fecha_actual_str + "," + self.oegreso.bodegaRecibe +"," + self.oegreso.bodegaEnvia)
 
          item = QtGui.QStandardItem(itemView)
          self.modelolista.appendRow(item)
@@ -193,6 +219,36 @@ class FrmInterfaz(QMainWindow):
          self.ui.precio_unitario_envio.clear()
 
 
-    def egresosBodegas(self):
-        archivoEgresos = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\EgresoEntreBodegas\\egresos_bodegas.txt"
-        archivoIngresos = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
+    def btn_guardar_lista_egreso(self):
+    # Establece el nombre de archivo y la ubicación
+        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt"
+        filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/EgresoEntreBodegas/egresos_bodegas.txt"
+
+    # Abre el archivo para escribir
+        with open(filepath, "a") as f:
+            # Escribe cada línea de la lista en el archivo de ingresos
+            for row in range(self.modelolista.rowCount()):
+                line = ""
+                for col in range(self.modelolista.columnCount()):
+                    item = self.modelolista.item(row, col)
+                    if item is not None:
+                        line += item.text() + ","
+                line = line.rstrip(",") + "\n"
+                f.write(line)
+
+        # Abre el archivo para escribir
+        with open(filepath2, "a") as f:
+            # Escribe cada línea de la lista en el archivo de egresos
+            for row in range(self.modelolista.rowCount()):
+                line = ""
+                for col in range(self.modelolista.columnCount()):
+                    item = self.modelolista.item(row, col)
+                    if item is not None:
+                        line += item.text() + ","
+                line = line.rstrip(",") + "\n"
+                f.write(line)
+
+    # Elimina todos los elementos de la lista
+        self.modelolista.clear()      
+        self.ui.label_19.clear()
+        

@@ -1,2 +1,4 @@
-1           arroz                                             5.0            300.0              1500.0    25221   08-04-2023   Bodega Principal
-2           frijoles                                             5.0            1500.0              7500.0    25221   08-04-2023   Bodega Principal
+cod,nombre,cantidad,precioUn,Monto,Factura,Fecha,BodRec,BodDesp
+1,arroz,100.0,300.0,30000.0,151515,08-04-2023,Bodega Principal
+2,frijoles,360.0,1500.0,540000.0,151515,08-04-2023,Bodega Principal
+1,arroz,3.0,100.0,300.0,1,08-04-2023,Puerto viejo,Bodega Principal
