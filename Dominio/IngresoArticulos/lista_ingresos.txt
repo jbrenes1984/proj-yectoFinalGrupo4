@@ -1,7 +1,4 @@
-1,arroz,150.0,300.0,45000.0,1515,08-04-2023,Bodega Principal
-2,frijoles,150.0,1500.0,225000.0,1515,08-04-2023,Bodega Principal
-3,atun,150.0,3500.0,525000.0,1515,08-04-2023,Bodega Principal
-1,arroz,150.0,300.0,45000.0,445454,08-04-2023,Bodega Principal
-2,frijoles,150.0,1500.0,225000.0,445454,08-04-2023,Bodega Principal
-3,atun,100.0,3500.0,350000.0,445454,08-04-2023,Bodega Principal
-1,arroz,2.0,150.0,300.0,1,08-04-2023,Lagunilla,Bodega Principal
+1,arroz,3.0,300.0,900.0,15,09-04-2023,Bodega Principal
+2,frijoles,5.0,1500.0,7500.0,15,09-04-2023,Bodega Principal
+3,atun,10.0,3500.0,35000.0,15,09-04-2023,Bodega Principal
+1,arroz,3.0,3.0,9.0,1,09-04-2023,Pavas,Bodega Principal
