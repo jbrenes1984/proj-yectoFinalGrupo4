@@ -251,4 +251,56 @@ class FrmInterfaz(QMainWindow):
     # Elimina todos los elementos de la lista
         self.modelolista.clear()      
         self.ui.label_19.clear()
+        self.suma_egresos()
+        self.suma_ingresos()
+
+
+
         
+    def suma_ingresos(self):
+        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/IngresoArticulos/lista_ingresos.txt', 'r')
+        cantidad_por_id_y_bodega = {}
+
+        for linea in archivo:
+            valores = linea.strip().split(',')
+            id_articulo = valores[0]
+            cantidad_recibida = int(round(float(valores[2])))
+            bodega = valores[7]
+            nombre_articulo = valores[1]
+            precio_unitario = float(valores[3])
+            clave = (id_articulo, bodega)
+            if clave in cantidad_por_id_y_bodega:
+                cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_recibida
+            else:
+                cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_recibida, 'nombre': nombre_articulo, 'precio': precio_unitario}
+
+        archivo.close()
+
+        for clave, valores in cantidad_por_id_y_bodega.items():
+            print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad recibida: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Ingreso: {clave[1]} ')
+
+
+    def suma_egresos(self):
+        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/EgresoEntreBodegas/egresos_bodegas.txt', 'r')
+        cantidad_por_id_y_bodega = {}
+
+        for linea in archivo:
+            valores = linea.strip().split(',')
+            id_articulo = valores[0]
+            cantidad_recibida = int(round(float(valores[2])))
+            bodega = valores[8]
+            nombre_articulo = valores[1]
+            precio_unitario = float(valores[3])
+            clave = (id_articulo, bodega)
+            if clave in cantidad_por_id_y_bodega:
+                cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_recibida
+            else:
+                cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_recibida, 'nombre': nombre_articulo, 'precio': precio_unitario}
+
+        archivo.close()
+
+        for clave, valores in cantidad_por_id_y_bodega.items():
+            print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad Egresada: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Egreso: {clave[1]} ')
+        
+
+    

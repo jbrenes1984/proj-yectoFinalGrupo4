@@ -1,4 +1,7 @@
-cod,nombre,cantidad,precioUn,Monto,Factura,Fecha,BodRec,BodDesp
-1,arroz,100.0,300.0,30000.0,151515,08-04-2023,Bodega Principal
-2,frijoles,360.0,1500.0,540000.0,151515,08-04-2023,Bodega Principal
-1,arroz,3.0,100.0,300.0,1,08-04-2023,Puerto viejo,Bodega Principal
+1,arroz,150.0,300.0,45000.0,1515,08-04-2023,Bodega Principal
+2,frijoles,150.0,1500.0,225000.0,1515,08-04-2023,Bodega Principal
+3,atun,150.0,3500.0,525000.0,1515,08-04-2023,Bodega Principal
+1,arroz,150.0,300.0,45000.0,445454,08-04-2023,Bodega Principal
+2,frijoles,150.0,1500.0,225000.0,445454,08-04-2023,Bodega Principal
+3,atun,100.0,3500.0,350000.0,445454,08-04-2023,Bodega Principal
+1,arroz,2.0,150.0,300.0,1,08-04-2023,Lagunilla,Bodega Principal
