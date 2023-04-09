@@ -9,6 +9,7 @@ from Dominio.EgresoEntreBodegas.NuevaBodega import nuevaBodega
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
 from PyQt6.QtWidgets import QMainWindow
+import os
 
 
 now = datetime.datetime.now()
@@ -22,8 +23,7 @@ class FrmInterfaz(QMainWindow):
         self.ui = Ui_MainWindow()  # instancia de la interfaz gráfica
         self.ui.setupUi(self)  # inicializa la interfaz gráfica
         self.oingreso = None
-        self.ui.pushButton_agregar_reg.clicked.connect(
-            self.btn_agregar_datos_factura)
+        self.ui.pushButton_agregar_reg.clicked.connect(self.btn_agregar_datos_factura)
         self.ui.pushButton_enviar.clicked.connect(self.btn_agregar_egresos)
         self.ui.pushButton_guardar.clicked.connect(self.btn_guardar_lista)
         self.modelolista = QtGui.QStandardItemModel()
@@ -32,19 +32,27 @@ class FrmInterfaz(QMainWindow):
         self.ui.tabla_entrega_distribuidores.setModel(self.modelolista)
         self.ui.cod_registro.textChanged.connect(self.buscar_producto)
         self.ui.id_prod_envio.textChanged.connect(self.buscar_producto_egreso)
-        self.ui.id_prod_envio_r_distrib.textChanged.connect(
-            self.buscar_saldos_distribuidores)
-        self.ui.btnCrearBodega.clicked.connect(
-            lambda:  self.agregar_bodega() and self.cargar_combobox())
+        self.ui.id_prod_envio_r_distrib.textChanged.connect(self.buscar_saldos_distribuidores)
+        self.ui.btnCrearBodega.clicked.connect(self.agregar_bodega)
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
-        self.ui.btn_agregar_tabla_distribuidores.clicked.connect(
-            self.btn_agregar_egreso_distribuidor)
+        self.ui.btn_agregar_tabla_distribuidores.clicked.connect(self.btn_agregar_egreso_distribuidor)
         self.ui.btn_entrega_distribuidores.clicked.connect(
-            self.btn_guardar_lista_egreso_distribuidor)
+        self.btn_guardar_lista_egreso_distribuidor)
         self.ui.pushButton_mostrar.clicked.connect(self.mostrar_saldos)
         self.ui.btn_mostrar_egresos_distrib.clicked.connect(self.mostrar_egresos_distribuidor)
+        self.ui.btn_reportes_listado_bodegas.clicked.connect(self.abrir_archivo_bodegas)
+        self.ui.btn_reportes_listado_productos.clicked.connect(self.abrir_archivo_lista_productos)
+        self.ui.btn_resportes_listado_distribuidores.clicked.connect(self.abrir_archivo_lista_ditribuidores)
+        self.ui.btn_reportes_egresos_entre_bod.clicked.connect(self.abrir_archivo_lista_egresos_bodegas)
+        self.ui.btn_resportes_saldos_inventario.clicked.connect(self.abrir_archivo_lista_saldos)
+        self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)
+
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
+
+
+
+
 
         self.paginas = {
             self.ui.pushButton_registro: self.ui.page_registro,
@@ -58,15 +66,11 @@ class FrmInterfaz(QMainWindow):
         }
 
         self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_crear_bodega.clicked.connect(
-            lambda: self.mostrar_pagina() and self.cargar_combobox())
-        self.ui.pushButton_envio_bodega.clicked.connect(
-            lambda: self.mostrar_pagina() and self.cargar_combobox())
-        self.ui.pushButton_entrega_articulos.clicked.connect(
-            self.mostrar_pagina)
+        self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_entrega_articulos.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_distribuidores.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_saldos_inventario.clicked.connect(
-            self.mostrar_pagina)
+        self.ui.pushButton_saldos_inventario.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_reporte_distrib.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_reporte.clicked.connect(self.mostrar_pagina)
 
@@ -484,6 +488,33 @@ class FrmInterfaz(QMainWindow):
 
         self.ui.lista_consulta_egresos_distrib.setModel(model)
 
-            
+   
+
+    def abrir_archivo_bodegas(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/bodegas.txt"
+        os.startfile(archivo)
+
+    def abrir_archivo_lista_productos(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_productos.txt"
+        os.startfile(archivo)  
+
+    def abrir_archivo_lista_ingresos(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
+        os.startfile(archivo)   
+
+    def abrir_archivo_lista_ditribuidores(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/distribuidores.txt"
+        os.startfile(archivo)  
+
+    def abrir_archivo_lista_egresos_bodegas(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        os.startfile(archivo)
+    
+    def abrir_archivo_lista_saldos(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt"
+        os.startfile(archivo) 
+
+
+
         
 
