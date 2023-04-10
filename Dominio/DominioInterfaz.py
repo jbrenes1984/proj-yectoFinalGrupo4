@@ -46,6 +46,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btn_reportes_egresos_entre_bod.clicked.connect(self.abrir_archivo_lista_egresos_bodegas)
         self.ui.btn_resportes_saldos_inventario.clicked.connect(self.abrir_archivo_lista_saldos)
         self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)
+        self.ui.btn_reportes_egresos_distrib.clicked.connect(self.salidas_distribuidor)
 
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
@@ -296,37 +297,24 @@ class FrmInterfaz(QMainWindow):
 
         archivo.close()
 
-        # for clave, valores in cantidad_por_id_y_bodega.items():
-        # print("->>> Ingreso <<<---")
-        # print(f'ID: {clave[0]},Nombre del producto: {valores["nombre"]},Cantidad recibida: {valores["cantidad"]},  Precio unitario: {valores["precio"]} Bodega Ingreso: {clave[1]} ')
+       
 
         archivo = open(
             'C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt', 'r')
-        # cantidad_por_id_y_bodega = {}
-
+ 
         for linea in archivo:
             valores = linea.strip().split(',')
             id_articulo = valores[0]
             cantidad_egresada = int(round(float(valores[2])))
             bodega = valores[8]
-            # nombre_articulo = valores[1]
-            # precio_unitario = float(valores[3])
+           
             clave = (id_articulo, bodega)
             saldo_por_id_y_bodega[clave]['cantidad'] -= cantidad_egresada
-
-            # if clave in cantidad_por_id_y_bodega:
-            # cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_egresada
-            # else:
-            # cantidad_por_id_y_bodega[clave] = {'cantidad': cantidad_egresada, 'nombre': nombre_articulo, 'precio': precio_unitario}
+           
 
         archivo.close()
 
-        # for clave, saldo in saldo_por_id_y_bodega.items():
-        # if saldo['cantidad'] >= 0:
-        # print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Saldo: {saldo["cantidad"]},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
-        # else:
-        # print(f'ID: {clave[0]},Nombre del producto: {saldo["nombre"]},Cantidad Egreso: {abs(saldo["cantidad"])},  Precio unitario: {saldo["precio"]} Bodega Egreso: {clave[1]} ')
-
+       
         # abrir el archivo para escritura
         with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'w') as archivo_salida:
             # recorrer las claves y saldos
@@ -336,6 +324,7 @@ class FrmInterfaz(QMainWindow):
                 else:
                     linea = f'{clave[0]}, {saldo["nombre"]}, {abs(saldo["cantidad"])}, {saldo["precio"]} , {clave[1]}\n'
                 archivo_salida.write(linea)
+
 
     def mensaje_confirmacion(self, mensaje):
         msg = QtWidgets.QMessageBox()
@@ -513,8 +502,30 @@ class FrmInterfaz(QMainWindow):
     def abrir_archivo_lista_saldos(self):
         archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt"
         os.startfile(archivo) 
+    
+    def salidas_distribuidor(self):
+        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt', 'r')
+        cantidad_por_id_y_bodega = {}
+
+        for linea in archivo:
+            valores = linea.strip().split(',')
+            if "Distribuidor" in valores[7]:
+                # la palabra "Distribuidor" está en la columna 8 de esta línea, imprimir la línea
+                print(linea.strip())
+            id_articulo = valores[0]
+            cantidad_recibida = int(round(float(valores[2])))
+            bodega = valores[7]
+            nombre_articulo = valores[1]
+            precio_unitario = float(valores[3])
+            clave = (id_articulo, bodega)
+            if clave in cantidad_por_id_y_bodega:
+                cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_recibida
+            else:
+                cantidad_por_id_y_bodega[clave] = {
+                    'cantidad': cantidad_recibida, 'nombre': nombre_articulo, 'precio': precio_unitario}
+
+        archivo.close()
 
 
 
-        
 
