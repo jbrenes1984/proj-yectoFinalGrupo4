@@ -5,6 +5,7 @@ from Interfaz.gestor_bodegas import Ui_MainWindow
 from Dominio.IngresoArticulos import IngresoArticulos
 from Dominio.EgresoEntreBodegas import Egresos
 import datetime
+from Dominio.EgresoEntreBodegas.PerfilDistribuidor import perfil_distribuidor
 from Dominio.EgresoEntreBodegas.NuevaBodega import nuevaBodega
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QStandardItemModel, QStandardItem
@@ -36,8 +37,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btnCrearBodega.clicked.connect(self.agregar_bodega)
         self.ui.btnEnviarBodegas.clicked.connect(self.btn_guardar_lista_egreso)
         self.ui.btn_agregar_tabla_distribuidores.clicked.connect(self.btn_agregar_egreso_distribuidor)
-        self.ui.btn_entrega_distribuidores.clicked.connect(
-        self.btn_guardar_lista_egreso_distribuidor)
+        self.ui.btn_entrega_distribuidores.clicked.connect(self.btn_guardar_lista_egreso_distribuidor)
         self.ui.pushButton_mostrar.clicked.connect(self.mostrar_saldos)
         self.ui.btn_mostrar_egresos_distrib.clicked.connect(self.mostrar_egresos_distribuidor)
         self.ui.btn_reportes_listado_bodegas.clicked.connect(self.abrir_archivo_bodegas)
@@ -47,7 +47,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.btn_resportes_saldos_inventario.clicked.connect(self.abrir_archivo_lista_saldos)
         self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)
         self.ui.btn_reportes_egresos_distrib.clicked.connect(self.salidas_distribuidor)
-
+        self.ui.btnCreaPerfilDistrib.clicked.connect(self.agregar_distribuidor)
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
 
@@ -169,6 +169,23 @@ class FrmInterfaz(QMainWindow):
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
         self.mensaje_confirmacion(mensaje)
+
+    def agregar_distribuidor(self):
+        nombre = self.ui.txt_nombre_distrib.text().capitalize()
+        ubicacion = self.ui.txt_ubicacion_distrib.text().capitalize()
+        telefono = self.ui.txt_numero_distrib.text()
+        cedula = self.ui.txt_cedula_distrib.text()
+        archivo =  "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\distribuidores.txt" 
+        mensaje = "Perfil se creo satisfactoriamente"
+        nuevo_distribuidor = perfil_distribuidor(archivo)
+        nuevo_distribuidor.agregar_distribuidor(nombre,ubicacion,telefono,cedula)
+        self.ui.txt_cedula_distrib.clear()
+        self.ui.txt_nombre_distrib.clear()
+        self.ui.txt_ubicacion_distrib.clear()
+        self.ui.txt_numero_distrib.clear()
+        self.cargar_combobox_distribuidores()
+        self.mensaje_confirmacion(mensaje)
+        
 
     def cargar_combobox(self):
         archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
@@ -462,12 +479,12 @@ class FrmInterfaz(QMainWindow):
                     producto = datos_bodega[1]
                     cantidad = datos_bodega[2]
                     precio_unitario = datos_bodega[3]
-                    bodega = datos_bodega[8]
+                    bodega_entrega = datos_bodega[8]
                     fecha = datos_bodega[6]
                     factura = datos_bodega[5]
 
                     item = QStandardItem(
-                        f"ID: {id_producto} -->Producto: {producto} -->Cantidad Entregada: {cantidad} -->Precio Unitario: {precio_unitario} -->Bodega Entrega: {bodega} -->Factura: {factura} -->Fecha: {fecha}")
+                        f"ID: {id_producto} -->Producto: {producto} -->Cantidad Entregada: {cantidad} -->Precio Unitario: {precio_unitario} -->Bodega Entrega: {bodega_entrega} -->Factura: {factura} -->Fecha: {fecha}")
                     model.appendRow(item)
 
         if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
@@ -507,7 +524,7 @@ class FrmInterfaz(QMainWindow):
 
         for linea in archivo:
             valores = linea.strip().split(',')
-            if "Distribuidor" in valores[7]:
+            if "Dtb" in valores[7]:
                 # la palabra "Distribuidor" está en la columna 8 de esta línea, imprimir la línea
                 print(linea.strip())
             id_articulo = valores[0]

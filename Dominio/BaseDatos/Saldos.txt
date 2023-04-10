@@ -1,0 +1,4 @@
+1, Arroz, 0, 300.0 , Bodega Principal
+2, Frijoles, 0, 1500.0 , Bodega Principal
+1,  Arroz, 0, 300.0 , Guachipelin
+2,  Frijoles, 0, 1500.0 , Guachipelin

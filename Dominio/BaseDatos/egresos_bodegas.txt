@@ -1,0 +1,6 @@
+1, Arroz,150.0,300.0,45000.0,1,10-04-2023,Bodega Principal,Bodega Principal
+2, Frijoles,150.0,1500.0,225000.0,1,10-04-2023,Bodega Principal,Bodega Principal
+1, Arroz,300.0,300.0,90000.0,1,10-04-2023,Guachipelin,Bodega Principal
+2, Frijoles,300.0,1500.0,450000.0,,10-04-2023,Guachipelin,Bodega Principal
+1,  Arroz,300.0,300.0,90000.0,1,10-04-2023,Dtb Matra,Guachipelin
+2,  Frijoles,300.0,1500.0,450000.0,1,10-04-2023,Dtb Matra,Guachipelin
