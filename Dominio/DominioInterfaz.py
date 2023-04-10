@@ -87,25 +87,28 @@ class FrmInterfaz(QMainWindow):
             self.ui.stackedWidget.setCurrentWidget(pagina)
 
     def btn_agregar_datos_factura(self):
-        self.oingreso = IngresoArticulos.IngresoArticulos()
-        self.oingreso.codigoArticulo = self.ui.cod_registro.text()
-        self.oingreso.nombreArticulo = self.ui.nombre_registro.text()
-        self.oingreso.cantidad = float(self.ui.cantidad_registro.text())
-        self.oingreso.preciounitario = float(self.ui.precio_un_registro.text())
-        self.oingreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
-        self.bodega = "Bodega Principal"
+        if self.ui.cantidad_registro.text() == "":
+            self.mensaje_confirmacion("Ingresar Cantidad")
+        else:
+            self.oingreso = IngresoArticulos.IngresoArticulos()
+            self.oingreso.codigoArticulo = self.ui.cod_registro.text()
+            self.oingreso.nombreArticulo = self.ui.nombre_registro.text()
+            self.oingreso.cantidad = float(self.ui.cantidad_registro.text())
+            self.oingreso.preciounitario = float(self.ui.precio_un_registro.text())
+            self.oingreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
+            self.bodega = "Bodega Principal"
 
-        itemView = (self.oingreso.codigoArticulo+","+self.oingreso.nombreArticulo+","
-                    + str(self.oingreso.cantidad) + ","+str(self.oingreso.preciounitario)+","+str(self.oingreso.montoTotal) +
-                    "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega + "," + "Ingreso Principal")
+            itemView = (self.oingreso.codigoArticulo+","+self.oingreso.nombreArticulo+","
+                        + str(self.oingreso.cantidad) + ","+str(self.oingreso.preciounitario)+","+str(self.oingreso.montoTotal) +
+                        "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega + "," + "Ingreso Principal")
 
-        item = QtGui.QStandardItem(itemView)
-        self.modelolista.appendRow(item)
+            item = QtGui.QStandardItem(itemView)
+            self.modelolista.appendRow(item)
 
-        self.ui.cod_registro.clear()
-        self.ui.nombre_registro.clear()
-        self.ui.cantidad_registro.clear()
-        self.ui.precio_un_registro.clear()
+            self.ui.cod_registro.clear()
+            self.ui.nombre_registro.clear()
+            self.ui.cantidad_registro.clear()
+            self.ui.precio_un_registro.clear()
 
     def btn_guardar_lista(self):
         # Establece el nombre de archivo y la ubicación
@@ -231,27 +234,30 @@ class FrmInterfaz(QMainWindow):
         self.ui.cantidad_disponible.clear()
 
     def btn_agregar_egresos(self):
-        self.oegreso = Egresos.EgresoArticulos()
-        self.oegreso.codigoArticulo = self.ui.id_prod_envio.text()
-        self.oegreso.nombreArticulo = self.ui.nombre_producto_envio.text()
-        self.oegreso.cantidad = float(self.ui.cantidad_producto_envio.text())
-        self.oegreso.preciounitario = float(
+        if self.ui.cantidad_producto_envio.text() == "" or float(self.ui.cantidad_producto_envio.text()) > float(self.ui.cantidad_disponible.text()):
+            self.mensaje_confirmacion("Verificar Cantidad")
+        else:    
+            self.oegreso = Egresos.EgresoArticulos()
+            self.oegreso.codigoArticulo = self.ui.id_prod_envio.text()
+            self.oegreso.nombreArticulo = self.ui.nombre_producto_envio.text()
+            self.oegreso.cantidad = float(self.ui.cantidad_producto_envio.text())
+            self.oegreso.preciounitario = float(
             self.ui.precio_unitario_envio.text())
-        self.oegreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
-        self.oegreso.bodegaEnvia = self.ui.comboBox_bod_envia.currentText()
-        self.oegreso.bodegaRecibe = self.ui.comboBox__bod_recibe.currentText()
+            self.oegreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
+            self.oegreso.bodegaEnvia = self.ui.comboBox_bod_envia.currentText()
+            self.oegreso.bodegaRecibe = self.ui.comboBox__bod_recibe.currentText()
 
-        itemView = (self.oegreso.codigoArticulo+","+self.oegreso.nombreArticulo + ","
-                    + str(self.oegreso.cantidad) + ","+str(self.oegreso.preciounitario)+","+str(self.oegreso.montoTotal) +
-                    "," + self.ui.label_19.text() + "," + fecha_actual_str + "," + self.oegreso.bodegaRecibe + "," + self.oegreso.bodegaEnvia)
+            itemView = (self.oegreso.codigoArticulo+","+self.oegreso.nombreArticulo + ","
+                        + str(self.oegreso.cantidad) + ","+str(self.oegreso.preciounitario)+","+str(self.oegreso.montoTotal) +
+                        "," + self.ui.label_19.text() + "," + fecha_actual_str + "," + self.oegreso.bodegaRecibe + "," + self.oegreso.bodegaEnvia)
 
-        item = QtGui.QStandardItem(itemView)
-        self.modelolista.appendRow(item)
+            item = QtGui.QStandardItem(itemView)
+            self.modelolista.appendRow(item)
 
-        self.ui.id_prod_envio.clear()
-        self.ui.nombre_producto_envio.clear()
-        self.ui.cantidad_producto_envio.clear()
-        self.ui.precio_unitario_envio.clear()
+            self.ui.id_prod_envio.clear()
+            self.ui.nombre_producto_envio.clear()
+            self.ui.cantidad_producto_envio.clear()
+            self.ui.precio_unitario_envio.clear()
 
     def btn_guardar_lista_egreso(self):
         # Establece el nombre de archivo y la ubicación
@@ -441,6 +447,7 @@ class FrmInterfaz(QMainWindow):
         model = QStandardItemModel()
 
         encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
+        lineas_bodega = [] # Lista para almacenar las líneas que cumplen con la condición
         with open(archivo, 'r') as f:
             for line in f:
                 datos_bodega = line.strip().split(', ')
@@ -456,10 +463,19 @@ class FrmInterfaz(QMainWindow):
                         f"ID: {id_producto}-->Producto: {producto}-->Saldo: {cantidad}-->Precio Unitario: {precio_unitario} -->Bodega: {bodega}")
                     model.appendRow(item)
 
+                    # Agregar la línea que cumple con la condición a la lista
+                    linea = f"Código: {id_producto},Nombre: {producto},Saldo Actual: {cantidad},Precio Unitario: {precio_unitario},Bodega:{bodega}\n"
+                    lineas_bodega.append(linea)
+
         if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
             self.mensaje_confirmacion("Bodega No Tiene Existencias de Articulos")
 
         self.ui.lista_saldo_inventario.setModel(model)
+
+        # Escribir todas las líneas que cumplen con la condición en el archivo 'reporte.txt'
+        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt','w') as archivo:
+            for linea in lineas_bodega:
+                archivo.write(linea)
 
 
 
@@ -468,8 +484,9 @@ class FrmInterfaz(QMainWindow):
         bodega = self.ui.comboBox_egresos_distribuidor.currentText().strip()
         archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
         model = QStandardItemModel()
-
+        
         encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
+        lineas_bodega = [] 
         with open(archivo, 'r') as f:
             for line in f:
                 datos_bodega = line.strip().split(',')
@@ -487,10 +504,18 @@ class FrmInterfaz(QMainWindow):
                         f"ID: {id_producto} -->Producto: {producto} -->Cantidad Entregada: {cantidad} -->Precio Unitario: {precio_unitario} -->Bodega Entrega: {bodega_entrega} -->Factura: {factura} -->Fecha: {fecha}")
                     model.appendRow(item)
 
+                    linea = f"Código: {id_producto},Nombre: {producto},Cantidad Recibida: {cantidad},Precio Unitario: {precio_unitario},Bodega Entrega: {bodega_entrega},Factura: {factura},Fecha Registro: {fecha}\n"
+                    lineas_bodega.append(linea)
+
         if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
             self.mensaje_confirmacion("Bodega Egresos de Articulos")
 
         self.ui.lista_consulta_egresos_distrib.setModel(model)
+        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt','w') as archivo:
+            for linea in lineas_bodega:
+                archivo.write(linea)
+
+
 
    
 

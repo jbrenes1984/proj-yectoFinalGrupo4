@@ -1,6 +1,6 @@
-1,Arroz,300.0,300.0,90000.0,1,10-04-2023,Bodega Principal,Ingreso Principal
-2,Frijoles,300.0,1500.0,450000.0,1,10-04-2023,Bodega Principal,Ingreso Principal
-1, Arroz,150.0,300.0,45000.0,1,10-04-2023,Bodega Principal,Bodega Principal
-2, Frijoles,150.0,1500.0,225000.0,1,10-04-2023,Bodega Principal,Bodega Principal
-1, Arroz,300.0,300.0,90000.0,1,10-04-2023,Guachipelin,Bodega Principal
-2, Frijoles,300.0,1500.0,450000.0,,10-04-2023,Guachipelin,Bodega Principal
+1,Arroz,500.0,300.0,150000.0,1515,10-04-2023,Bodega Principal,Ingreso Principal
+3,Atun,360.0,3500.0,1260000.0,1515,10-04-2023,Bodega Principal,Ingreso Principal
+4,Leche,800.0,5000.0,4000000.0,1515,10-04-2023,Bodega Principal,Ingreso Principal
+1, Arroz,500.0,300.0,150000.0,1,10-04-2023,Guachipelin,Bodega Principal
+4, Leche,400.0,5000.0,2000000.0,1,10-04-2023,Guachipelin,Bodega Principal
+1,Arroz,600.0,300.0,180000.0,5115,10-04-2023,Bodega Principal,Ingreso Principal
