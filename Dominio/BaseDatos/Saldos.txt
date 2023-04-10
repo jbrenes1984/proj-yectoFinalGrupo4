@@ -1,5 +1,0 @@
-1, Arroz, 447, 300.0 , Bodega Principal
-2, Frijoles, 150, 1500.0 , Bodega Principal
-3, Atun, 100, 3500.0 , Bodega Principal
-1,  Arroz, 3, 300.0 , Cuba
-2,  Frijoles, 150, 1500.0 , Cuba

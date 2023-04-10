@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(994, 685)
+        MainWindow.resize(994, 681)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -280,7 +280,7 @@ class Ui_MainWindow(object):
         self.page_crear_bodega = QtWidgets.QWidget()
         self.page_crear_bodega.setObjectName("page_crear_bodega")
         self.label = QtWidgets.QLabel(parent=self.page_crear_bodega)
-        self.label.setGeometry(QtCore.QRect(230, 20, 271, 31))
+        self.label.setGeometry(QtCore.QRect(230, 10, 271, 31))
         self.label.setStyleSheet("\n"
 "QLabel {\n"
 "    border-radius: 10px;   \n"
@@ -297,7 +297,7 @@ class Ui_MainWindow(object):
         self.frame_form_bodega.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_form_bodega.setObjectName("frame_form_bodega")
         self.btnCrearBodega = QtWidgets.QPushButton(parent=self.frame_form_bodega)
-        self.btnCrearBodega.setGeometry(QtCore.QRect(80, 390, 141, 41))
+        self.btnCrearBodega.setGeometry(QtCore.QRect(80, 380, 151, 51))
         self.btnCrearBodega.setStyleSheet("QPushButton {\n"
 "    border-radius: 10px;   \n"
 "    background-color: rgb(165, 165, 165);\n"
@@ -310,36 +310,33 @@ class Ui_MainWindow(object):
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
         self.btnCrearBodega.setObjectName("btnCrearBodega")
-        self.label_2 = QtWidgets.QLabel(parent=self.frame_form_bodega)
-        self.label_2.setGeometry(QtCore.QRect(0, 20, 291, 21))
-        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(parent=self.frame_form_bodega)
-        self.label_3.setGeometry(QtCore.QRect(0, 110, 291, 21))
+        self.label_3.setGeometry(QtCore.QRect(0, 20, 291, 21))
+        self.label_3.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
         self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(parent=self.frame_form_bodega)
-        self.label_4.setGeometry(QtCore.QRect(0, 210, 291, 21))
+        self.label_4.setGeometry(QtCore.QRect(0, 150, 291, 21))
+        self.label_4.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
         self.label_4.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(parent=self.frame_form_bodega)
-        self.label_5.setGeometry(QtCore.QRect(0, 300, 291, 21))
-        self.label_5.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";")
+        self.label_5.setGeometry(QtCore.QRect(0, 270, 291, 21))
+        self.label_5.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
         self.label_5.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_5.setObjectName("label_5")
-        self.lineEdit_3 = QtWidgets.QLineEdit(parent=self.frame_form_bodega)
-        self.lineEdit_3.setGeometry(QtCore.QRect(60, 50, 181, 31))
-        self.lineEdit_3.setStyleSheet("border-color: rgb(0, 0, 0);")
-        self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_6 = QtWidgets.QLineEdit(parent=self.frame_form_bodega)
-        self.lineEdit_6.setGeometry(QtCore.QRect(60, 330, 181, 31))
+        self.lineEdit_6.setGeometry(QtCore.QRect(60, 310, 181, 31))
+        self.lineEdit_6.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.lineEdit_6.setObjectName("lineEdit_6")
         self.lineEdit_8 = QtWidgets.QLineEdit(parent=self.frame_form_bodega)
-        self.lineEdit_8.setGeometry(QtCore.QRect(60, 240, 181, 31))
+        self.lineEdit_8.setGeometry(QtCore.QRect(60, 190, 181, 31))
+        self.lineEdit_8.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.lineEdit_8.setObjectName("lineEdit_8")
         self.lineEdit_10 = QtWidgets.QLineEdit(parent=self.frame_form_bodega)
-        self.lineEdit_10.setGeometry(QtCore.QRect(60, 140, 181, 31))
+        self.lineEdit_10.setGeometry(QtCore.QRect(60, 70, 181, 31))
         self.lineEdit_10.setStyleSheet("border-color: rgb(170, 0, 0);")
+        self.lineEdit_10.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.lineEdit_10.setObjectName("lineEdit_10")
         self.stackedWidget.addWidget(self.page_crear_bodega)
         self.page_envio_bodega = QtWidgets.QWidget()
@@ -550,7 +547,8 @@ class Ui_MainWindow(object):
         self.label_29.setGeometry(QtCore.QRect(20, 140, 81, 31))
         self.label_29.setStyleSheet("font: 75 10pt \"MS Shell Dlg 2\";\n"
 "background-color: rgb(206, 206, 206);\n"
-"border: 1px solid black;")
+"border: 1px solid black;\n"
+"")
         self.label_29.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_29.setObjectName("label_29")
         self.comboBox_bod_envia_3 = QtWidgets.QComboBox(parent=self.page_entrega_articulos)
@@ -613,6 +611,66 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_entrega_articulos)
         self.page_distribuidores = QtWidgets.QWidget()
         self.page_distribuidores.setObjectName("page_distribuidores")
+        self.label_2 = QtWidgets.QLabel(parent=self.page_distribuidores)
+        self.label_2.setGeometry(QtCore.QRect(180, 10, 381, 31))
+        self.label_2.setStyleSheet("font: 75 18pt \"MS Shell Dlg 2\";")
+        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_2.setObjectName("label_2")
+        self.frame_form_distribuidores = QtWidgets.QFrame(parent=self.page_distribuidores)
+        self.frame_form_distribuidores.setGeometry(QtCore.QRect(220, 70, 291, 491))
+        self.frame_form_distribuidores.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.frame_form_distribuidores.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_form_distribuidores.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_form_distribuidores.setObjectName("frame_form_distribuidores")
+        self.btnCreaPerfilDistrib = QtWidgets.QPushButton(parent=self.frame_form_distribuidores)
+        self.btnCreaPerfilDistrib.setGeometry(QtCore.QRect(80, 430, 151, 51))
+        self.btnCreaPerfilDistrib.setStyleSheet("QPushButton {\n"
+"    border-radius: 10px;   \n"
+"    background-color: rgb(165, 165, 165);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btnCreaPerfilDistrib.setObjectName("btnCreaPerfilDistrib")
+        self.label_34 = QtWidgets.QLabel(parent=self.frame_form_distribuidores)
+        self.label_34.setGeometry(QtCore.QRect(0, 20, 291, 21))
+        self.label_34.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
+        self.label_34.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_34.setObjectName("label_34")
+        self.label_35 = QtWidgets.QLabel(parent=self.frame_form_distribuidores)
+        self.label_35.setGeometry(QtCore.QRect(0, 130, 291, 21))
+        self.label_35.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
+        self.label_35.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_35.setObjectName("label_35")
+        self.label_36 = QtWidgets.QLabel(parent=self.frame_form_distribuidores)
+        self.label_36.setGeometry(QtCore.QRect(0, 210, 291, 21))
+        self.label_36.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
+        self.label_36.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_36.setObjectName("label_36")
+        self.txt_numero_distrib = QtWidgets.QLineEdit(parent=self.frame_form_distribuidores)
+        self.txt_numero_distrib.setGeometry(QtCore.QRect(60, 250, 181, 31))
+        self.txt_numero_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.txt_numero_distrib.setObjectName("txt_numero_distrib")
+        self.txt_ubicacion_distrib = QtWidgets.QLineEdit(parent=self.frame_form_distribuidores)
+        self.txt_ubicacion_distrib.setGeometry(QtCore.QRect(60, 160, 181, 31))
+        self.txt_ubicacion_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.txt_ubicacion_distrib.setObjectName("txt_ubicacion_distrib")
+        self.txt_nombre_distrib = QtWidgets.QLineEdit(parent=self.frame_form_distribuidores)
+        self.txt_nombre_distrib.setGeometry(QtCore.QRect(60, 70, 181, 31))
+        self.txt_nombre_distrib.setStyleSheet("border-color: rgb(170, 0, 0);")
+        self.txt_nombre_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.txt_nombre_distrib.setObjectName("txt_nombre_distrib")
+        self.label_37 = QtWidgets.QLabel(parent=self.frame_form_distribuidores)
+        self.label_37.setGeometry(QtCore.QRect(90, 310, 131, 31))
+        self.label_37.setStyleSheet("font: 75 14pt \"MS Shell Dlg 2\";")
+        self.label_37.setObjectName("label_37")
+        self.txt_cedula_distrib = QtWidgets.QLineEdit(parent=self.frame_form_distribuidores)
+        self.txt_cedula_distrib.setGeometry(QtCore.QRect(60, 360, 181, 31))
+        self.txt_cedula_distrib.setObjectName("txt_cedula_distrib")
         self.stackedWidget.addWidget(self.page_distribuidores)
         self.page_saldos_inventario = QtWidgets.QWidget()
         self.page_saldos_inventario.setObjectName("page_saldos_inventario")
@@ -698,7 +756,7 @@ class Ui_MainWindow(object):
         self.label_32.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_32.setObjectName("label_32")
         self.btn_reportes_egresos_distrib = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_egresos_distrib.setGeometry(QtCore.QRect(140, 270, 171, 61))
+        self.btn_reportes_egresos_distrib.setGeometry(QtCore.QRect(130, 340, 181, 61))
         self.btn_reportes_egresos_distrib.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -714,7 +772,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_egresos_distrib.setObjectName("btn_reportes_egresos_distrib")
         self.btn_reportes_ingresos = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_ingresos.setGeometry(QtCore.QRect(140, 170, 171, 61))
+        self.btn_reportes_ingresos.setGeometry(QtCore.QRect(140, 140, 171, 61))
         self.btn_reportes_ingresos.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -730,7 +788,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_ingresos.setObjectName("btn_reportes_ingresos")
         self.btn_reportes_egresos_entre_bod = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_egresos_entre_bod.setGeometry(QtCore.QRect(140, 370, 161, 61))
+        self.btn_reportes_egresos_entre_bod.setGeometry(QtCore.QRect(140, 240, 171, 61))
         self.btn_reportes_egresos_entre_bod.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -746,7 +804,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_egresos_entre_bod.setObjectName("btn_reportes_egresos_entre_bod")
         self.btn_resportes_saldos_inventario = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_resportes_saldos_inventario.setGeometry(QtCore.QRect(440, 170, 161, 61))
+        self.btn_resportes_saldos_inventario.setGeometry(QtCore.QRect(440, 140, 161, 61))
         self.btn_resportes_saldos_inventario.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -762,7 +820,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_resportes_saldos_inventario.setObjectName("btn_resportes_saldos_inventario")
         self.btn_reportes_listado_productos = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_listado_productos.setGeometry(QtCore.QRect(440, 270, 161, 61))
+        self.btn_reportes_listado_productos.setGeometry(QtCore.QRect(440, 240, 161, 61))
         self.btn_reportes_listado_productos.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -778,7 +836,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_listado_productos.setObjectName("btn_reportes_listado_productos")
         self.btn_reportes_listado_bodegas = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_listado_bodegas.setGeometry(QtCore.QRect(440, 370, 161, 61))
+        self.btn_reportes_listado_bodegas.setGeometry(QtCore.QRect(440, 340, 161, 61))
         self.btn_reportes_listado_bodegas.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -794,7 +852,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_listado_bodegas.setObjectName("btn_reportes_listado_bodegas")
         self.btn_resportes_listado_distribuidores = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_resportes_listado_distribuidores.setGeometry(QtCore.QRect(280, 470, 161, 61))
+        self.btn_resportes_listado_distribuidores.setGeometry(QtCore.QRect(280, 440, 161, 61))
         self.btn_resportes_listado_distribuidores.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -811,11 +869,16 @@ class Ui_MainWindow(object):
         self.btn_resportes_listado_distribuidores.setObjectName("btn_resportes_listado_distribuidores")
         self.stackedWidget.addWidget(self.page_reporte_txt)
         self.horizontalLayout.addWidget(self.stackedWidget)
+        self.label_33 = QtWidgets.QLabel(parent=self.frame_contenido)
+        self.label_33.setGeometry(QtCore.QRect(380, 20, 291, 31))
+        self.label_33.setStyleSheet("color: rgb(78, 187, 255);\n"
+"font: 75 22pt \"MS Shell Dlg 2\";")
+        self.label_33.setObjectName("label_33")
         self.verticalLayout.addWidget(self.frame_contenido)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -839,7 +902,6 @@ class Ui_MainWindow(object):
         self.label_20.setText(_translate("MainWindow", "Nombre"))
         self.label.setText(_translate("MainWindow", "Creación de Nueva Bodega"))
         self.btnCrearBodega.setText(_translate("MainWindow", "Crear Bodega"))
-        self.label_2.setText(_translate("MainWindow", "Id Bodega"))
         self.label_3.setText(_translate("MainWindow", "Nombre Bodega"))
         self.label_4.setText(_translate("MainWindow", "Ubicación"))
         self.label_5.setText(_translate("MainWindow", "Teléfono"))
@@ -877,6 +939,12 @@ class Ui_MainWindow(object):
         self.label_30.setText(_translate("MainWindow", "<html><head/><body><p>Precio<br> Unitario</p></body></html>"))
         self.btn_agregar_tabla_distribuidores.setText(_translate("MainWindow", "Agregar"))
         self.btn_entrega_distribuidores.setText(_translate("MainWindow", "Enviar"))
+        self.label_2.setText(_translate("MainWindow", "Creación Perfil Distribuidores"))
+        self.btnCreaPerfilDistrib.setText(_translate("MainWindow", "Crear Perfil"))
+        self.label_34.setText(_translate("MainWindow", "Nombre Distribuidor"))
+        self.label_35.setText(_translate("MainWindow", "Ubicación"))
+        self.label_36.setText(_translate("MainWindow", "Teléfono"))
+        self.label_37.setText(_translate("MainWindow", "Cédula Jurídica"))
         self.label_40.setText(_translate("MainWindow", "Saldos de Inventario Segun Bodega"))
         self.label_41.setText(_translate("MainWindow", "Bodega"))
         self.comboBox_bod_saldos.setItemText(1, _translate("MainWindow", "Bodega Principal"))
@@ -890,8 +958,9 @@ class Ui_MainWindow(object):
         self.label_32.setText(_translate("MainWindow", "Modulo Reportes"))
         self.btn_reportes_egresos_distrib.setText(_translate("MainWindow", "Egresos Distribuidor"))
         self.btn_reportes_ingresos.setText(_translate("MainWindow", "Ingresos Bodega"))
-        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Egresos Entre Bodegas"))
+        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Traslado Entre Bodegas"))
         self.btn_resportes_saldos_inventario.setText(_translate("MainWindow", "Saldos Inventario"))
         self.btn_reportes_listado_productos.setText(_translate("MainWindow", "Listado Productos"))
         self.btn_reportes_listado_bodegas.setText(_translate("MainWindow", "Listado de Bodegas"))
         self.btn_resportes_listado_distribuidores.setText(_translate("MainWindow", "Listado de Distribuidores"))
+        self.label_33.setText(_translate("MainWindow", "Control de Inventario"))

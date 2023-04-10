@@ -153,7 +153,6 @@ class FrmInterfaz(QMainWindow):
             self.ui.precio_un_registro.clear()
 
     def agregar_bodega(self):
-        id = self.ui.lineEdit_3.text()
         nombre = self.ui.lineEdit_10.text().capitalize()
         direccion = self.ui.lineEdit_8.text().capitalize()
         telefono = self.ui.lineEdit_6.text()
@@ -163,8 +162,7 @@ class FrmInterfaz(QMainWindow):
         # dirección del archivo
         archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
         nueva_bodega = nuevaBodega(archivo)
-        nueva_bodega.agregar_datos(id, nombre, direccion, telefono)
-        self.ui.lineEdit_3.clear()
+        nueva_bodega.agregar_datos(nombre, direccion, telefono)        
         self.ui.lineEdit_10.clear()
         self.ui.lineEdit_6.clear()
         self.ui.lineEdit_8.clear()
@@ -180,7 +178,7 @@ class FrmInterfaz(QMainWindow):
         bodegas = set()  # usar un set para eliminar duplicados
         for line in lines:
             data = line.strip().split(',')
-            bodega_recibe = data[1]
+            bodega_recibe = data[0]
             bodegas.add(bodega_recibe)
 
         self.ui.comboBox__bod_recibe.clear()

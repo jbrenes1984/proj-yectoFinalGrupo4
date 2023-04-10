@@ -1,5 +1,0 @@
-1,Arroz,500.0,300.0,150000.0,15,09-04-2023,Bodega Principal,Ingreso Principal
-2,Frijoles,300.0,1500.0,450000.0,15,09-04-2023,Bodega Principal,Ingreso Principal
-3,Atun,100.0,3500.0,350000.0,15,09-04-2023,Bodega Principal,Ingreso Principal
-1, Arroz,3.0,300.0,900.0,1,09-04-2023,Cuba,Bodega Principal
-2, Frijoles,150.0,1500.0,225000.0,1,09-04-2023,Cuba,Bodega Principal
