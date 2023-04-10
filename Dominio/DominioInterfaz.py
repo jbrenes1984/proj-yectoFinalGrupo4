@@ -48,6 +48,8 @@ class FrmInterfaz(QMainWindow):
         self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)
         self.ui.btn_reportes_egresos_distrib.clicked.connect(self.salidas_distribuidor)
         self.ui.btnCreaPerfilDistrib.clicked.connect(self.agregar_distribuidor)
+        self.ui.btn_archivo_distrib.clicked.connect(self.abrir_archivo_reporte)
+        self.ui.btn_archivo_saldos.clicked.connect(self.abrir_archivo_reporte)
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
 
@@ -542,30 +544,10 @@ class FrmInterfaz(QMainWindow):
     def abrir_archivo_lista_saldos(self):
         archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt"
         os.startfile(archivo) 
-    
-    def salidas_distribuidor(self):
-        archivo = open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt', 'r')
-        cantidad_por_id_y_bodega = {}
 
-        for linea in archivo:
-            valores = linea.strip().split(',')
-            if "Dtb" in valores[7]:
-                # la palabra "Distribuidor" está en la columna 8 de esta línea, imprimir la línea
-                print(linea.strip())
-            id_articulo = valores[0]
-            cantidad_recibida = int(round(float(valores[2])))
-            bodega = valores[7]
-            nombre_articulo = valores[1]
-            precio_unitario = float(valores[3])
-            clave = (id_articulo, bodega)
-            if clave in cantidad_por_id_y_bodega:
-                cantidad_por_id_y_bodega[clave]['cantidad'] += cantidad_recibida
-            else:
-                cantidad_por_id_y_bodega[clave] = {
-                    'cantidad': cantidad_recibida, 'nombre': nombre_articulo, 'precio': precio_unitario}
-
-        archivo.close()
-
+    def abrir_archivo_reporte(self):
+        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt"
+        os.startfile(archivo) 
 
 
 

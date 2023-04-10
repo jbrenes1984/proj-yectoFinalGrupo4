@@ -710,6 +710,22 @@ class Ui_MainWindow(object):
         self.lista_saldo_inventario = QtWidgets.QListView(parent=self.page_saldos_inventario)
         self.lista_saldo_inventario.setGeometry(QtCore.QRect(0, 180, 781, 391))
         self.lista_saldo_inventario.setObjectName("lista_saldo_inventario")
+        self.btn_archivo_saldos = QtWidgets.QPushButton(parent=self.page_saldos_inventario)
+        self.btn_archivo_saldos.setGeometry(QtCore.QRect(680, 70, 91, 41))
+        self.btn_archivo_saldos.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_archivo_saldos.setObjectName("btn_archivo_saldos")
         self.stackedWidget.addWidget(self.page_saldos_inventario)
         self.page_reporte_distribuidor = QtWidgets.QWidget()
         self.page_reporte_distribuidor.setObjectName("page_reporte_distribuidor")
@@ -747,6 +763,22 @@ class Ui_MainWindow(object):
 "    font: 75 10pt \"MS Shell Dlg 2\";    \n"
 "}")
         self.btn_mostrar_egresos_distrib.setObjectName("btn_mostrar_egresos_distrib")
+        self.btn_archivo_distrib = QtWidgets.QPushButton(parent=self.page_reporte_distribuidor)
+        self.btn_archivo_distrib.setGeometry(QtCore.QRect(670, 80, 91, 41))
+        self.btn_archivo_distrib.setStyleSheet("QPushButton{\n"
+"    \n"
+"    border-radius:10px;\n"
+"    background-color: rgb(190, 190, 190);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {      \n"
+"    color: rgb(0, 170, 255);\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
+"}")
+        self.btn_archivo_distrib.setObjectName("btn_archivo_distrib")
         self.stackedWidget.addWidget(self.page_reporte_distribuidor)
         self.page_reporte_txt = QtWidgets.QWidget()
         self.page_reporte_txt.setObjectName("page_reporte_txt")
@@ -878,7 +910,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(7)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -952,14 +984,16 @@ class Ui_MainWindow(object):
         self.comboBox_bod_saldos.setItemText(3, _translate("MainWindow", "Bodega 2"))
         self.comboBox_bod_saldos.setItemText(4, _translate("MainWindow", "Bodega 3"))
         self.pushButton_mostrar.setText(_translate("MainWindow", "Mostrar"))
+        self.btn_archivo_saldos.setText(_translate("MainWindow", "Abrir Archivo"))
         self.label_26.setText(_translate("MainWindow", "Consulta Egresos Por Distribuidor"))
         self.label_31.setText(_translate("MainWindow", "Distribuidor"))
         self.btn_mostrar_egresos_distrib.setText(_translate("MainWindow", "Mostrar"))
+        self.btn_archivo_distrib.setText(_translate("MainWindow", "Abrir Archivo"))
         self.label_32.setText(_translate("MainWindow", "Modulo Reportes"))
-        self.btn_reportes_egresos_distrib.setText(_translate("MainWindow", "Egresos Distribuidor"))
+        self.btn_reportes_egresos_distrib.setText(_translate("MainWindow", "Egresos Distribuidor "))
         self.btn_reportes_ingresos.setText(_translate("MainWindow", "Ingresos Bodega"))
-        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Traslado Entre Bodegas"))
-        self.btn_resportes_saldos_inventario.setText(_translate("MainWindow", "Saldos Inventario"))
+        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Movimientos Entre Bodegas"))
+        self.btn_resportes_saldos_inventario.setText(_translate("MainWindow", "Saldos Inventario General"))
         self.btn_reportes_listado_productos.setText(_translate("MainWindow", "Listado Productos"))
         self.btn_reportes_listado_bodegas.setText(_translate("MainWindow", "Listado de Bodegas"))
         self.btn_resportes_listado_distribuidores.setText(_translate("MainWindow", "Listado de Distribuidores"))

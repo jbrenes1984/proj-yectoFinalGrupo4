@@ -1,2 +1,2 @@
-Código: 1,Nombre:   Arroz,Cantidad Recibida: 500.0,Precio Unitario:  300.0,Bodega Entrega: Guachipelin,Factura: 1,Fecha Registro: 10-04-2023
-Código: 4,Nombre:  Leche,Cantidad Recibida: 400.0,Precio Unitario:  5000.0,Bodega Entrega: Bodega Principal,Factura: ,Fecha Registro: 10-04-2023
+Código: 1,Nombre:   Arroz,Cantidad Recibida: 500.0,Precio Unitario: 300.0,Bodega Entrega: Guachipelin,Factura: 1,Fecha Registro: 10-04-2023
+Código: 4,Nombre:  Leche,Cantidad Recibida: 400.0,Precio Unitario: 5000.0,Bodega Entrega: Bodega Principal,Factura: ,Fecha Registro: 10-04-2023
