@@ -327,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>6</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">
@@ -380,13 +380,19 @@ QPushButton:hover {
             <property name="geometry">
              <rect>
               <x>30</x>
-              <y>50</y>
+              <y>60</y>
               <width>61</width>
               <height>31</height>
              </rect>
             </property>
+            <property name="styleSheet">
+             <string notr="true">font: 75 8pt &quot;MS Shell Dlg 2&quot;;</string>
+            </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Factura&lt;br&gt;Ingreso&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;N°&lt;br&gt;Movimiento&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
            <widget class="QPushButton" name="pushButton_guardar">
@@ -525,6 +531,9 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="nombre_registro">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>200</x>
@@ -556,6 +565,9 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="precio_un_registro">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>540</x>
@@ -592,12 +604,15 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="numeroFacturaIngreso">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>10</x>
-              <y>80</y>
-              <width>81</width>
-              <height>31</height>
+              <y>90</y>
+              <width>91</width>
+              <height>21</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -1018,6 +1033,9 @@ background-color: rgb(206, 206, 206);</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="nombre_producto_envio">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>100</x>
@@ -1034,6 +1052,9 @@ background-color: rgb(206, 206, 206);</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="cantidad_disponible">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>390</x>
@@ -1066,6 +1087,9 @@ background-color: rgb(206, 206, 206);</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="precio_unitario_envio">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>570</x>
@@ -1138,7 +1162,7 @@ QPushButton:hover {
            <widget class="QLabel" name="label_15">
             <property name="geometry">
              <rect>
-              <x>10</x>
+              <x>20</x>
               <y>80</y>
               <width>71</width>
               <height>21</height>
@@ -1147,13 +1171,19 @@ QPushButton:hover {
             <property name="text">
              <string>Mov. N°</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
            </widget>
            <widget class="QLabel" name="label_19">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
-              <x>110</x>
+              <x>80</x>
               <y>80</y>
-              <width>71</width>
+              <width>91</width>
               <height>21</height>
              </rect>
             </property>
@@ -1332,11 +1362,14 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLabel" name="factura_distrib">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
-              <x>110</x>
+              <x>90</x>
               <y>90</y>
-              <width>71</width>
+              <width>81</width>
               <height>21</height>
              </rect>
             </property>
@@ -1351,6 +1384,9 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="cantidad_producto_envio_distrib">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>390</x>
@@ -1377,6 +1413,9 @@ border: 1px solid black;</string>
             </property>
             <property name="text">
              <string>Mov. N°</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
            <widget class="QLabel" name="label_28">
@@ -1412,6 +1451,9 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="precio_unitario_envio_distrib">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>570</x>
@@ -1527,6 +1569,9 @@ border: 1px solid black;</string>
             </property>
            </widget>
            <widget class="QLineEdit" name="nombre_producto_distrib">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="geometry">
              <rect>
               <x>100</x>
@@ -1899,9 +1944,9 @@ QPushButton:hover {
            <widget class="QPushButton" name="btn_archivo_saldos">
             <property name="geometry">
              <rect>
-              <x>680</x>
+              <x>670</x>
               <y>70</y>
-              <width>91</width>
+              <width>81</width>
               <height>41</height>
              </rect>
             </property>

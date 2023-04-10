@@ -191,7 +191,9 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_agregar_reg.setObjectName("pushButton_agregar_reg")
         self.label_10 = QtWidgets.QLabel(parent=self.page_registro)
-        self.label_10.setGeometry(QtCore.QRect(30, 50, 61, 31))
+        self.label_10.setGeometry(QtCore.QRect(30, 60, 61, 31))
+        self.label_10.setStyleSheet("font: 75 8pt \"MS Shell Dlg 2\";")
+        self.label_10.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_10.setObjectName("label_10")
         self.pushButton_guardar = QtWidgets.QPushButton(parent=self.page_registro)
         self.pushButton_guardar.setGeometry(QtCore.QRect(690, 470, 81, 51))
@@ -250,6 +252,7 @@ class Ui_MainWindow(object):
         self.cod_registro.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.cod_registro.setObjectName("cod_registro")
         self.nombre_registro = QtWidgets.QLineEdit(parent=self.page_registro)
+        self.nombre_registro.setEnabled(False)
         self.nombre_registro.setGeometry(QtCore.QRect(200, 90, 261, 21))
         self.nombre_registro.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: 1px solid black;")
@@ -261,6 +264,7 @@ class Ui_MainWindow(object):
         self.cantidad_registro.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.cantidad_registro.setObjectName("cantidad_registro")
         self.precio_un_registro = QtWidgets.QLineEdit(parent=self.page_registro)
+        self.precio_un_registro.setEnabled(False)
         self.precio_un_registro.setGeometry(QtCore.QRect(540, 90, 91, 21))
         self.precio_un_registro.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: 1px solid black;")
@@ -268,10 +272,12 @@ class Ui_MainWindow(object):
         self.precio_un_registro.setObjectName("precio_un_registro")
         self.listaIngreso = QtWidgets.QListView(parent=self.page_registro)
         self.listaIngreso.setGeometry(QtCore.QRect(20, 170, 661, 341))
+        self.listaIngreso.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.listaIngreso.setModelColumn(0)
         self.listaIngreso.setObjectName("listaIngreso")
         self.numeroFacturaIngreso = QtWidgets.QLineEdit(parent=self.page_registro)
-        self.numeroFacturaIngreso.setGeometry(QtCore.QRect(10, 80, 81, 31))
+        self.numeroFacturaIngreso.setEnabled(False)
+        self.numeroFacturaIngreso.setGeometry(QtCore.QRect(10, 90, 91, 21))
         self.numeroFacturaIngreso.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border: 1px solid black;")
         self.numeroFacturaIngreso.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -410,11 +416,13 @@ class Ui_MainWindow(object):
         self.id_prod_envio.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.id_prod_envio.setObjectName("id_prod_envio")
         self.nombre_producto_envio = QtWidgets.QLineEdit(parent=self.page_envio_bodega)
+        self.nombre_producto_envio.setEnabled(False)
         self.nombre_producto_envio.setGeometry(QtCore.QRect(100, 160, 291, 31))
         self.nombre_producto_envio.setStyleSheet("border: 1px solid black;")
         self.nombre_producto_envio.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.nombre_producto_envio.setObjectName("nombre_producto_envio")
         self.cantidad_disponible = QtWidgets.QLineEdit(parent=self.page_envio_bodega)
+        self.cantidad_disponible.setEnabled(False)
         self.cantidad_disponible.setGeometry(QtCore.QRect(390, 160, 81, 31))
         self.cantidad_disponible.setStyleSheet("border: 1px solid black;")
         self.cantidad_disponible.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -425,6 +433,7 @@ class Ui_MainWindow(object):
         self.cantidad_producto_envio.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.cantidad_producto_envio.setObjectName("cantidad_producto_envio")
         self.precio_unitario_envio = QtWidgets.QLineEdit(parent=self.page_envio_bodega)
+        self.precio_unitario_envio.setEnabled(False)
         self.precio_unitario_envio.setGeometry(QtCore.QRect(570, 160, 101, 31))
         self.precio_unitario_envio.setStyleSheet("border: 1px solid black;")
         self.precio_unitario_envio.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -460,15 +469,18 @@ class Ui_MainWindow(object):
 "}")
         self.btnEnviarBodegas.setObjectName("btnEnviarBodegas")
         self.label_15 = QtWidgets.QLabel(parent=self.page_envio_bodega)
-        self.label_15.setGeometry(QtCore.QRect(10, 80, 71, 21))
+        self.label_15.setGeometry(QtCore.QRect(20, 80, 71, 21))
+        self.label_15.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_15.setObjectName("label_15")
         self.label_19 = QtWidgets.QLabel(parent=self.page_envio_bodega)
-        self.label_19.setGeometry(QtCore.QRect(110, 80, 71, 21))
+        self.label_19.setEnabled(False)
+        self.label_19.setGeometry(QtCore.QRect(80, 80, 91, 21))
         self.label_19.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.label_19.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_19.setObjectName("label_19")
         self.listaEnvio = QtWidgets.QListView(parent=self.page_envio_bodega)
         self.listaEnvio.setGeometry(QtCore.QRect(30, 220, 661, 281))
+        self.listaEnvio.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.listaEnvio.setObjectName("listaEnvio")
         self.stackedWidget.addWidget(self.page_envio_bodega)
         self.page_entrega_articulos = QtWidgets.QWidget()
@@ -517,17 +529,20 @@ class Ui_MainWindow(object):
         self.label_25.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_25.setObjectName("label_25")
         self.factura_distrib = QtWidgets.QLabel(parent=self.page_entrega_articulos)
-        self.factura_distrib.setGeometry(QtCore.QRect(110, 90, 71, 21))
+        self.factura_distrib.setEnabled(False)
+        self.factura_distrib.setGeometry(QtCore.QRect(90, 90, 81, 21))
         self.factura_distrib.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.factura_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.factura_distrib.setObjectName("factura_distrib")
         self.cantidad_producto_envio_distrib = QtWidgets.QLineEdit(parent=self.page_entrega_articulos)
+        self.cantidad_producto_envio_distrib.setEnabled(False)
         self.cantidad_producto_envio_distrib.setGeometry(QtCore.QRect(390, 170, 81, 31))
         self.cantidad_producto_envio_distrib.setStyleSheet("border: 1px solid black;")
         self.cantidad_producto_envio_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.cantidad_producto_envio_distrib.setObjectName("cantidad_producto_envio_distrib")
         self.label_27 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_27.setGeometry(QtCore.QRect(10, 90, 71, 21))
+        self.label_27.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_27.setObjectName("label_27")
         self.label_28 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_28.setGeometry(QtCore.QRect(420, 60, 131, 31))
@@ -539,6 +554,7 @@ class Ui_MainWindow(object):
         self.id_prod_envio_r_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.id_prod_envio_r_distrib.setObjectName("id_prod_envio_r_distrib")
         self.precio_unitario_envio_distrib = QtWidgets.QLineEdit(parent=self.page_entrega_articulos)
+        self.precio_unitario_envio_distrib.setEnabled(False)
         self.precio_unitario_envio_distrib.setGeometry(QtCore.QRect(570, 170, 101, 31))
         self.precio_unitario_envio_distrib.setStyleSheet("border: 1px solid black;")
         self.precio_unitario_envio_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -562,6 +578,7 @@ class Ui_MainWindow(object):
         self.cantidad_solicitar_distrib.setObjectName("cantidad_solicitar_distrib")
         self.tabla_entrega_distribuidores = QtWidgets.QListView(parent=self.page_entrega_articulos)
         self.tabla_entrega_distribuidores.setGeometry(QtCore.QRect(20, 230, 741, 281))
+        self.tabla_entrega_distribuidores.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tabla_entrega_distribuidores.setObjectName("tabla_entrega_distribuidores")
         self.label_30 = QtWidgets.QLabel(parent=self.page_entrega_articulos)
         self.label_30.setGeometry(QtCore.QRect(570, 140, 101, 31))
@@ -574,6 +591,7 @@ class Ui_MainWindow(object):
         self.label_30.setWordWrap(True)
         self.label_30.setObjectName("label_30")
         self.nombre_producto_distrib = QtWidgets.QLineEdit(parent=self.page_entrega_articulos)
+        self.nombre_producto_distrib.setEnabled(False)
         self.nombre_producto_distrib.setGeometry(QtCore.QRect(100, 170, 291, 31))
         self.nombre_producto_distrib.setStyleSheet("border: 1px solid black;")
         self.nombre_producto_distrib.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
@@ -711,7 +729,7 @@ class Ui_MainWindow(object):
         self.lista_saldo_inventario.setGeometry(QtCore.QRect(0, 180, 781, 391))
         self.lista_saldo_inventario.setObjectName("lista_saldo_inventario")
         self.btn_archivo_saldos = QtWidgets.QPushButton(parent=self.page_saldos_inventario)
-        self.btn_archivo_saldos.setGeometry(QtCore.QRect(680, 70, 91, 41))
+        self.btn_archivo_saldos.setGeometry(QtCore.QRect(670, 70, 81, 41))
         self.btn_archivo_saldos.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -787,24 +805,8 @@ class Ui_MainWindow(object):
         self.label_32.setStyleSheet("font: 75 18pt \"MS Shell Dlg 2\";")
         self.label_32.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_32.setObjectName("label_32")
-        self.btn_reportes_egresos_distrib = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_egresos_distrib.setGeometry(QtCore.QRect(130, 340, 181, 61))
-        self.btn_reportes_egresos_distrib.setStyleSheet("QPushButton{\n"
-"    \n"
-"    border-radius:10px;\n"
-"    background-color: rgb(190, 190, 190);\n"
-"    font: 75 10pt \"MS Shell Dlg 2\";\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover {      \n"
-"    color: rgb(0, 170, 255);\n"
-"    background-color: rgb(0, 0, 0);\n"
-"    font: 75 10pt \"MS Shell Dlg 2\";    \n"
-"}")
-        self.btn_reportes_egresos_distrib.setObjectName("btn_reportes_egresos_distrib")
         self.btn_reportes_ingresos = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_ingresos.setGeometry(QtCore.QRect(140, 140, 171, 61))
+        self.btn_reportes_ingresos.setGeometry(QtCore.QRect(140, 120, 171, 61))
         self.btn_reportes_ingresos.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -836,7 +838,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_egresos_entre_bod.setObjectName("btn_reportes_egresos_entre_bod")
         self.btn_resportes_saldos_inventario = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_resportes_saldos_inventario.setGeometry(QtCore.QRect(440, 140, 161, 61))
+        self.btn_resportes_saldos_inventario.setGeometry(QtCore.QRect(440, 120, 161, 61))
         self.btn_resportes_saldos_inventario.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -868,7 +870,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_listado_productos.setObjectName("btn_reportes_listado_productos")
         self.btn_reportes_listado_bodegas = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_reportes_listado_bodegas.setGeometry(QtCore.QRect(440, 340, 161, 61))
+        self.btn_reportes_listado_bodegas.setGeometry(QtCore.QRect(440, 350, 161, 61))
         self.btn_reportes_listado_bodegas.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -884,7 +886,7 @@ class Ui_MainWindow(object):
 "}")
         self.btn_reportes_listado_bodegas.setObjectName("btn_reportes_listado_bodegas")
         self.btn_resportes_listado_distribuidores = QtWidgets.QPushButton(parent=self.page_reporte_txt)
-        self.btn_resportes_listado_distribuidores.setGeometry(QtCore.QRect(280, 440, 161, 61))
+        self.btn_resportes_listado_distribuidores.setGeometry(QtCore.QRect(150, 350, 161, 61))
         self.btn_resportes_listado_distribuidores.setStyleSheet("QPushButton{\n"
 "    \n"
 "    border-radius:10px;\n"
@@ -910,7 +912,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(7)
+        self.stackedWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -926,7 +928,7 @@ class Ui_MainWindow(object):
         self.pushButton_reporte_distrib.setText(_translate("MainWindow", "Reporte por Distribuidor"))
         self.lineEdit.setText(_translate("MainWindow", "Registro de Ingreso de  Articulos a Bodega Principal"))
         self.pushButton_agregar_reg.setText(_translate("MainWindow", "Agregar"))
-        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p>Factura<br>Ingreso</p></body></html>"))
+        self.label_10.setText(_translate("MainWindow", "<html><head/><body><p>N°<br>Movimiento</p></body></html>"))
         self.pushButton_guardar.setText(_translate("MainWindow", "Guardar"))
         self.label_14.setText(_translate("MainWindow", "Codigo"))
         self.label_16.setText(_translate("MainWindow", "Precio U.."))
@@ -990,9 +992,8 @@ class Ui_MainWindow(object):
         self.btn_mostrar_egresos_distrib.setText(_translate("MainWindow", "Mostrar"))
         self.btn_archivo_distrib.setText(_translate("MainWindow", "Abrir Archivo"))
         self.label_32.setText(_translate("MainWindow", "Modulo Reportes"))
-        self.btn_reportes_egresos_distrib.setText(_translate("MainWindow", "Egresos Distribuidor "))
-        self.btn_reportes_ingresos.setText(_translate("MainWindow", "Ingresos Bodega"))
-        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Movimientos Entre Bodegas"))
+        self.btn_reportes_ingresos.setText(_translate("MainWindow", "Ingresos Bodegas"))
+        self.btn_reportes_egresos_entre_bod.setText(_translate("MainWindow", "Egresos"))
         self.btn_resportes_saldos_inventario.setText(_translate("MainWindow", "Saldos Inventario General"))
         self.btn_reportes_listado_productos.setText(_translate("MainWindow", "Listado Productos"))
         self.btn_reportes_listado_bodegas.setText(_translate("MainWindow", "Listado de Bodegas"))
