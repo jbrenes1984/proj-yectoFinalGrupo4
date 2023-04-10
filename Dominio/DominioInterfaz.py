@@ -16,6 +16,9 @@ import os
 now = datetime.datetime.now()
 fecha_actual = now.date()
 fecha_actual_str = fecha_actual.strftime('%d-%m-%Y')
+formatoConseFact = "Mov#{0}" 
+consecutivoFactura = 1
+listadoFacturas = []
 
 
 class FrmInterfaz(QMainWindow):
@@ -45,14 +48,13 @@ class FrmInterfaz(QMainWindow):
         self.ui.btn_resportes_listado_distribuidores.clicked.connect(self.abrir_archivo_lista_ditribuidores)
         self.ui.btn_reportes_egresos_entre_bod.clicked.connect(self.abrir_archivo_lista_egresos_bodegas)
         self.ui.btn_resportes_saldos_inventario.clicked.connect(self.abrir_archivo_lista_saldos)
-        self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)
-        self.ui.btn_reportes_egresos_distrib.clicked.connect(self.salidas_distribuidor)
+        self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)       
         self.ui.btnCreaPerfilDistrib.clicked.connect(self.agregar_distribuidor)
         self.ui.btn_archivo_distrib.clicked.connect(self.abrir_archivo_reporte)
         self.ui.btn_archivo_saldos.clicked.connect(self.abrir_archivo_reporte)
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
-
+        self.numero_facturas()
 
 
 
@@ -133,6 +135,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.numeroFacturaIngreso.clear()
         self.actualizar_saldos()
         self.mensaje_confirmacion(mensaje)
+        self.numero_facturas()
 
     def buscar_producto(self):
         # Obtiene el ID ingresado por el usuario
@@ -296,6 +299,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.label_19.clear()
         self.actualizar_saldos()
         self.mensaje_confirmacion(mensaje)
+        self.numero_facturas()
 
     def actualizar_saldos(self):
         archivo = open(
@@ -441,6 +445,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.factura_distrib.clear()
         self.actualizar_saldos()
         self.mensaje_confirmacion(mensaje)
+        self.numero_facturas()
 
     def mostrar_saldos(self):      
 
@@ -548,6 +553,19 @@ class FrmInterfaz(QMainWindow):
     def abrir_archivo_reporte(self):
         archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt"
         os.startfile(archivo) 
+    
+    def numero_facturas(self):
+        numero_factura = self.crearFactura()
+        self.ui.numeroFacturaIngreso.setText(numero_factura) 
+        self.ui.label_19.setText(numero_factura)
+        self.ui.factura_distrib.setText(numero_factura)
+
+    def crearFactura(self):
+        global consecutivoFactura
+        numFact = str(consecutivoFactura).rjust(5,'0')
+        numFactura = formatoConseFact.format(numFact) 
+        consecutivoFactura += 1
+        return numFactura
 
 
 
