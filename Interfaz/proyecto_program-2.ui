@@ -327,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>5</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">
@@ -1940,6 +1940,9 @@ QPushButton:hover {
               <height>391</height>
              </rect>
             </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
            </widget>
            <widget class="QPushButton" name="btn_archivo_saldos">
             <property name="geometry">
@@ -2032,6 +2035,9 @@ QPushButton:hover {
               <width>781</width>
               <height>341</height>
              </rect>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
             </property>
            </widget>
            <widget class="QPushButton" name="btn_mostrar_egresos_distrib">

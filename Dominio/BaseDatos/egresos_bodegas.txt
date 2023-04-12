@@ -1,6 +1,0 @@
-1, Arroz,500.0,300.0,150000.0,1,10-04-2023,Guachipelin,Bodega Principal
-4, Leche,400.0,5000.0,2000000.0,1,10-04-2023,Guachipelin,Bodega Principal
-1,  Arroz,500.0,300.0,150000.0,1,10-04-2023,Dtb Matra,Guachipelin
-4, Leche,400.0,5000.0,2000000.0,,10-04-2023,Dtb Matra,Bodega Principal
-1, Arroz,500.0,300.0,150000.0,Mov#00002,10-04-2023,Guachipelin,Bodega Principal
-1,  Arroz,500.0,300.0,150000.0,Mov#00003,10-04-2023,Dtb Matra,Guachipelin

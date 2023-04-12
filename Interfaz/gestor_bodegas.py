@@ -727,6 +727,7 @@ class Ui_MainWindow(object):
         self.pushButton_mostrar.setObjectName("pushButton_mostrar")
         self.lista_saldo_inventario = QtWidgets.QListView(parent=self.page_saldos_inventario)
         self.lista_saldo_inventario.setGeometry(QtCore.QRect(0, 180, 781, 391))
+        self.lista_saldo_inventario.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.lista_saldo_inventario.setObjectName("lista_saldo_inventario")
         self.btn_archivo_saldos = QtWidgets.QPushButton(parent=self.page_saldos_inventario)
         self.btn_archivo_saldos.setGeometry(QtCore.QRect(670, 70, 81, 41))
@@ -764,6 +765,7 @@ class Ui_MainWindow(object):
         self.comboBox_egresos_distribuidor.setItemText(0, "")
         self.lista_consulta_egresos_distrib = QtWidgets.QListView(parent=self.page_reporte_distribuidor)
         self.lista_consulta_egresos_distrib.setGeometry(QtCore.QRect(0, 230, 781, 341))
+        self.lista_consulta_egresos_distrib.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.lista_consulta_egresos_distrib.setObjectName("lista_consulta_egresos_distrib")
         self.btn_mostrar_egresos_distrib = QtWidgets.QPushButton(parent=self.page_reporte_distribuidor)
         self.btn_mostrar_egresos_distrib.setGeometry(QtCore.QRect(290, 150, 131, 41))
@@ -912,7 +914,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

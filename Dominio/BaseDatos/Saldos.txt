@@ -1,6 +1,0 @@
-1, Arroz, 614, 300.0 , Bodega Principal
-3, Atun, 360, 3500.0 , Bodega Principal
-4, Leche, 0, 5000.0 , Bodega Principal
-1,  Arroz, 0, 300.0 , Guachipelin
-4,  Leche, 400, 5000.0 , Guachipelin
-2, Frijoles, 500, 1500.0 , Bodega Principal
