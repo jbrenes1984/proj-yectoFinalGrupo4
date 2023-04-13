@@ -27,6 +27,14 @@ class FrmInterfaz(QMainWindow):
         self.ui = Ui_MainWindow()  # instancia de la interfaz gráfica
         self.ui.setupUi(self)  # inicializa la interfaz gráfica
         self.oingreso = None
+        self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_entrega_articulos.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_distribuidores.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_saldos_inventario.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_reporte_distrib.clicked.connect(self.mostrar_pagina)
+        self.ui.pushButton_reporte.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_agregar_reg.clicked.connect(self.btn_agregar_datos_factura)
         self.ui.pushButton_enviar.clicked.connect(self.btn_agregar_egresos)
         self.ui.pushButton_guardar.clicked.connect(self.btn_guardar_lista)
@@ -70,14 +78,7 @@ class FrmInterfaz(QMainWindow):
             self.ui.pushButton_reporte: self.ui.page_reporte_txt,
         }
 
-        self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_entrega_articulos.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_distribuidores.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_saldos_inventario.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_reporte_distrib.clicked.connect(self.mostrar_pagina)
-        self.ui.pushButton_reporte.clicked.connect(self.mostrar_pagina)
+       
 
     def mostrar_pagina(self):
         # obtiene el botón que se presionó
@@ -116,7 +117,7 @@ class FrmInterfaz(QMainWindow):
 
     def btn_guardar_lista(self):
         # Establece el nombre de archivo y la ubicación
-        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
+        filepath = "./Dominio/BaseDatos/lista_ingresos.txt"
         mensaje = "Se guardo exitosamente"
         # Abre el archivo para escribir
         with open(filepath, "a") as f:
@@ -140,7 +141,7 @@ class FrmInterfaz(QMainWindow):
     def buscar_producto(self):
         # Obtiene el ID ingresado por el usuario
         id_producto = self.ui.cod_registro.text()
-        with open(r'C:\Users\jbren\OneDrive\Escritorio\Proyecto Program 2\Dominio\BaseDatos\lista_productos.txt', 'r') as f:
+        with open(r'./Dominio/BaseDatos/lista_productos.txt', 'r') as f:
             self.lines = f.readlines()
 
     # Busca el producto correspondiente en la lista
@@ -168,7 +169,7 @@ class FrmInterfaz(QMainWindow):
 
         # Agregar los datos al archivo de texto
         # dirección del archivo
-        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
+        archivo = "./Dominio/BaseDatos/bodegas.txt"
         nueva_bodega = nuevaBodega(archivo)
         nueva_bodega.agregar_datos(nombre, direccion, telefono)        
         self.ui.lineEdit_10.clear()
@@ -183,7 +184,7 @@ class FrmInterfaz(QMainWindow):
         ubicacion = self.ui.txt_ubicacion_distrib.text().capitalize()
         telefono = self.ui.txt_numero_distrib.text()
         cedula = self.ui.txt_cedula_distrib.text()
-        archivo =  "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\distribuidores.txt" 
+        archivo =  "./Dominio/BaseDatos/distribuidores.txt" 
         mensaje = "Perfil se creo satisfactoriamente"
         nuevo_distribuidor = perfil_distribuidor(archivo)
         nuevo_distribuidor.agregar_distribuidor(nombre,ubicacion,telefono,cedula)
@@ -196,7 +197,7 @@ class FrmInterfaz(QMainWindow):
         
 
     def cargar_combobox(self):
-        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\bodegas.txt"
+        archivo = "./Dominio/BaseDatos/bodegas.txt"
         with open(archivo, 'r') as f:
             lines = f.readlines()
 
@@ -222,7 +223,7 @@ class FrmInterfaz(QMainWindow):
         id_producto = self.ui.id_prod_envio.text()
 
     # Abre el archivo de texto
-        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'r') as archivo:
+        with open('./Dominio/BaseDatos/Saldos.txt', 'r') as archivo:
             # Itera sobre las líneas del archivo
             for line in archivo:
                 datos_producto = line.strip().split(',')
@@ -266,8 +267,8 @@ class FrmInterfaz(QMainWindow):
 
     def btn_guardar_lista_egreso(self):
         # Establece el nombre de archivo y la ubicación
-        filepath = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
-        filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        filepath = "./Dominio/BaseDatos/lista_ingresos.txt"
+        filepath2 = "./Dominio/BaseDatos/egresos_bodegas.txt"
         mensaje = "Datos guardados satisfactoriamente"
 
     # Abre el archivo para escribir
@@ -303,7 +304,7 @@ class FrmInterfaz(QMainWindow):
 
     def actualizar_saldos(self):
         archivo = open(
-            'C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt', 'r')
+            './Dominio/BaseDatos/lista_ingresos.txt', 'r')
         cantidad_por_id_y_bodega = {}
         saldo_por_id_y_bodega = {}
 
@@ -327,7 +328,7 @@ class FrmInterfaz(QMainWindow):
        
 
         archivo = open(
-            'C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt', 'r')
+            './Dominio/BaseDatos/egresos_bodegas.txt', 'r')
  
         for linea in archivo:
             valores = linea.strip().split(',')
@@ -343,7 +344,7 @@ class FrmInterfaz(QMainWindow):
 
        
         # abrir el archivo para escritura
-        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'w') as archivo_salida:
+        with open('./Dominio/BaseDatos/Saldos.txt', 'w') as archivo_salida:
             # recorrer las claves y saldos
             for clave, saldo in saldo_por_id_y_bodega.items():
                 if saldo['cantidad'] >= 0:
@@ -363,7 +364,7 @@ class FrmInterfaz(QMainWindow):
         return
 
     def cargar_combobox_distribuidores(self):
-        archivo = "C:\\Users\\jbren\\OneDrive\\Escritorio\\Proyecto Program 2\\Dominio\\BaseDatos\\distribuidores.txt"
+        archivo = "./Dominio/BaseDatos/distribuidores.txt"
         with open(archivo, 'r') as f:
             lines = f.readlines()
 
@@ -384,7 +385,7 @@ class FrmInterfaz(QMainWindow):
         id_producto = self.ui.id_prod_envio_r_distrib.text()
         bodega = self.ui.comboBox_bod_envia_3.currentText()
 
-        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt', 'r') as archivo:
+        with open('./Dominio/BaseDatos/Saldos.txt', 'r') as archivo:
             for line in archivo:
                 datos_producto = line.strip().split(',')
                 if datos_producto[0] == id_producto and datos_producto[4].strip() == bodega:
@@ -426,7 +427,7 @@ class FrmInterfaz(QMainWindow):
 
     def btn_guardar_lista_egreso_distribuidor(self):
 
-        filepath2 = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        filepath2 = "./Dominio/BaseDatos/egresos_bodegas.txt"
         mensaje = "Datos guardados satisfactoriamente"
         # Abre el archivo para escribir
         with open(filepath2, "a") as f:
@@ -450,7 +451,7 @@ class FrmInterfaz(QMainWindow):
     def mostrar_saldos(self):      
 
         bodega = self.ui.comboBox_bod_saldos.currentText()
-        archivo = 'C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt'
+        archivo = './Dominio/BaseDatos/Saldos.txt'
         model = QStandardItemModel()
 
         encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
@@ -480,7 +481,7 @@ class FrmInterfaz(QMainWindow):
         self.ui.lista_saldo_inventario.setModel(model)
 
         # Escribir todas las líneas que cumplen con la condición en el archivo 'reporte.txt'
-        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt','w') as archivo:
+        with open('./Dominio/BaseDatos/reporte.txt','w') as archivo:
             for linea in lineas_bodega:
                 archivo.write(linea)
 
@@ -489,7 +490,7 @@ class FrmInterfaz(QMainWindow):
 
     def mostrar_egresos_distribuidor(self):
         bodega = self.ui.comboBox_egresos_distribuidor.currentText().strip()
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        archivo = "./Dominio/BaseDatos/egresos_bodegas.txt"
         model = QStandardItemModel()
         
         encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
@@ -518,7 +519,7 @@ class FrmInterfaz(QMainWindow):
             self.mensaje_confirmacion("Bodega Egresos de Articulos")
 
         self.ui.lista_consulta_egresos_distrib.setModel(model)
-        with open('C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt','w') as archivo:
+        with open('./Dominio/BaseDatos/reporte.txt','w') as archivo:
             for linea in lineas_bodega:
                 archivo.write(linea)
 
@@ -527,31 +528,31 @@ class FrmInterfaz(QMainWindow):
    
 
     def abrir_archivo_bodegas(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/bodegas.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/bodegas.txt")
         os.startfile(archivo)
 
     def abrir_archivo_lista_productos(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_productos.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/lista_productos.txt")
         os.startfile(archivo)  
 
     def abrir_archivo_lista_ingresos(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/lista_ingresos.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/lista_ingresos.txt")
         os.startfile(archivo)   
 
     def abrir_archivo_lista_ditribuidores(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/distribuidores.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/distribuidores.txt")
         os.startfile(archivo)  
 
     def abrir_archivo_lista_egresos_bodegas(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/egresos_bodegas.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/egresos_bodegas.txt")
         os.startfile(archivo)
     
     def abrir_archivo_lista_saldos(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/Saldos.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/Saldos.txt")
         os.startfile(archivo) 
 
     def abrir_archivo_reporte(self):
-        archivo = "C:/Users/jbren/OneDrive/Escritorio/Proyecto Program 2/Dominio/BaseDatos/reporte.txt"
+        archivo = os.path.abspath("./Dominio/BaseDatos/reporte.txt")
         os.startfile(archivo) 
     
     def numero_facturas(self):
@@ -566,6 +567,8 @@ class FrmInterfaz(QMainWindow):
         numFactura = formatoConseFact.format(numFact) 
         consecutivoFactura += 1
         return numFactura
+    
+    
 
 
 
