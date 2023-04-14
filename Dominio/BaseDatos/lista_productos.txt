@@ -2,3 +2,25 @@
 2,Frijoles,1500
 3,Atun,3500
 4,Leche,5000
+5,Sardina,2100
+6,Pescado,3400
+7,Avena,600
+8,Azucar,1200
+9,Achiote,950
+10,Mayonesa,3400
+11,Salsa De Tomate,2200
+12,Pescado,4500
+13,Queso,5000
+14,Huevos,2800
+15,Aceite.3400
+16,Chile,100
+17,Cebolla,200
+18,Lechuga,600
+19,Café,2000
+20,Pasta De dientes,1500
+21,Papel higiénico,3400
+22,Sal,400
+23,Zanahoria,700
+24,Naranja,120
+25,Masa,5400
+26,Jabón en Polvo,6700

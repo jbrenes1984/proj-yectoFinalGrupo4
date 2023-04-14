@@ -1,5 +1,9 @@
 Bodega Principal,San José,11211212
 Guachipelin,Escazu,83149232
+<<<<<<< HEAD
 Lagunilla,Heredia,8324155
 
 Liberia,Guanacaste,83149232
+=======
+Lagunilla,Heredia,8324155Liberia,Heredia,1541544
+>>>>>>> 3ae9648729871b0307c34a9a23511dbd4849ab86

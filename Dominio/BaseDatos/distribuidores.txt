@@ -1,1 +1,4 @@
 Dtb Coopearroz,San jose,8314545,21521515
+Dtb Coopefrijol,San carlos,12121212,111111
+Dtb Kevin fc,Heredia,415415,645454
+Dtb Coopesancarlos,San carlos,121212,154155
