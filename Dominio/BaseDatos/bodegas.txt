@@ -2,3 +2,4 @@ Bodega Principal,San José,11211212
 Guachipelin,Escazu,83149232
 Lagunilla,Heredia,8324155
 
+Liberia,Guanacaste,83149232

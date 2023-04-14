@@ -27,6 +27,7 @@ class FrmInterfaz(QMainWindow):
         self.ui = Ui_MainWindow()  # instancia de la interfaz gráfica
         self.ui.setupUi(self)  # inicializa la interfaz gráfica
         self.oingreso = None
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_registro)
         self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
@@ -512,7 +513,7 @@ class FrmInterfaz(QMainWindow):
                         f"ID: {id_producto} -->Producto: {producto} -->Cantidad Entregada: {cantidad} -->Precio Unitario: {precio_unitario} -->Bodega Entrega: {bodega_entrega} -->Factura: {factura} -->Fecha: {fecha}")
                     model.appendRow(item)
 
-                    linea = f"Código: {id_producto},Nombre: {producto},Cantidad Recibida: {cantidad},Precio Unitario: {precio_unitario},Bodega Entrega: {bodega_entrega},Factura: {factura},Fecha Registro: {fecha}\n"
+                    linea = f"Código: {id_producto},Nombre: {producto},Cantidad Entregada: {cantidad},Precio Unitario: {precio_unitario},Bodega Entrega: {bodega_entrega},Factura: {factura},Fecha Registro: {fecha}\n"
                     lineas_bodega.append(linea)
 
         if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación

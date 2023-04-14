@@ -1,1 +1,2 @@
-Código: 2,Nombre:  Frijoles,Cantidad Recibida: 500.0,Precio Unitario: 1500.0,Bodega Entrega: Bodega Principal,Factura: Mov#00001,Fecha Registro: 12-04-2023
+Código: 2,Nombre:   Frijoles,Cantidad Recibida: 100.0,Precio Unitario: 1500.0,Bodega Entrega: Liberia,Factura: Mov#00004,Fecha Registro: 13-04-2023
+Código: 3,Nombre:   Atun,Cantidad Recibida: 100.0,Precio Unitario: 3500.0,Bodega Entrega: Liberia,Factura: Mov#00004,Fecha Registro: 13-04-2023

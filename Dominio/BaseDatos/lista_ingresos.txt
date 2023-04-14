@@ -1,0 +1,6 @@
+1,Arroz,300.0,300.0,90000.0,Mov#00001,13-04-2023,Bodega Principal,Ingreso Principal
+2,Frijoles,300.0,1500.0,450000.0,Mov#00001,13-04-2023,Bodega Principal,Ingreso Principal
+3,Atun,300.0,3500.0,1050000.0,Mov#00001,13-04-2023,Bodega Principal,Ingreso Principal
+1, Arroz,300.0,300.0,90000.0,Mov#00002,13-04-2023,Guachipelin,Bodega Principal
+2, Frijoles,200.0,1500.0,300000.0,Mov#00003,13-04-2023,Liberia,Bodega Principal
+3, Atun,200.0,3500.0,700000.0,Mov#00003,13-04-2023,Liberia,Bodega Principal
