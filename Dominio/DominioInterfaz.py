@@ -16,7 +16,7 @@ import os
 now = datetime.datetime.now()
 fecha_actual = now.date()
 fecha_actual_str = fecha_actual.strftime('%d-%m-%Y')
-formatoConseFact = "Mov#{0}" 
+formatoConseFact = "Mov#{0}"
 consecutivoFactura = 1
 listadoFacturas = []
 
@@ -27,6 +27,8 @@ class FrmInterfaz(QMainWindow):
         self.ui = Ui_MainWindow()  # instancia de la interfaz gráfica
         self.ui.setupUi(self)  # inicializa la interfaz gráfica
         self.oingreso = None
+
+        self.ui.stackedWidget.setCurrentWidget(self.ui.page_registro)
         self.ui.pushButton_registro.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_crear_bodega.clicked.connect(self.mostrar_pagina)
         self.ui.pushButton_envio_bodega.clicked.connect(self.mostrar_pagina)
@@ -56,16 +58,13 @@ class FrmInterfaz(QMainWindow):
         self.ui.btn_resportes_listado_distribuidores.clicked.connect(self.abrir_archivo_lista_ditribuidores)
         self.ui.btn_reportes_egresos_entre_bod.clicked.connect(self.abrir_archivo_lista_egresos_bodegas)
         self.ui.btn_resportes_saldos_inventario.clicked.connect(self.abrir_archivo_lista_saldos)
-        self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)       
+        self.ui.btn_reportes_ingresos.clicked.connect(self.abrir_archivo_lista_ingresos)
         self.ui.btnCreaPerfilDistrib.clicked.connect(self.agregar_distribuidor)
         self.ui.btn_archivo_distrib.clicked.connect(self.abrir_archivo_reporte)
         self.ui.btn_archivo_saldos.clicked.connect(self.abrir_archivo_reporte)
         self.cargar_combobox()
         self.cargar_combobox_distribuidores()
         self.numero_facturas()
-
-
-
 
         self.paginas = {
             self.ui.pushButton_registro: self.ui.page_registro,
@@ -78,8 +77,6 @@ class FrmInterfaz(QMainWindow):
             self.ui.pushButton_reporte: self.ui.page_reporte_txt,
         }
 
-       
-
     def mostrar_pagina(self):
         # obtiene el botón que se presionó
         boton = self.sender()
@@ -91,31 +88,36 @@ class FrmInterfaz(QMainWindow):
         if pagina:
             self.ui.stackedWidget.setCurrentWidget(pagina)
 
-    def btn_agregar_datos_factura(self):
+
+
+    def btn_agregar_datos_factura(self): #agrega los datos de ingreso a la viewlist de ingresoInicial a bodega principal
         if self.ui.cantidad_registro.text() == "":
             self.mensaje_confirmacion("Ingresar Cantidad")
         else:
-            self.oingreso = IngresoArticulos.IngresoArticulos()
+            self.oingreso = IngresoArticulos.IngresoArticulos() #llama el objeto IngresoArticulos
             self.oingreso.codigoArticulo = self.ui.cod_registro.text()
             self.oingreso.nombreArticulo = self.ui.nombre_registro.text()
             self.oingreso.cantidad = float(self.ui.cantidad_registro.text())
-            self.oingreso.preciounitario = float(self.ui.precio_un_registro.text())
+            self.oingreso.preciounitario = float(
+                self.ui.precio_un_registro.text())
             self.oingreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
             self.bodega = "Bodega Principal"
 
             itemView = (self.oingreso.codigoArticulo+","+self.oingreso.nombreArticulo+","
                         + str(self.oingreso.cantidad) + ","+str(self.oingreso.preciounitario)+","+str(self.oingreso.montoTotal) +
-                        "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega + "," + "Ingreso Principal")
+                        "," + self.ui.numeroFacturaIngreso.text() + "," + fecha_actual_str + "," + self.bodega + "," + "Ingreso Principal") #intems a ingresar en la lista
 
-            item = QtGui.QStandardItem(itemView)
-            self.modelolista.appendRow(item)
+            item = QtGui.QStandardItem(itemView) # crea el modelo de la tabla
+            self.modelolista.appendRow(item)  
 
             self.ui.cod_registro.clear()
             self.ui.nombre_registro.clear()
             self.ui.cantidad_registro.clear()
             self.ui.precio_un_registro.clear()
 
-    def btn_guardar_lista(self):
+
+
+    def btn_guardar_lista(self): # guarla la lista del list view primer ingreso en el archivo txt
         # Establece el nombre de archivo y la ubicación
         filepath = "./Dominio/BaseDatos/lista_ingresos.txt"
         mensaje = "Se guardo exitosamente"
@@ -137,6 +139,8 @@ class FrmInterfaz(QMainWindow):
         self.actualizar_saldos()
         self.mensaje_confirmacion(mensaje)
         self.numero_facturas()
+
+
 
     def buscar_producto(self):
         # Obtiene el ID ingresado por el usuario
@@ -161,7 +165,9 @@ class FrmInterfaz(QMainWindow):
             self.ui.nombre_registro.clear()
             self.ui.precio_un_registro.clear()
 
-    def agregar_bodega(self):
+
+
+    def agregar_bodega(self): #crea nueva bodega
         nombre = self.ui.lineEdit_10.text().capitalize()
         direccion = self.ui.lineEdit_8.text().capitalize()
         telefono = self.ui.lineEdit_6.text()
@@ -170,13 +176,13 @@ class FrmInterfaz(QMainWindow):
         # Agregar los datos al archivo de texto
         # dirección del archivo
         archivo = "./Dominio/BaseDatos/bodegas.txt"
-        nueva_bodega = nuevaBodega(archivo)
-        nueva_bodega.agregar_datos(nombre, direccion, telefono)        
+        nueva_bodega = nuevaBodega(archivo) # llama contructor nuevaBodega
+        nueva_bodega.agregar_datos(nombre, direccion, telefono)
         self.ui.lineEdit_10.clear()
         self.ui.lineEdit_6.clear()
         self.ui.lineEdit_8.clear()
-        self.cargar_combobox()
-        self.cargar_combobox_distribuidores()
+        self.cargar_combobox() #actualiza comboBox de bodega
+        self.cargar_combobox_distribuidores() # actualiza comboBox distribuidores
         self.mensaje_confirmacion(mensaje)
 
     def agregar_distribuidor(self):
@@ -184,41 +190,39 @@ class FrmInterfaz(QMainWindow):
         ubicacion = self.ui.txt_ubicacion_distrib.text().capitalize()
         telefono = self.ui.txt_numero_distrib.text()
         cedula = self.ui.txt_cedula_distrib.text()
-        archivo =  "./Dominio/BaseDatos/distribuidores.txt" 
+        archivo = "./Dominio/BaseDatos/distribuidores.txt"
         mensaje = "Perfil se creo satisfactoriamente"
         nuevo_distribuidor = perfil_distribuidor(archivo)
-        nuevo_distribuidor.agregar_distribuidor(nombre,ubicacion,telefono,cedula)
+        nuevo_distribuidor.agregar_distribuidor(nombre, ubicacion, telefono, cedula)
         self.ui.txt_cedula_distrib.clear()
         self.ui.txt_nombre_distrib.clear()
         self.ui.txt_ubicacion_distrib.clear()
         self.ui.txt_numero_distrib.clear()
         self.cargar_combobox_distribuidores()
         self.mensaje_confirmacion(mensaje)
-        
 
-    def cargar_combobox(self):
-        archivo = "./Dominio/BaseDatos/bodegas.txt"
+    def cargar_combobox(self): #actualiza los comboBox 
+        archivo = "./Dominio/BaseDatos/bodegas.txt" #direccion del archivo plano
         with open(archivo, 'r') as f:
             lines = f.readlines()
 
         bodegas = set()  # usar un set para eliminar duplicados
         for line in lines:
-            data = line.strip().split(',')
+            data = line.strip().split(',') # los separa con comas
             bodega_recibe = data[0]
-            bodegas.add(bodega_recibe)
+            bodegas.add(bodega_recibe) 
 
         self.ui.comboBox__bod_recibe.clear()
         self.ui.comboBox_bod_saldos.clear()
         self.ui.comboBox_bod_envia_3.clear()
-       
 
-        for bodega in bodegas:
+        for bodega in bodegas:# actualiza los comboBox de bodegas de las diferentes vistas
             self.ui.comboBox__bod_recibe.addItem(bodega)
             self.ui.comboBox_bod_saldos.addItem(bodega)
             self.ui.comboBox_bod_envia_3.addItem(bodega)
-           
 
-    def buscar_producto_egreso(self):
+
+    def buscar_producto_egreso(self): # para egreso de bodega principal a otras bodegas carga la informacion con el saldo actual
         # Obtiene el ID ingresado por el usuario
         id_producto = self.ui.id_prod_envio.text()
 
@@ -242,13 +246,14 @@ class FrmInterfaz(QMainWindow):
     def btn_agregar_egresos(self):
         if self.ui.cantidad_producto_envio.text() == "" or float(self.ui.cantidad_producto_envio.text()) > float(self.ui.cantidad_disponible.text()):
             self.mensaje_confirmacion("Verificar Cantidad")
-        else:    
+        else:
             self.oegreso = Egresos.EgresoArticulos()
             self.oegreso.codigoArticulo = self.ui.id_prod_envio.text()
             self.oegreso.nombreArticulo = self.ui.nombre_producto_envio.text()
-            self.oegreso.cantidad = float(self.ui.cantidad_producto_envio.text())
+            self.oegreso.cantidad = float(
+                self.ui.cantidad_producto_envio.text())
             self.oegreso.preciounitario = float(
-            self.ui.precio_unitario_envio.text())
+                self.ui.precio_unitario_envio.text())
             self.oegreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
             self.oegreso.bodegaEnvia = self.ui.comboBox_bod_envia.currentText()
             self.oegreso.bodegaRecibe = self.ui.comboBox__bod_recibe.currentText()
@@ -325,24 +330,20 @@ class FrmInterfaz(QMainWindow):
 
         archivo.close()
 
-       
-
         archivo = open(
             './Dominio/BaseDatos/egresos_bodegas.txt', 'r')
- 
+
         for linea in archivo:
             valores = linea.strip().split(',')
             id_articulo = valores[0]
             cantidad_egresada = int(round(float(valores[2])))
             bodega = valores[8]
-           
+
             clave = (id_articulo, bodega)
             saldo_por_id_y_bodega[clave]['cantidad'] -= cantidad_egresada
-           
 
         archivo.close()
 
-       
         # abrir el archivo para escritura
         with open('./Dominio/BaseDatos/Saldos.txt', 'w') as archivo_salida:
             # recorrer las claves y saldos
@@ -351,10 +352,10 @@ class FrmInterfaz(QMainWindow):
                     linea = f'{clave[0]}, {saldo["nombre"]}, {saldo["cantidad"]}, {saldo["precio"]} , {clave[1]}\n'
                 else:
                     linea = f'{clave[0]}, {saldo["nombre"]}, {abs(saldo["cantidad"])}, {saldo["precio"]} , {clave[1]}\n'
+
                 archivo_salida.write(linea)
 
-
-    def mensaje_confirmacion(self, mensaje):
+    def mensaje_confirmacion(self, mensaje): # crear mensaje verificacion
         msg = QtWidgets.QMessageBox()
         msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
         msg.setWindowTitle("Confirmación")
@@ -404,10 +405,8 @@ class FrmInterfaz(QMainWindow):
         self.oegreso = Egresos.EgresoArticulos()
         self.oegreso.codigoArticulo = self.ui.id_prod_envio_r_distrib.text()
         self.oegreso.nombreArticulo = self.ui.nombre_producto_distrib.text()
-        self.oegreso.cantidad = float(
-            self.ui.cantidad_solicitar_distrib.text())
-        self.oegreso.preciounitario = float(
-            self.ui.precio_unitario_envio_distrib.text())
+        self.oegreso.cantidad = float(self.ui.cantidad_solicitar_distrib.text())
+        self.oegreso.preciounitario = float(self.ui.precio_unitario_envio_distrib.text())
         self.oegreso.calcularMontoTotal()  # llamada al método calcularMontoTotal()
         self.oegreso.bodegaEnvia = self.ui.comboBox_bod_envia_3.currentText()
         self.oegreso.bodegaRecibe = self.ui.comboBox_distrib_recibe_3.currentText()
@@ -448,19 +447,19 @@ class FrmInterfaz(QMainWindow):
         self.mensaje_confirmacion(mensaje)
         self.numero_facturas()
 
-    def mostrar_saldos(self):      
+    def mostrar_saldos(self):
 
         bodega = self.ui.comboBox_bod_saldos.currentText()
         archivo = './Dominio/BaseDatos/Saldos.txt'
         model = QStandardItemModel()
 
-        encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
-        lineas_bodega = [] # Lista para almacenar las líneas que cumplen con la condición
+        encontrado = False  # Variable para verificar si se encuentra al menos una coincidencia
+        lineas_bodega = []  # Lista para almacenar las líneas que cumplen con la condición
         with open(archivo, 'r') as f:
             for line in f:
                 datos_bodega = line.strip().split(', ')
                 if datos_bodega[4] == bodega:
-                    encontrado = True 
+                    encontrado = True
                     id_producto = datos_bodega[0]
                     producto = datos_bodega[1]
                     cantidad = datos_bodega[2]
@@ -475,31 +474,29 @@ class FrmInterfaz(QMainWindow):
                     linea = f"Código: {id_producto},Nombre: {producto},Saldo Actual: {cantidad},Precio Unitario: {precio_unitario},Bodega:{bodega}\n"
                     lineas_bodega.append(linea)
 
-        if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
-            self.mensaje_confirmacion("Bodega No Tiene Existencias de Articulos")
+        if not encontrado:  # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
+            self.mensaje_confirmacion(
+                "Bodega No Tiene Existencias de Articulos")
 
         self.ui.lista_saldo_inventario.setModel(model)
 
         # Escribir todas las líneas que cumplen con la condición en el archivo 'reporte.txt'
-        with open('./Dominio/BaseDatos/reporte.txt','w') as archivo:
+        with open('./Dominio/BaseDatos/reporte.txt', 'w') as archivo:
             for linea in lineas_bodega:
                 archivo.write(linea)
-
-
-
 
     def mostrar_egresos_distribuidor(self):
         bodega = self.ui.comboBox_egresos_distribuidor.currentText().strip()
         archivo = "./Dominio/BaseDatos/egresos_bodegas.txt"
         model = QStandardItemModel()
-        
-        encontrado = False # Variable para verificar si se encuentra al menos una coincidencia
-        lineas_bodega = [] 
+
+        encontrado = False  # Variable para verificar si se encuentra al menos una coincidencia
+        lineas_bodega = []
         with open(archivo, 'r') as f:
             for line in f:
                 datos_bodega = line.strip().split(',')
                 if len(datos_bodega) >= 9 and datos_bodega[7] == bodega:
-                    encontrado = True 
+                    encontrado = True
                     id_producto = datos_bodega[0]
                     producto = datos_bodega[1]
                     cantidad = datos_bodega[2]
@@ -515,17 +512,13 @@ class FrmInterfaz(QMainWindow):
                     linea = f"Código: {id_producto},Nombre: {producto},Cantidad Recibida: {cantidad},Precio Unitario: {precio_unitario},Bodega Entrega: {bodega_entrega},Factura: {factura},Fecha Registro: {fecha}\n"
                     lineas_bodega.append(linea)
 
-        if not encontrado: # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
+        if not encontrado:  # Si no se encontró ninguna coincidencia, se muestra el mensaje de confirmación
             self.mensaje_confirmacion("Bodega Egresos de Articulos")
 
         self.ui.lista_consulta_egresos_distrib.setModel(model)
-        with open('./Dominio/BaseDatos/reporte.txt','w') as archivo:
+        with open('./Dominio/BaseDatos/reporte.txt', 'w') as archivo:
             for linea in lineas_bodega:
                 archivo.write(linea)
-
-
-
-   
 
     def abrir_archivo_bodegas(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/bodegas.txt")
@@ -533,42 +526,37 @@ class FrmInterfaz(QMainWindow):
 
     def abrir_archivo_lista_productos(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/lista_productos.txt")
-        os.startfile(archivo)  
+        os.startfile(archivo)
 
     def abrir_archivo_lista_ingresos(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/lista_ingresos.txt")
-        os.startfile(archivo)   
+        os.startfile(archivo)
 
     def abrir_archivo_lista_ditribuidores(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/distribuidores.txt")
-        os.startfile(archivo)  
+        os.startfile(archivo)
 
     def abrir_archivo_lista_egresos_bodegas(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/egresos_bodegas.txt")
         os.startfile(archivo)
-    
+
     def abrir_archivo_lista_saldos(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/Saldos.txt")
-        os.startfile(archivo) 
+        os.startfile(archivo)
 
     def abrir_archivo_reporte(self):
         archivo = os.path.abspath("./Dominio/BaseDatos/reporte.txt")
-        os.startfile(archivo) 
-    
+        os.startfile(archivo)
+
     def numero_facturas(self):
         numero_factura = self.crearFactura()
-        self.ui.numeroFacturaIngreso.setText(numero_factura) 
+        self.ui.numeroFacturaIngreso.setText(numero_factura)
         self.ui.label_19.setText(numero_factura)
         self.ui.factura_distrib.setText(numero_factura)
 
     def crearFactura(self):
         global consecutivoFactura
-        numFact = str(consecutivoFactura).rjust(5,'0')
-        numFactura = formatoConseFact.format(numFact) 
+        numFact = str(consecutivoFactura).rjust(5, '0')
+        numFactura = formatoConseFact.format(numFact)
         consecutivoFactura += 1
         return numFactura
-    
-    
-
-
-

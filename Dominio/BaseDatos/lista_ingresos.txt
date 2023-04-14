@@ -1,0 +1,3 @@
+11,Salsa De Tomate,5.0,2200.0,11000.0,Mov#00001,13-04-2023,Bodega Principal,Ingreso Principal
+1,Arroz,300.0,300.0,90000.0,Mov#00001,13-04-2023,Bodega Principal,Ingreso Principal
+3,Atun,1000.0,3500.0,3500000.0,Mov#00001,13-04-2023,Bodega Principal,Ingreso Principal

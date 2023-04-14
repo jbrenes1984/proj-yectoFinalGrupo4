@@ -327,7 +327,7 @@ QPushButton:hover {
            <string notr="true">background-color: rgb(235, 235, 235);</string>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="page_registro">
            <widget class="QLineEdit" name="lineEdit">
@@ -874,11 +874,6 @@ background-color: rgb(206, 206, 206);</string>
             </property>
             <item>
              <property name="text">
-              <string/>
-             </property>
-            </item>
-            <item>
-             <property name="text">
               <string>Bodega Principal</string>
              </property>
             </item>
@@ -1237,11 +1232,6 @@ QPushButton:hover {
               <height>22</height>
              </rect>
             </property>
-            <item>
-             <property name="text">
-              <string/>
-             </property>
-            </item>
             <item>
              <property name="text">
               <string>Bodega Principal</string>
@@ -1878,11 +1868,6 @@ QPushButton:hover {
               <height>22</height>
              </rect>
             </property>
-            <item>
-             <property name="text">
-              <string/>
-             </property>
-            </item>
             <item>
              <property name="text">
               <string>Bodega Principal</string>
